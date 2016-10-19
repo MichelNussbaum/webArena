@@ -1,25 +1,21 @@
-# CakePHP Application Skeleton
+# Installation de notre projet webArena
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+## A partir de git
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
+### Cloner le projet
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+1. ligne de commande : git@github.com:Michou54/webArena.git
+2. cloner le projet à partir de github (le projet doit être partagé par Michou54 au départ)
 
-## Installation
+### Installation
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+1. Dans le dossier du projet éxécuter la commande composer install
+2. Supprimer le fichier app.php
+3. copier/coller app.php.dist
+4. renommer app.php.dist en app.php
 
-If Composer is installed globally, run
-```bash
-composer create-project --prefer-dist cakephp/app [app_name]
-```
+### Base de données
 
-You should now be able to visit the path to where you installed the app and see the default home page.
+1. créer la base de données webarena
+2. éxécuter le script ece_webarena.sql dans la base de données
 
-## Configuration
-
-Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
