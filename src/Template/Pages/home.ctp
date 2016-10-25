@@ -49,7 +49,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
           <!-- Lien Inscription -->
           <?php echo $this->Html->link('Inscription', array('controller' => 'Public','action' => 'inscription'), array('class' => 'btn btn-primary btn-lg'));?>
           <!-- Lien Connexion -->
-          <?php echo $this->Html->link('Connexion', array('controller' => 'Players', 'action' => 'login'), array('class' => 'btn btn-success btn-lg'));?>
+          <?php echo $this->Html->link('Connexion', array('controller' => 'Public', 'action' => 'connexion'), array('class' => 'btn btn-success btn-lg'));?>
       </p>
     </div>
     <div class="page-header">
