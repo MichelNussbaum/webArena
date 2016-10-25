@@ -23,6 +23,12 @@ class PublicController extends AppController
 					$value = $this->Players->insert($player);
 		      if ($value) {
 		        $this->Flash->success(__("Le joueur a été sauvegardé."));
+
+						$player = $this->Auth->identify();
+						$this->Auth->setUser($player);
+						$this->Flash->success(__("Connexion réussi."));
+						return $this->redirect($this->Auth->redirectUrl());
+						
 		      }
 		      else {
 		        $this->Flash->error(__("Impossible d'ajouter le joueur."));
