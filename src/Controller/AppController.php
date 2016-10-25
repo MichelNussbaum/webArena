@@ -61,6 +61,10 @@ class AppController extends Controller
                 'controller' => 'Member',
                 'action' => 'index'
             ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display'
+            ]
             ]);
 
     }
