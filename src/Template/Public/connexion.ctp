@@ -20,5 +20,5 @@
 		<?= $this->Form->button(__('Se Connecter'),['class'=>'btn btn-default']); ?>
 	</div>
 <?= $this->Form->end() ?>
-<?= $this->Html->link('Mot de passe oublié ?', array('controller' => 'Players', 'action' => 'forget'), array('class' => 'btn btn-link'));?>
+<?= $this->Html->link('Mot de passe oublié ?', array('controller' => 'Public', 'action' => 'forgetPassword'), array('class' => 'btn btn-link'));?>
 </div>

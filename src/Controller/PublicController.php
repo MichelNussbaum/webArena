@@ -10,7 +10,7 @@ class PublicController extends AppController
 	public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'logout']);
+        $this->Auth->allow(['inscription', 'logout','forgetPassword']);
     }
 
 	public function inscription()
@@ -46,4 +46,15 @@ class PublicController extends AppController
 	      }
 			}
 		}
+
+     public function forgetPassword(){
+        $this->loadModel('Players');
+        $player = $this->Players->newEntity();
+        if ($this->request->is('post')) {
+            $player = $this->Players->patchEntity($player, $this->request->data);
+            $playerFind = $this->Players->findByEmail($player);
+            $this->Players->resetPassword($playerFind);
+        }
+        $this->set('player', $player);
+    }
 }
