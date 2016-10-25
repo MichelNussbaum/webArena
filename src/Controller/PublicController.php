@@ -15,6 +15,7 @@ class PublicController extends AppController
 
 	public function inscription()
     {
+    	$this->verifyConnect();
       $this->loadModel('Players');
       $player = $this->Players->newEntity();
       if ($this->request->is('post'))
@@ -39,7 +40,7 @@ class PublicController extends AppController
 
 		public function connexion()
 		{
-
+			$this->verifyConnect();
 			if ($this->request->is('post')) {
 				$player = $this->Auth->identify();
 				if ($player) {
@@ -54,6 +55,7 @@ class PublicController extends AppController
 		}
 
      public function forgetPassword(){
+     	$this->verifyConnect();
         $this->loadModel('Players');
         $player = $this->Players->newEntity();
         if ($this->request->is('post')) {
@@ -62,5 +64,11 @@ class PublicController extends AppController
             $this->Players->resetPassword($playerFind);
         }
         $this->set('player', $player);
+    }
+
+    public function verifyConnect(){
+    	if($this->Auth->user()){
+            return $this->redirect(['controller'=>'Member','action' => 'index']);
+        }
     }
 }
