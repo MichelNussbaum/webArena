@@ -36,213 +36,125 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         <?= $cakeDescription ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <!--<?= $this->Html->css('base.css') ?>-->
+    <?= $this->Html->css('bootstrap.min.css') ?>
 </head>
 <body class="home">
-    <header>
-        <div class="header-image">
-            <?= $this->Html->image('http://cakephp.org/img/logo-cake.png') ?>
-            <h1>Get the Ovens Ready</h1>
-        </div>
-    </header>
-    <div id="content">
-        <div class="row">
-            <div class="columns large-12 ctp-warning checks">
-                Please be aware that this page will not be shown if you turn off debug mode unless you replace src/Template/Pages/home.ctp with your own version.
-            </div>
-            <?php Debugger::checkSecurityKeys(); ?>
-            <div id="url-rewriting-warning" class="columns large-12 url-rewriting checks">
-                <p class="problem">URL rewriting is not properly configured on your server.</p>
-                <p>
-                    1) <a target="_blank" href="http://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a>
-                </p>
-                <p>
-                    2) <a target="_blank" href="http://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
-                </p>
-            </div>
+    <div class="container">
+    <div class="jumbotron">
+      <h1>Bienvenue sur THE game</h1>
+      <p>The game est un jeu de rôle créé dans le cadre de notre formation en web à l'ECE Paris par Julien Falconnet</p>
+      <p>
+          <!-- Lien Inscription -->
+          <?php echo $this->Html->link('Inscription', array('controller' => 'Players', 'action' => 'add'), array('class' => 'btn btn-primary btn-lg'));?>
+          <!-- Lien Connexion -->
+          <?php echo $this->Html->link('Connexion', array('controller' => 'Players', 'action' => 'login'), array('class' => 'btn btn-success btn-lg'));?>
+      </p>
+    </div>
+    <div class="page-header">
+        <h1>Règles du jeu</h1>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
 
-            <div class="columns large-12 checks">
-                <h4>Environment</h4>
-                <?php if (version_compare(PHP_VERSION, '5.5.9', '>=')): ?>
-                    <p class="success">Your version of PHP is 5.5.9 or higher (detected <?= PHP_VERSION ?>).</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP is too low. You need PHP 5.5.9 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</p>
-                <?php endif; ?>
+    <p>Quisque nec cursus mauris. Nulla dignissim justo et lectus ultricies commodo. Ut condimentum vehicula congue. Pellentesque commodo eget tellus eget facilisis. Fusce eu arcu venenatis, convallis turpis at, ornare ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus hendrerit, mi id aliquam aliquam, nisi dolor gravida justo, vitae lobortis lectus justo at sem. Maecenas velit sem, aliquam vitae mollis sed, porta eget nibh. Aliquam eu massa mollis, dapibus arcu nec, semper odio. Aliquam vitae nibh eros. Curabitur sed ligula sapien. Aliquam mollis dolor lobortis gravida cursus. Sed aliquam leo neque, eu hendrerit dui mollis ac.</p>
 
-                <?php if (extension_loaded('mbstring')): ?>
-                    <p class="success">Your version of PHP has the mbstring extension loaded.</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP does NOT have the mbstring extension loaded.</p>;
-                <?php endif; ?>
+    <p>Duis condimentum quam in turpis suscipit pharetra. Nullam vitae laoreet lacus, vitae pretium mi. Phasellus efficitur justo est, vitae accumsan tellus ullamcorper ac. Ut eget tempus erat. Mauris leo odio, eleifend egestas dignissim ac, tempus ut nulla. Vestibulum placerat neque quis massa finibus congue. Maecenas a ipsum porta, rutrum eros ac, lacinia ex. Duis at blandit nulla. Maecenas auctor viverra lectus eget placerat. Integer efficitur arcu sit amet hendrerit dapibus. Duis fermentum consectetur turpis non cursus. Duis placerat dapibus arcu, eu rutrum felis fermentum quis. Morbi nisl arcu, lacinia in nisi eget, rutrum faucibus nulla. Praesent et est massa.</p>
 
-                <?php if (extension_loaded('openssl')): ?>
-                    <p class="success">Your version of PHP has the openssl extension loaded.</p>
-                <?php elseif (extension_loaded('mcrypt')): ?>
-                    <p class="success">Your version of PHP has the mcrypt extension loaded.</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</p>
-                <?php endif; ?>
+    <p>Sed venenatis lectus vel libero vehicula tincidunt. Vestibulum auctor ullamcorper tortor, sit amet vestibulum nulla. Donec in commodo augue. In pellentesque tempus augue, ac maximus dolor consequat a. Etiam aliquam suscipit erat. Aenean sem velit, dapibus vitae sagittis nec, aliquet eget nulla. Morbi vestibulum lorem vel mi condimentum mollis commodo non velit. Fusce interdum ex eget condimentum viverra. Sed turpis urna, laoreet nec tristique sed, faucibus in nunc. Vestibulum quis rhoncus turpis, at mattis neque. In quis metus nunc. Donec augue libero, commodo id tortor pulvinar, egestas imperdiet lectus. Quisque ac mauris vitae mi faucibus efficitur ut id lacus. Suspendisse tellus risus, sodales et ullamcorper vel, facilisis convallis magna.</p>
 
-                <?php if (extension_loaded('intl')): ?>
-                    <p class="success">Your version of PHP has the intl extension loaded.</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP does NOT have the intl extension loaded.</p>
-                <?php endif; ?>
-                <hr>
+    <p>Nunc pulvinar pulvinar nulla. Duis auctor, velit in maximus interdum, nisi ex vestibulum turpis, ac pellentesque lectus lorem at erat. Phasellus nec nulla pretium, finibus ipsum non, aliquam sem. Etiam vulputate at neque ut tempor. Integer bibendum lobortis magna, sed vulputate ex. Aenean posuere diam ut blandit commodo. Vestibulum ante felis, auctor eget sollicitudin ut, hendrerit vitae diam. Cras sodales at elit tempus elementum. Nunc efficitur scelerisque felis at tincidunt. Maecenas ac efficitur leo, at gravida velit. Pellentesque ac viverra libero. Vivamus non finibus justo, ut laoreet dolor. Quisque rutrum lacus vestibulum semper volutpat. Sed non facilisis sapien.</p>
+    <div class="page-header">
+        <h1>Combattants</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
 
-                <h4>Filesystem</h4>
-                <?php if (is_writable(TMP)): ?>
-                    <p class="success">Your tmp directory is writable.</p>
-                <?php else: ?>
-                    <p class="problem">Your tmp directory is NOT writable.</p>
-                <?php endif; ?>
+        <p>Quisque nec cursus mauris. Nulla dignissim justo et lectus ultricies commodo. Ut condimentum vehicula congue. Pellentesque commodo eget tellus eget facilisis. Fusce eu arcu venenatis, convallis turpis at, ornare ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus hendrerit, mi id aliquam aliquam, nisi dolor gravida justo, vitae lobortis lectus justo at sem. Maecenas velit sem, aliquam vitae mollis sed, porta eget nibh. Aliquam eu massa mollis, dapibus arcu nec, semper odio. Aliquam vitae nibh eros. Curabitur sed ligula sapien. Aliquam mollis dolor lobortis gravida cursus. Sed aliquam leo neque, eu hendrerit dui mollis ac.</p>
+    </div>
 
-                <?php if (is_writable(LOGS)): ?>
-                    <p class="success">Your logs directory is writable.</p>
-                <?php else: ?>
-                    <p class="problem">Your logs directory is NOT writable.</p>
-                <?php endif; ?>
-
-                <?php $settings = Cache::config('_cake_core_'); ?>
-                <?php if (!empty($settings)): ?>
-                    <p class="success">The <em><?= $settings['className'] ?>Engine</em> is being used for core caching. To change the config edit config/app.php</p>
-                <?php else: ?>
-                    <p class="problem">Your cache is NOT working. Please check the settings in config/app.php</p>
-                <?php endif; ?>
-
-                <hr>
-                <h4>Database</h4>
-                <?php
-                    try {
-                        $connection = ConnectionManager::get('default');
-                        $connected = $connection->connect();
-                    } catch (Exception $connectionError) {
-                        $connected = false;
-                        $errorMsg = $connectionError->getMessage();
-                        if (method_exists($connectionError, 'getAttributes')):
-                            $attributes = $connectionError->getAttributes();
-                            if (isset($errorMsg['message'])):
-                                $errorMsg .= '<br />' . $attributes['message'];
-                            endif;
-                        endif;
-                    }
-                ?>
-                <?php if ($connected): ?>
-                    <p class="success">CakePHP is able to connect to the database.</p>
-                <?php else: ?>
-                    <p class="problem">CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
-                <?php endif; ?>
-
-                <hr>
-                <h4>DebugKit</h4>
-                <?php if (Plugin::loaded('DebugKit')): ?>
-                    <p class="success">DebugKit is loaded.</p>
-                <?php else: ?>
-                    <p class="problem">DebugKit is NOT loaded. You need to either install pdo_sqlite, or define the "debug_kit" connection name.</p>
-                <?php endif; ?>
+    <div class="page-header">
+        <h1>Objets</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
+                <div class="caption">
+                    <h3>Objet 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
+                    <p>
+                    <!-- Lien détails objets -->
+                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="columns large-6">
-                <h3>Editing this Page</h3>
-                <ul>
-                    <li>To change the content of this page, edit: src/Template/Pages/home.ctp.</li>
-                    <li>You can also add some CSS styles for your pages at: webroot/css/.</li>
-                </ul>
-            </div>
-            <div class="columns large-6">
-                <h3>Getting Started</h3>
-                <ul>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/bookmarks/intro.html">The 15 min Bookmarker Tutorial</a></li>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html">The 15 min Blog Tutorial</a></li>
-                </ul>
-                <p>
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
+                <div class="caption">
+                    <h3>Objet 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
+                    <p>
+                    <!-- Lien détails objets -->
+                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
+                    </p>
+                </div>
             </div>
         </div>
-        <hr/>
-
-        <div class="row">
-            <div class="columns large-12">
-                <h3 class="">More about Cake</h3>
-                <p>
-                    CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Front Controller and MVC.
-                </p>
-                <p>
-                    Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
-                </p>
-
-                <h3>Help and Bug Reports</h3>
-                <ul>
-                    <li>
-                        <a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-                        <ul><li>Live chat about CakePHP</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                        <ul><li>CakePHP issues and pull requests</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://discourse.cakephp.org/">CakePHP Forum</a>
-                        <ul><li>CakePHP official discussion forum</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://groups.google.com/group/cake-php">CakePHP Google Group</a>
-                        <ul><li>Community mailing list</li></ul>
-                    </li>
-                </ul>
-
-                <h3>Docs and Downloads</h3>
-                <ul>
-                    <li>
-                        <a href="http://api.cakephp.org/3.0/">CakePHP API</a>
-                        <ul><li>Quick Reference</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://book.cakephp.org/3.0/en/">CakePHP Documentation</a>
-                        <ul><li>Your Rapid Development Cookbook</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://bakery.cakephp.org">The Bakery</a>
-                        <ul><li>Everything CakePHP</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://plugins.cakephp.org">CakePHP plugins repo</a>
-                        <ul><li>A comprehensive list of all CakePHP plugins created by the community</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://github.com/cakephp/">CakePHP Code</a>
-                        <ul><li>For the Development of CakePHP Git repository, Downloads</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
-                        <ul><li>A curated list of amazingly awesome CakePHP plugins, resources and shiny things.</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://www.cakephp.org">CakePHP</a>
-                        <ul><li>The Rapid Development Framework</li></ul>
-                    </li>
-                </ul>
-
-                <h3>Training and Certification</h3>
-                <ul>
-                    <li>
-                        <a href="http://cakefoundation.org/">Cake Software Foundation</a>
-                        <ul><li>Promoting development related to CakePHP</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://training.cakephp.org/">CakePHP Training</a>
-                        <ul><li>Learn to use the CakePHP framework</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://certification.cakephp.org/">CakePHP Certification</a>
-                        <ul><li>Become a certified CakePHP developer</li></ul>
-                    </li>
-                </ul>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
+                <div class="caption">
+                    <h3>Objet 3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
+                    <p>
+                    <!-- Lien détails objets -->
+                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
+                <div class="caption">
+                    <h3>Objet 4</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
+                    <p>
+                    <!-- Lien détails objets -->
+                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
+                <div class="caption">
+                    <h3>Objet 5</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
+                    <p>
+                    <!-- Lien détails objets -->
+                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
+                <div class="caption">
+                    <h3>Objet 6</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
+                    <p>
+                    <!-- Lien détails objets -->
+                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
