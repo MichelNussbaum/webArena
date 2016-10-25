@@ -56,7 +56,11 @@ class AppController extends Controller
             'loginAction' => [
                 'controller' => 'Public',
                 'action' => 'connexion'
-                 ]
+                 ],
+            'loginRedirect' => [
+                'controller' => 'Member',
+                'action' => 'index'
+            ],
             ]);
 
     }

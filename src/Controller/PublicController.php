@@ -39,7 +39,7 @@ class PublicController extends AppController
 				if ($player) {
 	          $this->Auth->setUser($player);
 	          $this->Flash->success(__("Connexion réussi."));
-	          //return $this->redirect($this->Auth->redirectUrl());
+	          return $this->redirect($this->Auth->redirectUrl());
 	      }
 	      else {
 	        $this->Flash->error(__('Invalid player or password, try again'));
