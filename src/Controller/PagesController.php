@@ -45,6 +45,9 @@ class PagesController extends AppController
      */
     public function display()
     {
+        if($this->Auth->user()){
+            return $this->redirect(['controller'=>'Member','action' => 'index']);
+        }
         $path = func_get_args();
 
         $count = count($path);
