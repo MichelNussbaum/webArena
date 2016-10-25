@@ -65,6 +65,24 @@ class PagesController extends AppController
 
     public function inscription()
     {
-      
+      $this->loadModel('Players');
+      $player = $this->Players->newEntity();
+      if ($this->request->is('post'))
+        {
+          $player = $this->Players->patchEntity($player, $this->request->data);
+        }
+      $value = $this->Players->insert($player);
+      print_r("test");
+      if ($value) {
+        print_r("ok");
+        $this->Flash->success(__("Le joueur a été sauvegardé."));
+      }
+      else {
+        $this->Flash->error(__("Impossible d'ajouter le joueur."));
+        print_r("ko");
+      }
+
+      $this->set('player',$player);
     }
+
 }
