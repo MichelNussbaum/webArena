@@ -2,9 +2,17 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 class PublicController extends AppController
 {
+
+	public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['add', 'logout']);
+    }
+
 	public function inscription()
     {
       $this->loadModel('Players');
@@ -22,4 +30,20 @@ class PublicController extends AppController
         }
       $this->set('player',$player);
     }
+
+		public function connexion()
+		{
+
+			if ($this->request->is('post')) {
+				$player = $this->Auth->identify();
+				if ($player) {
+	          $this->Auth->setUser($player);
+	          $this->Flash->success(__("Connexion réussi."));
+	          //return $this->redirect($this->Auth->redirectUrl());
+	      }
+	      else {
+	        $this->Flash->error(__('Invalid player or password, try again'));
+	      }
+			}
+		}
 }
