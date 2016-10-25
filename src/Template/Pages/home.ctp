@@ -27,6 +27,7 @@ endif;
 
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
       <p>The game est un jeu de rôle créé dans le cadre de notre formation en web à l'ECE Paris par Julien Falconnet</p>
       <p>
           <!-- Lien Inscription -->
-          <?php echo $this->Html->link('Inscription', array('controller' => 'Players', 'action' => 'add'), array('class' => 'btn btn-primary btn-lg'));?>
+          <?php echo $this->Html->link('Inscription', array('action' => 'inscription'), array('class' => 'btn btn-primary btn-lg'));?>
           <!-- Lien Connexion -->
           <?php echo $this->Html->link('Connexion', array('controller' => 'Players', 'action' => 'login'), array('class' => 'btn btn-success btn-lg'));?>
       </p>
