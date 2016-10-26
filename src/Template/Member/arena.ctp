@@ -48,7 +48,7 @@
 						<li>❇ X: '.$enemy["coordinate_x"].'</li>
 						<li>❇ Y: '.$enemy["coordinate_y"].'</li>
 						<li>guild : '.$enemy["guild_id"].'</li>
-						<li>'.$this->Html->link('Attaquer', array('controller' => 'Visions', 'action' => 'attaquer',$fighter->id,$enemy["id"]), array('class' => 'btn btn-default')).'</li>';
+						<li>'.$this->Html->link('Attaquer', array('action' => 'attaquer',$fighter->id,$enemy["id"]), array('class' => 'btn btn-default')).'</li>';
 						?><div class="cell"><?=$this->Html->image('enemy.jpg', $array)?></div><?php
 						$trouve = true;
 					}

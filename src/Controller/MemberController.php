@@ -89,5 +89,42 @@ class MemberController extends AppController
         $this->set("fighter",$fighter);
         $this->set("enemies",$this->Fighters->findEnemies($id));
     }
+
+    public function attaquer($idP, $idE){
+        //$event->date = date('Y-m-d H:i:s');
+        $enemy = $this->Fighters->findById($idE);
+        $player = $this->Fighters->findById($idP);
+        $rand = rand(1,20);
+        $seuil = 10+$player->level-$enemy->level;
+        $this->log("rand : ".$rand);
+        $this->log("seuil : ".$seuil);
+        if($rand > $seuil){
+            $this->log("j'attaque : ");
+            if ($this->Fighters->updateVie($enemy,$enemy->skill_health - $player->skill_strength)) {
+                $this->Flash->success(__("Attaque réussi"));
+                $xp = $player->xp++;
+                if($enemy->skill_health <= 0){
+                    $xp = $player->xp + $enemy->level;
+                    $this->Fighters->supprime($enemy);
+                    //ajout de l'évenement de tue
+                    $this->Flash->success(__("tué"));
+                    //$event->name = $player->name.' attaque '.$enemy->name.' et le tue';
+                }else{
+                    //ajout de l'evenement de touche
+                    $this->Flash->success(__("touché"));
+                    //$event->name = $player->name.' attaque '.$enemy->name.' et le touche';
+                }
+                $this->Fighters->updateXp($player,$xp);
+            }else{
+                $this->Flash->error(__("Erreur lors de l'attaque"));
+            }
+        }else{
+            $this->Flash->success(__("Attaque râté"));
+            //ajoute de l'évenement de râte
+            //$event->name = $player->name.' attaque '.$enemy->name.' et le râte';
+        }
+        //$eventsTable->save($event);
+        return $this->redirect(['action' => 'arena',$idP]);
+    }
 }
 ?>

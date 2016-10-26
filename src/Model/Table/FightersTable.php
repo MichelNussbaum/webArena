@@ -100,5 +100,19 @@ class FightersTable extends Table
     	return $query;
 
     }
+
+    function supprime($enemy){
+    	$this->delete($enemy);
+    }
+
+    function updateVie($enemy,$nbPoints){
+    	$enemy['skill_health'] = $nbPoints;
+    	return $this->save($enemy);
+    }
+
+    function updateXp($player,$xp){
+    	$player['xp'] = $xp;
+    	return $this->save($player);
+    }
 }
 ?>
