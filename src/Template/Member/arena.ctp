@@ -1,8 +1,8 @@
 <?php echo $this->Html->css('damier');?>
-	<?= $this->Html->link('Monter', array('action' => 'monter',$fighter->id), array('class' => 'btn btn-default'))?>
-	<?= $this->Html->link('Descendre', array('action' => 'descendre',$fighter->id), array('class' => 'btn btn-default'))?>
-	<?= $this->Html->link('Gauche', array('action' => 'gauche',$fighter->id), array('class' => 'btn btn-default'))?>
-	<?= $this->Html->link('Droite', array('action' => 'droite',$fighter->id), array('class' => 'btn btn-default'))?>
+	<?= $this->Html->link('Monter', array($fighter->id,"monter"), array('class' => 'btn btn-default'))?>
+	<?= $this->Html->link('Descendre', array($fighter->id,"descendre"), array('class' => 'btn btn-default'))?>
+	<?= $this->Html->link('Gauche', array($fighter->id,"gauche"), array('class' => 'btn btn-default'))?>
+	<?= $this->Html->link('Droite', array($fighter->id,"droite"), array('class' => 'btn btn-default'))?>
 	<?php 
 	for ($i=0; $i < 10; $i++) {?>
 		<div>
