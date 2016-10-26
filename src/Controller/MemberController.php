@@ -11,17 +11,38 @@ class MemberController extends AppController
     {
         parent::beforeFilter($event);
         $this->viewBuilder()->layout("member");
-        $this->set('authUser', $this->Auth->user());
+				$user = $this->Auth->user();
+        $this->set('authUser', $user);
         $this->loadModel('Fighters');
     }
 
     public function index(){
-    	
+
     }
+
+		public function addfighters(){
+			$user = $this->Auth->user();
+			$this->loadModel('Fighters');
+      $fighter = $this->Fighters->newEntity();
+      if ($this->request->is('post'))
+        {
+          $fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+					$value = $this->Fighters->insert($fighter,$user);
+					if ($value)
+		        {
+		          $this->Flash->success(__("Le combattant a été ajouté."));
+		          return $this->redirect(['action' => 'index']);
+		        }
+					else
+					 	{
+						$this->Flash->error(__("Impossible d'ajouter le combattant."));
+						}
+        }
+		}
 
     public function deconnexion(){
     	$this->Flash->success('Vous êtes maintenant déconnecté.');
-        return $this->redirect($this->Auth->logout()); 
+        return $this->redirect($this->Auth->logout());
     }
 
     public function guild(){
@@ -53,7 +74,7 @@ class MemberController extends AppController
                 case 'droite':
                     $this->Fighters->moove($id,"droite");
                     break;
-                
+
                 default:
                     # code...
                     break;
@@ -64,7 +85,7 @@ class MemberController extends AppController
     }
 
     public function gauche($player){
-        
+
 
     }
 
@@ -78,7 +99,7 @@ class MemberController extends AppController
     }
 
     public function descendre($player){
-        
+
     }
 }
 ?>
