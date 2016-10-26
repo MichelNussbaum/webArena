@@ -8,7 +8,7 @@ echo $this->Html->script('bootstrap.min');?>
 	  <p><?php echo $this->Html->link('Créer un combattant', array('action' => 'addfighters'), array('class' => 'btn btn-primary btn-lg'))?></p>
 	</div>
 </div>
-
+<!-- Affichage des fighters -->
 <div class="row">
 	<div class="row">
 	<?php foreach ($fighters as $fighter): ?>
