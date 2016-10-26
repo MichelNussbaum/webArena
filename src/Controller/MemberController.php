@@ -57,7 +57,9 @@ class MemberController extends AppController
 
     }
 
-    public function arena($id,$action){
+    public function arena($id){
+        if($this->request->is('post')){
+            $action = $this->request->data["action"];
             switch ($action) {
                 case 'monter':
                     $this->Fighters->moove($id,"monter");
@@ -78,6 +80,9 @@ class MemberController extends AppController
                 default:
                     # code...
                     break;
+        }
+        }else{
+            
         }
         $fighter = $this->Fighters->findById($id);
         $this->set("fighter",$fighter);

@@ -1,8 +1,22 @@
 <?php echo $this->Html->css('damier');?>
-	<?= $this->Html->link('Monter', array($fighter->id,"monter"), array('class' => 'btn btn-default'))?>
-	<?= $this->Html->link('Descendre', array($fighter->id,"descendre"), array('class' => 'btn btn-default'))?>
-	<?= $this->Html->link('Gauche', array($fighter->id,"gauche"), array('class' => 'btn btn-default'))?>
-	<?= $this->Html->link('Droite', array($fighter->id,"droite"), array('class' => 'btn btn-default'))?>
+<?= $this->Html->script('jQuery.min');?>
+<?= $this->Html->script('bootstrap.min');?>
+	<?= $this->Form->create();?>
+	<?= $this->Form->hidden('action',["value"=>"monter"]);?>
+	<?= $this->Form->button(__('Monter'),array('class' => 'btn btn-default'));?>
+  	<?= $this->Form->end();?>
+  	<?= $this->Form->create();?>
+	<?= $this->Form->hidden('action',["value"=>"descendre"]);?>
+	<?= $this->Form->button(__('Descendre'),array('class' => 'btn btn-default'));?>
+  	<?= $this->Form->end();?>
+  	<?= $this->Form->create();?>
+	<?= $this->Form->hidden('action',["value"=>"gauche"]);?>
+	<?= $this->Form->button(__('Gauche'),array('class' => 'btn btn-default'));?>
+  	<?= $this->Form->end();?>
+  	<?= $this->Form->create();?>
+	<?= $this->Form->hidden('action',["value"=>"droite"]);?>
+	<?= $this->Form->button(__('Droite'),array('class' => 'btn btn-default'));?>
+  	<?= $this->Form->end();?>
 	<?php 
 	for ($i=0; $i < 10; $i++) {?>
 		<div>
