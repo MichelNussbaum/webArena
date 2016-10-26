@@ -17,12 +17,13 @@ class MemberController extends AppController
     }
 
     public function index(){
-
-    }
+			$user = $this->Auth->user();
+			$fighters = $this->Fighters->findByPlayerId($user["id"]);
+			$this->set('fighters', $fighters);
+			}
 
 		public function addfighters(){
 			$user = $this->Auth->user();
-			$this->loadModel('Fighters');
       $fighter = $this->Fighters->newEntity();
       if ($this->request->is('post'))
         {

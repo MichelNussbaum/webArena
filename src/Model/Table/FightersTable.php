@@ -11,6 +11,14 @@ class FightersTable extends Table
       return $this->get($id);
     }
 
+    function findByPlayerId($player_id)
+    {
+      $query = $this->find("all")
+        ->where(['Fighters.player_id =' => $player_id]);
+
+      return $query;
+    }
+
     function insert($fighter,$user)
     {
       $fighter['player_id'] = $user['id'];
