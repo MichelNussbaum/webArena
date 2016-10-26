@@ -22,5 +22,17 @@ class MemberController extends AppController
         return $this->redirect($this->Auth->logout()); 
     }
 
+    public function guild(){
+
+    }
+
+    public function creerGuilde(){
+        
+    }
+
+    public function rejoindreGuilde(){
+
+    }
+
 }
 ?>
