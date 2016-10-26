@@ -92,5 +92,13 @@ class FightersTable extends Table
     	if($this->save($fighter)){
     	}
     }
+
+    function findEnemies($id){
+    	$fighter = $this->get($id); 
+    	$query = $this->find("all")
+    	->where(["id !="=>$id,"ABS(coordinate_x-".$fighter["coordinate_x"].") + ABS(coordinate_y - ".$fighter["coordinate_y"].") <="=>$fighter["skill_sight"]]);
+    	return $query;
+
+    }
 }
 ?>

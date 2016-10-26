@@ -87,7 +87,7 @@ class MemberController extends AppController
         }
         $fighter = $this->Fighters->findById($id);
         $this->set("fighter",$fighter);
-        $this->set("enemies",array());
+        $this->set("enemies",$this->Fighters->findEnemies($id));
     }
 }
 ?>
