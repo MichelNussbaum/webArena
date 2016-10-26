@@ -11,6 +11,8 @@ class MemberController extends AppController
     {
         parent::beforeFilter($event);
         //$this->Auth->allow(['index']);
+        $this->viewBuilder()->layout("member");
+        $this->set('authUser', $this->Auth->user());
     }
 
     public function index(){

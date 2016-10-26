@@ -1,1 +1,0 @@
-<?= $this->Html->link('Déconnexion', array('action' => 'deconnexion'), array('class' => 'btn btn-primary btn-lg'));?>
