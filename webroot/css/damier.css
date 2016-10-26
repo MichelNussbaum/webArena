@@ -1,0 +1,18 @@
+.cell{
+	display: inline-block;
+	background-color: black;
+	border-style: solid;
+	border-color: red;
+	width: 6.66%;
+}
+
+.cell:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.contentDamier{
+	position: absolute;
+	width: 5.3%;
+}
