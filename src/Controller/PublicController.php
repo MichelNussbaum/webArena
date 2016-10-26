@@ -10,12 +10,12 @@ class PublicController extends AppController
 	public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['inscription', 'logout','forgetPassword']);
+        $this->Auth->allow(['inscription', 'logout','forgetPassword','connexion']);				// n'exige pas une authentification à ces pages
+				$this->verifyConnect();																														// Vérifie s’il y a un utilisateur connecter et si oui, il le redirige vers sa page.
     }
 
 	public function inscription()
     {
-    	$this->verifyConnect();
       $this->loadModel('Players');
       $player = $this->Players->newEntity();
       if ($this->request->is('post'))
@@ -29,7 +29,7 @@ class PublicController extends AppController
 						$this->Auth->setUser($player);
 						$this->Flash->success(__("Connexion réussi."));
 						return $this->redirect($this->Auth->redirectUrl());
-						
+
 		      }
 		      else {
 		        $this->Flash->error(__("Impossible d'ajouter le joueur."));
@@ -40,7 +40,6 @@ class PublicController extends AppController
 
 		public function connexion()
 		{
-			$this->verifyConnect();
 			if ($this->request->is('post')) {
 				$player = $this->Auth->identify();
 				if ($player) {
@@ -55,7 +54,6 @@ class PublicController extends AppController
 		}
 
      public function forgetPassword(){
-     	$this->verifyConnect();
         $this->loadModel('Players');
         $player = $this->Players->newEntity();
         if ($this->request->is('post')) {
