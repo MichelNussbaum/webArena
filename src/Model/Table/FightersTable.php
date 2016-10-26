@@ -49,33 +49,40 @@ class FightersTable extends Table
     	$fighter = $this->get($id);
     	switch($action){
     		case 'monter':
-    			$fighter["coordinate_y"] = $fighter["coordinate_y"] -1;
+    			if($fighter["coordinate_y"] -1 != 0){
+    				$fighter["coordinate_y"] = $fighter["coordinate_y"]-1;
+    			}else{
+    				print_r("vous ne pouvez pas monter");
+    			}
+    			
     			break;
     		case 'descendre':
-    			$fighter["coordinate_y"] = $fighter["coordinate_y"] +1;
+    			if($fighter["coordinate_y"]+1 != 11){
+    				$fighter["coordinate_y"] = $fighter["coordinate_y"]+1;
+    			}else{
+    				print_r("vous ne pouvez pas descendre");
+    			}
     			break;
     		case 'gauche':
-    			$fighter["coordinate_x"] = $fighter["coordinate_y"] -1;
+    			if($fighter["coordinate_x"]-1 != 0){
+    				$fighter["coordinate_x"] = $fighter["coordinate_x"]-1;
+    			}else{
+    				print_r("vous ne pouvez pas aller à gauche");
+    			}
+    			
     			break;
     		case 'droite':
-    			$fighter["coordinate_x"] = $fighter["coordinate_y"] +1;
+    			if($fighter["coordinate_x"]+1 != 16){
+    				$fighter["coordinate_x"] = $fighter["coordinate_x"]+1;
+    			}else{
+    				print_r("vous ne pouvez pas aller a droite");
+    			}
+    			
     			break;
 
     	}
     	if($this->save($fighter)){
     	}
-    }
-
-    function descendre($player){
-
-    }
-
-    function gauche($player){
-
-    }
-
-    function droite($player){
-
     }
 }
 ?>

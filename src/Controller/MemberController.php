@@ -11,7 +11,7 @@ class MemberController extends AppController
     {
         parent::beforeFilter($event);
         $this->viewBuilder()->layout("member");
-				$user = $this->Auth->user();
+		$user = $this->Auth->user();
         $this->set('authUser', $user);
         $this->loadModel('Fighters');
     }
@@ -82,24 +82,6 @@ class MemberController extends AppController
         $fighter = $this->Fighters->findById($id);
         $this->set("fighter",$fighter);
         $this->set("enemies",array());
-    }
-
-    public function gauche($player){
-
-
-    }
-
-    public function droite($player){
-
-    }
-
-    public function monter($id){
-        //$this->Fighters->monter($this->sd);
-        return $this->redirect(['action' => 'arena']);
-    }
-
-    public function descendre($player){
-
     }
 }
 ?>
