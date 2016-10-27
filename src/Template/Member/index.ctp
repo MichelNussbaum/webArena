@@ -5,7 +5,7 @@ echo $this->Html->script('bootstrap.min');?>
 	<div class="jumbotron">
 		<h1>Vos Combattants</h1>
 		<p>Sur cette page vous pouvez voir l'ensemble de vos combattants avec leurs caractéristiques</p>
-		<p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addfighters">Créer un combattant</button> </p>
+		<p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addfighters">Créer un combattant</button></p>
 	</div>
 </div>
 <!-- Affichage des fighters -->
@@ -30,7 +30,8 @@ echo $this->Html->script('bootstrap.min');?>
 							<li>guild : <?= $fighter->guild_id ?></li>
 						</ul>
 						<p><?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
-							<?= $this->Html->link('Éditer', array('action' => 'addfighters'), array('class' => 'btn btn-primary'));?>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter">Modifier</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteFighter">Supprimertest</button>
 							<?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $fighter->id], ['confirm' => __('Etes vous sur de vouloir supprimer {0}?', $fighter->name),'class' => 'btn btn-danger'])?></p>
 						</div>
 					</div>
@@ -39,7 +40,7 @@ echo $this->Html->script('bootstrap.min');?>
 		</div>
 
 		<!-- Addfighters -->
-<div class="modal fade" id="addfighters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="addfighters" tabindex="-1" role="dialog" aria-labelledby="Addfighters">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -49,6 +50,7 @@ echo $this->Html->script('bootstrap.min');?>
       <div class="modal-body">
 				<div class="fighters form">
 					<?= $this->Form->create() ?>
+					<?= $this->Form->hidden('type',['value' => 'addfighters']) ?>
 						<?= $this->Form->input('name',['class' => 'form-control']) ?>
 				</div>
       </div>
@@ -59,4 +61,54 @@ echo $this->Html->script('bootstrap.min');?>
       </div>
     </div>
   </div>
+</div>
+
+<!-- ModifierFighter -->
+<div class="modal fade" id="ModifierFighter" tabindex="-1" role="dialog" aria-labelledby="ModifierFighter">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="ModifierFighter">Modifier le combattant</h4>
+	</div>
+	<div class="modal-body">
+		<div class="fighters form">
+			<?= $this->Form->create() ?>
+			<?= $this->Form->hidden('type',['value' => 'ModifierFighter']) ?>
+				<?= $this->Form->input('name',['class' => 'form-control']) ?>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		<?= $this->Form->button(__('Modifer'),['class'=>'btn btn-default']); ?>
+		<?= $this->Form->end() ?>
+	</div>
+</div>
+</div>
+</div>
+
+<!-- DeleteFighter -->
+<div class="modal fade" id="DeleteFighter" tabindex="-1" role="dialog" aria-labelledby="DeleteFighter">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="DeleteFighter">Supprimer le combattant</h4>
+	</div>
+	<div class="modal-body">
+		<div class="fighters form">
+				<?= $this->Form->create() ?>
+				<?= $this->Form->hidden('type',['value' => 'DeleteFighter']) ?>
+				<?= $this->Form->hidden('id',['value' =>  $fighter->id]) ?>
+				<?php $name =$fighter->name; ?>
+				<?php print "Etes vous sur de vouloir supprimer $name ?" ?>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		<?= $this->Form->button(__('Supprimer'),['class'=>'btn btn-default']); ?>
+		<?= $this->Form->end() ?>
+	</div>
+</div>
+</div>
 </div>

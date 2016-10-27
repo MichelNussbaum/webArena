@@ -20,19 +20,37 @@ class MemberController extends AppController
 		$user = $this->Auth->user();
 		$fighters = $this->Fighters->findByPlayerId($user["id"]);
 		$this->set('fighters', $fighters);
+
 		$fighter = $this->Fighters->newEntity();
 		if ($this->request->is('post'))
 		{
-			$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
-			$value = $this->Fighters->insert($fighter,$user);
-			if ($value)
+			if ($this->request->data['type'] == 'addfighters')
 			{
-				$this->Flash->success(__("Le combattant a été ajouté."));
-				return $this->redirect(['action' => 'index']);
+				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+				$value = $this->Fighters->insert($fighter,$user);
+				if ($value)
+				{
+					$this->Flash->success(__("Le combattant a été ajouté."));
+					return $this->redirect(['action' => 'index']);
+				}
+				else
+				{
+					$this->Flash->error(__("Impossible d'ajouter le combattant."));
+				}
 			}
-			else
-			{
-				$this->Flash->error(__("Impossible d'ajouter le combattant."));
+			elseif ($this->request->data['type'] == 'ModifierFighter')
+		 	{
+				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+			}
+			elseif ($this->request->data['type'] == 'DeleteFighter')
+		 	{
+				$id = $this->request->data['id'];
+				$fighter = $this->Fighters->get($id);
+				if ($this->Fighters->delete($fighter)) {
+					$this->Flash->success(__("Le combattant {0} a été supprimé.", ($fighter->name)));
+					return $this->redirect(['action' => 'index']);
+		    	}
+		    	$this->Flash->error(__("Impossible de supprimer le combattant."));
 			}
 		}
 	}
@@ -55,6 +73,16 @@ class MemberController extends AppController
 						}
         }
 		}
+
+		public function delete($id){
+    	$this->request->allowMethod(['post', 'delete']);
+		$fighter = $this->Fighters->get($id);
+		if ($this->Fighters->delete($fighter)) {
+			$this->Flash->success(__("Le combattant {0} a été supprimé.", ($fighter->name)));
+			return $this->redirect(['action' => 'index']);
+    	}
+    	$this->Flash->error(__("Impossible de supprimer le combattant."));
+    }
 
     public function deconnexion(){
     	$this->Flash->success('Vous êtes maintenant déconnecté.');
