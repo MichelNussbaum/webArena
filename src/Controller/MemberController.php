@@ -16,11 +16,26 @@ class MemberController extends AppController
         $this->loadModel('Fighters');
     }
 
-    public function index(){
-			$user = $this->Auth->user();
-			$fighters = $this->Fighters->findByPlayerId($user["id"]);
-			$this->set('fighters', $fighters);
+		public function index(){
+		$user = $this->Auth->user();
+		$fighters = $this->Fighters->findByPlayerId($user["id"]);
+		$this->set('fighters', $fighters);
+		$fighter = $this->Fighters->newEntity();
+		if ($this->request->is('post'))
+		{
+			$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+			$value = $this->Fighters->insert($fighter,$user);
+			if ($value)
+			{
+				$this->Flash->success(__("Le combattant a été ajouté."));
+				return $this->redirect(['action' => 'index']);
 			}
+			else
+			{
+				$this->Flash->error(__("Impossible d'ajouter le combattant."));
+			}
+		}
+	}
 
 		public function addfighters(){
 			$user = $this->Auth->user();
@@ -51,7 +66,7 @@ class MemberController extends AppController
     }
 
     public function creerGuilde(){
-        
+
     }
 
     public function rejoindreGuilde(){
@@ -83,7 +98,7 @@ class MemberController extends AppController
                     break;
         }
         }else{
-            
+
         }
         $fighter = $this->Fighters->findById($id);
         $this->set("fighter",$fighter);
