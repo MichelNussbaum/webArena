@@ -45,8 +45,7 @@ class MemberController extends AppController
 			elseif ($this->request->data['type'] == 'DeleteFighter')
 		 	{
 				$id = $this->request->data['id'];
-				$fighter = $this->Fighters->get($id);
-				if ($this->Fighters->delete($fighter)) {
+				if ($this->Fighters->supprime($id)) {
 					$this->Flash->success(__("Le combattant {0} a été supprimé.", ($fighter->name)));
 					return $this->redirect(['action' => 'index']);
 		    	}
@@ -54,35 +53,6 @@ class MemberController extends AppController
 			}
 		}
 	}
-
-		public function addfighters(){
-			$user = $this->Auth->user();
-      $fighter = $this->Fighters->newEntity();
-      if ($this->request->is('post'))
-        {
-          $fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
-					$value = $this->Fighters->insert($fighter,$user);
-					if ($value)
-		        {
-		          $this->Flash->success(__("Le combattant a été ajouté."));
-		          return $this->redirect(['action' => 'index']);
-		        }
-					else
-					 	{
-						$this->Flash->error(__("Impossible d'ajouter le combattant."));
-						}
-        }
-		}
-
-		public function delete($id){
-    	$this->request->allowMethod(['post', 'delete']);
-		$fighter = $this->Fighters->get($id);
-		if ($this->Fighters->delete($fighter)) {
-			$this->Flash->success(__("Le combattant {0} a été supprimé.", ($fighter->name)));
-			return $this->redirect(['action' => 'index']);
-    	}
-    	$this->Flash->error(__("Impossible de supprimer le combattant."));
-    }
 
     public function deconnexion(){
     	$this->Flash->success('Vous êtes maintenant déconnecté.');

@@ -62,7 +62,7 @@ class FightersTable extends Table
     			}else{
     				print_r("vous ne pouvez pas monter");
     			}
-    			
+
     			break;
     		case 'descendre':
     			if($fighter["coordinate_y"]+1 != 11){
@@ -77,7 +77,7 @@ class FightersTable extends Table
     			}else{
     				print_r("vous ne pouvez pas aller à gauche");
     			}
-    			
+
     			break;
     		case 'droite':
     			if($fighter["coordinate_x"]+1 != 16){
@@ -85,7 +85,7 @@ class FightersTable extends Table
     			}else{
     				print_r("vous ne pouvez pas aller a droite");
     			}
-    			
+
     			break;
 
     	}
@@ -94,15 +94,16 @@ class FightersTable extends Table
     }
 
     function findEnemies($id){
-    	$fighter = $this->get($id); 
+    	$fighter = $this->get($id);
     	$query = $this->find("all")
     	->where(["id !="=>$id,"ABS(coordinate_x-".$fighter["coordinate_x"].") + ABS(coordinate_y - ".$fighter["coordinate_y"].") <="=>$fighter["skill_sight"]]);
     	return $query;
 
     }
 
-    function supprime($enemy){
-    	$this->delete($enemy);
+    function supprime($id){
+      $fighter = $this->Fighters->get($id);
+    	return $this->delete($fighter);
     }
 
     function updateVie($enemy,$nbPoints){

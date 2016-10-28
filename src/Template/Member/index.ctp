@@ -31,8 +31,7 @@ echo $this->Html->script('bootstrap.min');?>
 						</ul>
 						<p><?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter">Modifier</button>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteFighter">Supprimertest</button>
-							<?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $fighter->id], ['confirm' => __('Etes vous sur de vouloir supprimer {0}?', $fighter->name),'class' => 'btn btn-danger'])?></p>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter">Supprimer</button>
 						</div>
 					</div>
 				</div>
