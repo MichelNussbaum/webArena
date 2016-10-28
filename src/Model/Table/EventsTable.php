@@ -6,8 +6,13 @@ use Cake\ORM\TableRegistry;
 
 class EventsTable extends Table
 {
-    function insert($message,$date,$posX,$posY){
-        
+    function insert($message,$posX,$posY){
+        $event = $this->newEntity();
+        $event["date"] = date('Y-m-d H:i:s');
+        $event["name"] = $message;
+        $event["coordinate_x"] = $posX;
+        $event["coordinate_y"] = $posY;
+        $this->save($event);
     }
 }
 ?>

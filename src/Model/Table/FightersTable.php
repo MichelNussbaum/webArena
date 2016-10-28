@@ -139,6 +139,11 @@ class FightersTable extends Table
     	$this->save($enemy);
     }
 
+    function insererEvenement($message,$posX,$posY){
+        $eventsTable = TableRegistry::get('Events');
+        $eventsTable->insert($message,$posX,$posX);
+    }
+
     function attaquer($idP,$idE){
     	$enemy = $this->findById($idE);
         $player = $this->findById($idP);
@@ -153,11 +158,13 @@ class FightersTable extends Table
                     $this->mourir($enemy);
                     //ajout de l'évenement de tue
                     $message = "tué";
-                    //$event->name = $player->name.' attaque '.$enemy->name.' et le tue';
+                    $evenement = $player->name.' attaque '.$enemy->name.' et le tue';
+                    $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
                 }else{
                     //ajout de l'evenement de touche
                     $message = "touché";
-                    //$event->name = $player->name.' attaque '.$enemy->name.' et le touche';
+                    $evenement = $player->name.' attaque '.$enemy->name.' et le touche';
+                    $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
                 }
                 $this->updateXp($player,$xp);
             }else{
@@ -166,10 +173,9 @@ class FightersTable extends Table
         }else{
             $message = "Attaque râté";
             //ajoute de l'évenement de râte
-            //$event->name = $player->name.' attaque '.$enemy->name.' et le râte';
+            $evenement = $player->name.' attaque '.$enemy->name.' et le râte';
+            $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
         }
-        //$eventsTable->save($event);
-        //return $this->redirect(['action' => 'arena',$idP]);
         return $message;
     }
 }

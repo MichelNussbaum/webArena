@@ -31,7 +31,7 @@ class MemberController extends AppController
 				$value = $this->Fighters->insert($fighter,$user);
 				if ($value)
 				{
-
+					$this->Events->insert("Entrée de ".$value["name"],$value["coordinate_x"],$value["coordinate_y"]);
 					$this->Flash->success(__("Le combattant a été ajouté."));
 				}
 				else
@@ -42,10 +42,11 @@ class MemberController extends AppController
 			elseif ($this->request->data['type'] == 'ModifierFighter')
 			{
 				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+				$oldFighter = $this->Fighters->findById($this->request->data["id"]);
 				$value = $this->Fighters->modifer($fighter);
 				if ($value)
 				{
-					
+					$this->Events->insert($oldFighter->name." devient ".$value->name,$value["coordinate_x"],$value["coordinate_y"]);
 					$this->Flash->success(__("Le combattant a été modifié."));
 				}
 				else
