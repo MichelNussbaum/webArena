@@ -6,15 +6,19 @@
 
 </div>
 <div class="col-md-3 col-sm-offset-4">
+	
+	<!-- Formulaire de création de guilde -->
+		
+	<?= $this->Form->create('',['class'=>'form-horizontal']); ?>
 
-	<form class="form-horizontal">
+	<div class="form-group">
 
-		<div class="form-group">
-			
-    		<label>Nom</label>
-    		<input type="text" class="form-control" placeholder="Exemple : Raptors" required>
-  		</div>
-		<button class="btn btn-warning btn-lg" type="reset">Reset</button>
-		<button class="btn btn-primary btn-lg" type="submit">Créer</button>
-	</form>
+		<?= $this->Form->input(__('Nom'),array('class'=>'form-control','type'=>'text','placeholder'=>'Exemple : Raptors','required')) ?>
+		<?= $this->Form->button(__('Reset'),array('type'=>'reset','class'=>'btn-warning btn-lg')) ?>
+		<?= $this->Form->button(__('Créer'),array('type'=>'submit','class'=>'btn-primary btn-lg')) ?>
+		
+	</div>
+
+	<?= $this->Form->end(); ?>
+
 </div>
