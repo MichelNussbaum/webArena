@@ -26,7 +26,7 @@ class FightersTable extends Table
         $fighter['player_id'] = $user['id'];
         $fighter['level'] = 1;
         $fighter['skill_strength'] = 1;
-        $fighter['skill_sight'] = 0;
+        $fighter['skill_sight'] = 2;
         $fighter['skill_health'] = 3;
         $fighter['current_health'] = 3;
         $fighter['xp'] = 0;
@@ -55,7 +55,6 @@ class FightersTable extends Table
   	    return $Value;
       }
       return FALSE;
-
     }
 
     function moove($id,$action){
@@ -109,6 +108,19 @@ class FightersTable extends Table
     function supprime($id){
       $fighter = $this->get($id);
     	return $this->delete($fighter);
+    }
+
+    function modifer($fighter)
+    {
+      $id = $fighter['id'];
+      $newfighter = $this->get($id);
+      if (!empty($fighter['name']))
+      {
+        $newfighter['name'] = $fighter['name'];
+        $Value = $this->save($newfighter);
+  	    return $Value;
+      }
+      return FALSE;
     }
 
     function updateVie($enemy,$nbPoints){

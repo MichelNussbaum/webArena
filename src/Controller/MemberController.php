@@ -33,25 +33,36 @@ class MemberController extends AppController
 				{
 
 					$this->Flash->success(__("Le combattant a été ajouté."));
-					return $this->redirect(['action' => 'index']);
 				}
 				else
 				{
-					$this->Flash->error(__("Impossible d'ajouter le combattant. Le champ name est vide."));
+					$this->Flash->error(__("Impossible d'ajouter le combattant. Le champ \"name\" est vide."));
 				}
 			}
 			elseif ($this->request->data['type'] == 'ModifierFighter')
 			{
 				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+				$value = $this->Fighters->modifer($fighter);
+				if ($value)
+				{
+					
+					$this->Flash->success(__("Le combattant a été modifié."));
+				}
+				else
+				{
+					$this->Flash->error(__("Impossible d'modifer le combattant. Le champ \"name\" est vide."));
+				}
 			}
 			elseif ($this->request->data['type'] == 'DeleteFighter')
 			{
 				$id = $this->request->data['id'];
-				if ($this->Fighters->supprime($id)) {
+				if ($this->Fighters->supprime($id))
+				{
 					$this->Flash->success(__("Le combattant a été supprimé."));
-					return $this->redirect(['action' => 'index']);
 				}
-				$this->Flash->error(__("Impossible de supprimer le combattant."));
+				else {
+					$this->Flash->error(__("Impossible de supprimer le combattant."));
+				}
 			}
 		}
 	}

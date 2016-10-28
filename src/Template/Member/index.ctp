@@ -27,22 +27,23 @@
 							<li>guild : <?= $fighter->guild_id ?></li>
 						</ul>
 						<p><?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter">Modifier</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>
 						</div>
 					</div>
 					<!-- ModifierFighter -->
-					<div class="modal fade" id="ModifierFighter" tabindex="-1" role="dialog" aria-labelledby="ModifierFighter">
+					<div class="modal fade" id="ModifierFighter<?= $fighter->id ?>" tabindex="-1" role="dialog" aria-labelledby="ModifierFighter">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="ModifierFighter">Modifier le combattant</h4>
+									<h4 class="modal-title" id="ModifierFighter<?= $fighter->id ?>">Modifier le combattant</h4>
 								</div>
 								<div class="modal-body">
 									<div class="fighters form">
 										<?= $this->Form->create() ?>
 										<?= $this->Form->hidden('type',['value' => 'ModifierFighter']) ?>
+										<?= $this->Form->hidden('id',['value' =>  $fighter->id]) ?>
 										<?= $this->Form->input('name',['class' => 'form-control']) ?>
 									</div>
 								</div>
@@ -61,7 +62,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="DeleteFighter">Supprimer le combattant</h4>
+									<h4 class="modal-title" id="DeleteFighter<?= $fighter->id ?>">Supprimer le combattant</h4>
 								</div>
 								<div class="modal-body">
 									<div class="fighters form">
