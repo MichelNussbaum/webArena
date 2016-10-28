@@ -115,5 +115,45 @@ class FightersTable extends Table
     	$player['xp'] = $xp;
     	return $this->save($player);
     }
+
+    function mourir($enemy){
+    	$enemy["coordinate_x"] = -100;
+    	$enemy["coordinate_y"] = -100;
+    	$this->save($enemy);
+    }
+
+    function attaquer($idP,$idE){
+    	$enemy = $this->findById($idE);
+        $player = $this->findById($idP);
+        $rand = rand(1,20);
+        $seuil = 10+$player->level-$enemy->level;
+        $message = array();
+        if($rand > $seuil){
+            if ($this->updateVie($enemy,$enemy->skill_health - $player->skill_strength)) {
+                $xp = $player->xp+1;
+                if($enemy->skill_health <= 0){
+                    $xp = $player->xp + $enemy->level;
+                    $this->mourir($enemy);
+                    //ajout de l'évenement de tue
+                    $message = "tué";
+                    //$event->name = $player->name.' attaque '.$enemy->name.' et le tue';
+                }else{
+                    //ajout de l'evenement de touche
+                    $message = "touché";
+                    //$event->name = $player->name.' attaque '.$enemy->name.' et le touche';
+                }
+                $this->updateXp($player,$xp);
+            }else{
+                //$this->Flash->error(__("Erreur lors de l'attaque"));
+            }
+        }else{
+            $message = "Attaque râté";
+            //ajoute de l'évenement de râte
+            //$event->name = $player->name.' attaque '.$enemy->name.' et le râte';
+        }
+        //$eventsTable->save($event);
+        //return $this->redirect(['action' => 'arena',$idP]);
+        return $message;
+    }
 }
 ?>

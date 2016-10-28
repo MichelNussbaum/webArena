@@ -1,6 +1,3 @@
-<?php echo $this->Html->css('bootstrap');
-echo $this->Html->script('jQuery.min');
-echo $this->Html->script('bootstrap.min');?>
 <div class="container">
 	<div class="jumbotron">
 		<h1>Vos Combattants</h1>
