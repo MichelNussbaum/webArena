@@ -45,13 +45,15 @@
 						<li>👀 : '.$enemy["skill_sight"].'</li>
 						<li>❇ X: '.$enemy["coordinate_x"].'</li>
 						<li>❇ Y: '.$enemy["coordinate_y"].'</li>
-						<li>guild : '.$enemy["guild_id"].'</li>
-						<li>'.$this->Form->create().
-						$this->Form->hidden('action',['value' => 'attaquer']).
-						$this->Form->hidden('idP',['value' => $fighter->id]).
-						$this->Form->hidden('idE',['value' => $enemy->id]).
-						$this->Form->button(__('Attaquer'),['class'=>'btn btn-default']).
-						$this->Form->end().'</li>';
+						<li>guild : '.$enemy["guild_id"].'</li>';
+						if(($enemy["coordinate_x"] == $fighter["coordinate_x"] && ($enemy["coordinate_y"] == $fighter["coordinate_y"]-1 || $enemy["coordinate_y"] == $fighter["coordinate_y"]+1)) || ($enemy["coordinate_y"] == $fighter["coordinate_y"] && ($enemy["coordinate_x"] == $fighter["coordinate_x"]-1 || $enemy["coordinate_x"] == $fighter["coordinate_x"]+1))){
+							$array["data-content"].='<li>'.$this->Form->create().
+							$this->Form->hidden('action',['value' => 'attaquer']).
+							$this->Form->hidden('idP',['value' => $fighter->id]).
+							$this->Form->hidden('idE',['value' => $enemy->id]).
+							$this->Form->button(__('Attaquer'),['class'=>'btn btn-default']).
+							$this->Form->end().'</li>';
+						}
 						?><div class="cell"><?=$this->Html->image('enemy.jpg', $array)?></div><?php
 						$trouve = true;
 					}

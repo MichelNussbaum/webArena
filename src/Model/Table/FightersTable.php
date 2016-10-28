@@ -21,36 +21,40 @@ class FightersTable extends Table
 
     function insert($fighter,$user)
     {
-      $fighter['player_id'] = $user['id'];
-      $fighter['level'] = 1;
-      $fighter['skill_strength'] = 1;
-      $fighter['skill_sight'] = 0;
-      $fighter['skill_health'] = 3;
-      $fighter['current_health'] = 3;
-      $fighter['xp'] = 0;
-      // génération aléatoires des coordonnées avec vérification qu'il n'y est pas d'autre combattant sur la case
-      $fighters = TableRegistry::get('Fighters');
-      $boolean = FALSE;
-      while (!$boolean)
-        {
-          $x = rand (1, 15);
-          $y = rand (1, 10);
-          $query = $fighters->find();
-          $query->select(['count' => $query->func()->count('*')]);
-          $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
+      if (!empty($fighter['name']))
+      {
+        $fighter['player_id'] = $user['id'];
+        $fighter['level'] = 1;
+        $fighter['skill_strength'] = 1;
+        $fighter['skill_sight'] = 2;
+        $fighter['skill_health'] = 3;
+        $fighter['current_health'] = 3;
+        $fighter['xp'] = 0;
+        // génération aléatoires des coordonnées avec vérification qu'il n'y est pas d'autre combattant sur la case
+        $fighters = TableRegistry::get('Fighters');
+        $boolean = FALSE;
+        while (!$boolean)
+          {
+            $x = rand (1, 15);
+            $y = rand (1, 10);
+            $query = $fighters->find();
+            $query->select(['count' => $query->func()->count('*')]);
+            $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
 
-          foreach ($query as $f)
-            {
-              if ($f->count == 0)
-                {
-                  $boolean = TRUE;
-                }
-            }
-        }
-      $fighter['coordinate_x'] = $x;
-      $fighter['coordinate_y'] = $y;
-      $Value = $this->save($fighter);
-	    return $Value;
+            foreach ($query as $f)
+              {
+                if ($f->count == 0)
+                  {
+                    $boolean = TRUE;
+                  }
+              }
+          }
+        $fighter['coordinate_x'] = $x;
+        $fighter['coordinate_y'] = $y;
+        $Value = $this->save($fighter);
+  	    return $Value;
+      }
+      return FALSE;
     }
 
     function moove($id,$action){
@@ -102,8 +106,21 @@ class FightersTable extends Table
     }
 
     function supprime($id){
-      $fighter = $this->Fighters->get($id);
+      $fighter = $this->get($id);
     	return $this->delete($fighter);
+    }
+
+    function modifer($fighter)
+    {
+      $id = $fighter['id'];
+      $newfighter = $this->get($id);
+      if (!empty($fighter['name']))
+      {
+        $newfighter['name'] = $fighter['name'];
+        $Value = $this->save($newfighter);
+  	    return $Value;
+      }
+      return FALSE;
     }
 
     function updateVie($enemy,$nbPoints){
@@ -122,6 +139,11 @@ class FightersTable extends Table
     	$this->save($enemy);
     }
 
+    function insererEvenement($message,$posX,$posY){
+        $eventsTable = TableRegistry::get('Events');
+        $eventsTable->insert($message,$posX,$posX);
+    }
+
     function attaquer($idP,$idE){
     	$enemy = $this->findById($idE);
         $player = $this->findById($idP);
@@ -136,11 +158,13 @@ class FightersTable extends Table
                     $this->mourir($enemy);
                     //ajout de l'évenement de tue
                     $message = "tué";
-                    //$event->name = $player->name.' attaque '.$enemy->name.' et le tue';
+                    $evenement = $player->name.' attaque '.$enemy->name.' et le tue';
+                    $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
                 }else{
                     //ajout de l'evenement de touche
                     $message = "touché";
-                    //$event->name = $player->name.' attaque '.$enemy->name.' et le touche';
+                    $evenement = $player->name.' attaque '.$enemy->name.' et le touche';
+                    $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
                 }
                 $this->updateXp($player,$xp);
             }else{
@@ -149,10 +173,9 @@ class FightersTable extends Table
         }else{
             $message = "Attaque râté";
             //ajoute de l'évenement de râte
-            //$event->name = $player->name.' attaque '.$enemy->name.' et le râte';
+            $evenement = $player->name.' attaque '.$enemy->name.' et le râte';
+            $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
         }
-        //$eventsTable->save($event);
-        //return $this->redirect(['action' => 'arena',$idP]);
         return $message;
     }
 }

@@ -8,16 +8,18 @@ class MemberController extends AppController
 {
 
 	public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-        $this->viewBuilder()->layout("member");
+	{
+		parent::beforeFilter($event);
+		$this->viewBuilder()->layout("member");
 		$user = $this->Auth->user();
-        $this->set('authUser', $user);
-        $this->loadModel('Fighters');
-        $this->loadModel('Guilds');
-    }
 
-		public function index(){
+		$this->set('authUser', $user);
+		$this->loadModel('Fighters');
+		$this->loadModel('Events');
+        $this->loadModel('Guilds');
+	}
+
+	public function index(){
 		$user = $this->Auth->user();
 		$fighters = $this->Fighters->findByPlayerId($user["id"]);
 		$this->set('fighters', $fighters);
@@ -31,26 +33,41 @@ class MemberController extends AppController
 				$value = $this->Fighters->insert($fighter,$user);
 				if ($value)
 				{
+					$this->Events->insert("Entrée de ".$value["name"],$value["coordinate_x"],$value["coordinate_y"]);
 					$this->Flash->success(__("Le combattant a été ajouté."));
-					return $this->redirect(['action' => 'index']);
 				}
 				else
 				{
-					$this->Flash->error(__("Impossible d'ajouter le combattant."));
+					$this->Flash->error(__("Impossible d'ajouter le combattant. Le champ \"name\" est vide."));
 				}
 			}
 			elseif ($this->request->data['type'] == 'ModifierFighter')
-		 	{
+			{
 				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+				$oldFighter = $this->Fighters->findById($this->request->data["id"]);
+				$value = $this->Fighters->modifer($fighter);
+				if ($value)
+				{
+					$this->Events->insert($oldFighter->name." devient ".$value->name,$value["coordinate_x"],$value["coordinate_y"]);
+					$this->Flash->success(__("Le combattant a été modifié."));
+				}
+				else
+				{
+					$this->Flash->error(__("Impossible d'modifer le combattant. Le champ \"name\" est vide."));
+				}
 			}
 			elseif ($this->request->data['type'] == 'DeleteFighter')
-		 	{
+			{
 				$id = $this->request->data['id'];
-				if ($this->Fighters->supprime($id)) {
-					$this->Flash->success(__("Le combattant {0} a été supprimé.", ($fighter->name)));
-					return $this->redirect(['action' => 'index']);
-		    	}
-		    	$this->Flash->error(__("Impossible de supprimer le combattant."));
+				$oldFighter = $this->Fighters->findById($id);
+				if ($this->Fighters->supprime($id))
+				{
+					$this->Events->insert("Suppression du combattant ".$oldFighter->name,$oldFighter->coordinate_x,$oldFighter->coordinate_y);
+					$this->Flash->success(__("Le combattant {0} a été supprimé.",$oldFighter->name));
+				}
+				else {
+					$this->Flash->error(__("Impossible de supprimer le combattant."));
+				}
 			}
 		}
 	}
@@ -88,49 +105,43 @@ class MemberController extends AppController
             }
     }
 
-    public function arena($id){
-        if($this->request->is('post')){
-            $action = $this->request->data["action"];
-            switch ($action) {
-                case 'monter':
-                    $this->Fighters->moove($id,"monter");
-                    break;
+	public function arena($id){
+		if($this->request->is('post')){
+			$action = $this->request->data["action"];
+			switch ($action) {
+				case 'monter':
+				$this->Fighters->moove($id,"monter");
+				break;
 
-                case 'descendre':
-                    $this->Fighters->moove($id,"descendre");
-                    break;
+				case 'descendre':
+				$this->Fighters->moove($id,"descendre");
+				break;
 
-                case 'gauche':
-                    $this->Fighters->moove($id,"gauche");
-                    break;
+				case 'gauche':
+				$this->Fighters->moove($id,"gauche");
+				break;
 
-                case 'droite':
-                    $this->Fighters->moove($id,"droite");
-                    break;
+				case 'droite':
+				$this->Fighters->moove($id,"droite");
+				break;
 
-                case 'attaquer':
-                    $idP = $this->request->data["idP"];
-                    $idE = $this->request->data["idE"];
-                    $message = $this->Fighters->attaquer($idP,$idE);
-                    $this->Flash->default(__($message));
-                    break;
+				case 'attaquer':
+				$idP = $this->request->data["idP"];
+				$idE = $this->request->data["idE"];
+				$message = $this->Fighters->attaquer($idP,$idE);
+				$this->Flash->default(__($message));
+				break;
 
-                default:
-                    # code...
-                    break;
-        }
-        }else{
+				default:
+				# code...
+				break;
+			}
+		}else{
 
-        }
-        $fighter = $this->Fighters->findById($id);
-        $this->set("fighter",$fighter);
-        $this->set("enemies",$this->Fighters->findEnemies($id));
-    }
-
-    public function attaquer($idP, $idE){
-        //$event->date = date('Y-m-d H:i:s');
-        $this->Fighters->attaquer($idP,$idE);
-        return $this->redirect(['action' => 'arena',$idP]);
-    }
+		}
+		$fighter = $this->Fighters->findById($id);
+		$this->set("fighter",$fighter);
+		$this->set("enemies",$this->Fighters->findEnemies($id));
+	}
 }
 ?>
