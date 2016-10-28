@@ -14,7 +14,7 @@ class MemberController extends AppController
 		$user = $this->Auth->user();
 		$this->set('authUser', $user);
 		$this->loadModel('Fighters');
-        $this->loadModel('Events');
+		$this->loadModel('Events');
 	}
 
 	public function index(){
@@ -48,7 +48,7 @@ class MemberController extends AppController
 			{
 				$id = $this->request->data['id'];
 				if ($this->Fighters->supprime($id)) {
-					$this->Flash->success(__("Le combattant {0} a été supprimé.", ($fighter->name)));
+					$this->Flash->success(__("Le combattant a été supprimé."));
 					return $this->redirect(['action' => 'index']);
 				}
 				$this->Flash->error(__("Impossible de supprimer le combattant."));
