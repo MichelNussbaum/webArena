@@ -24,13 +24,11 @@ class MemberController extends AppController
 		$fighters = $this->Fighters->findByPlayerId($user["id"]);
 		$this->set('fighters', $fighters);
 
-		$fighter = $this->Fighters->newEntity();
 		if ($this->request->is('post'))
 		{
 			if ($this->request->data['type'] == 'addfighters')
 			{
-				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
-				$value = $this->Fighters->insert($fighter,$user);
+				$value = $this->Fighters->insert($this->request->data,$user);
 				if ($value)
 				{
 					$this->Events->insert("Entrée de ".$value["name"],$value["coordinate_x"],$value["coordinate_y"]);
@@ -43,9 +41,8 @@ class MemberController extends AppController
 			}
 			elseif ($this->request->data['type'] == 'ModifierFighter')
 			{
-				$fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
 				$oldFighter = $this->Fighters->findById($this->request->data["id"]);
-				$value = $this->Fighters->modifer($fighter);
+				$value = $this->Fighters->modifer($this->request->data);
 				if ($value)
 				{
 					$this->Events->insert($oldFighter->name." devient ".$value->name,$value["coordinate_x"],$value["coordinate_y"]);

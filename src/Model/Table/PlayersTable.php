@@ -6,14 +6,16 @@ use Cake\Utility\Text;
 
 class PlayersTable extends Table {
 
-	public function insert($player)
+	public function insert($data)
 	{
+		$player = $this->patchEntity($this->newEntity(), $data);
 		$player['id'] = Text::uuid();
 		$Value = $this->save($player);
 		return $Value;
 	}
 
-	public function findByEmail($player){
+	public function findByEmail($mail){
+		$player = $this->patchEntity($this->newEntity(), $mail);
 		$query = $this->find('all')
 		->where(['Players.email LIKE' => $player->email]);
 		$row = $query->first();
