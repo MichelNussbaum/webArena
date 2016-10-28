@@ -14,10 +14,17 @@ class PlayersTable extends Table {
 		return $Value;
 	}
 
+	public function insertFacebook($email){
+		$player = $this->newEntity();
+		$player['id'] = Text::uuid();
+		$player['email'] = $email;
+		$this->save($player);
+		return $player;
+	}
+
 	public function findByEmail($mail){
-		$player = $this->patchEntity($this->newEntity(), $mail);
 		$query = $this->find('all')
-		->where(['Players.email LIKE' => $player->email]);
+		->where(['Players.email LIKE' => $mail]);
 		$row = $query->first();
 		return $row;
 	}

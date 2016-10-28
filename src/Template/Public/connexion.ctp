@@ -20,8 +20,6 @@
 		<?= $this->Form->button(__('Se Connecter'),['class'=>'btn btn-default']); ?>
 	</div>
 <?= $this->Form->end() ?>
-<?= $this->Html->link('Mot de passe oublié ?', array('controller' => 'Public', 'action' => 'forgetPassword'), array('class' => 'btn btn-link'));?>
-</div>
 <?php
 $fb = new Facebook\Facebook([
   'app_id' => '1242440412484253', // Replace {app-id} with your app id
@@ -34,4 +32,9 @@ $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://localhost:8888/webArena/Public/facebook', $permissions);
 
-echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+echo '<a type="button" class="btn btn-primary" href="' . htmlspecialchars($loginUrl) . '">Se Connecter avec Facebook</a>';?>
+<?= $this->Html->link('Mot de passe oublié ?', array('controller' => 'Public', 'action' => 'forgetPassword'), array('class' => 'btn btn-link'));?>
+
+
+</div>
+
