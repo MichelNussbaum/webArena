@@ -57,9 +57,11 @@ class MemberController extends AppController
 			elseif ($this->request->data['type'] == 'DeleteFighter')
 			{
 				$id = $this->request->data['id'];
+				$oldFighter = $this->Fighters->findById($id);
 				if ($this->Fighters->supprime($id))
 				{
-					$this->Flash->success(__("Le combattant a été supprimé."));
+					$this->Events->insert("Suppression du combattant ".$oldFighter->name,$oldFighter->coordinate_x,$oldFighter->coordinate_y);
+					$this->Flash->success(__("Le combattant {0} a été supprimé.",$oldFighter->name));
 				}
 				else {
 					$this->Flash->error(__("Impossible de supprimer le combattant."));
