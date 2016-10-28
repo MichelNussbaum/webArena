@@ -22,6 +22,9 @@ class MemberController extends AppController
 	public function index(){
 		$user = $this->Auth->user();
 		$fighters = $this->Fighters->findByPlayerId($user["id"]);
+		foreach ($fighters as $fighter) {
+			$fighter["nbPoints"] = $this->Fighters->findNbPoints($fighter);
+		}
 		$this->set('fighters', $fighters);
 
 		$fighter = $this->Fighters->newEntity();
@@ -68,6 +71,9 @@ class MemberController extends AppController
 				else {
 					$this->Flash->error(__("Impossible de supprimer le combattant."));
 				}
+			}
+			elseif ($this->request->data['type'] == 'ajoutCompetence'){
+				$this->Fighters->augmenterCompetences($this->request->data);
 			}
 		}
 	}
@@ -131,10 +137,6 @@ class MemberController extends AppController
 				$message = $this->Fighters->attaquer($idP,$idE);
 				$this->Flash->default(__($message));
 				break;
-
-				default:
-				# code...
-				break;
 			}
 		}else{
 
@@ -142,6 +144,16 @@ class MemberController extends AppController
 		$fighter = $this->Fighters->findById($id);
 		$this->set("fighter",$fighter);
 		$this->set("enemies",$this->Fighters->findEnemies($id));
+	}
+
+	function boutique($id){
+		$fighter = $this->Fighters->findById($id);
+		$nbPoints = $this->Fighters->findNbPoints($fighter); 
+		$this->set("fighter",$fighter);
+		$this->set("nbPoints",$nbPoints);
+		if($this->request->is('post')){
+			$this->Fighters->augmenterCompetences($this->request->data);
+		}
 	}
 }
 ?>

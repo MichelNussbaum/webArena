@@ -24,7 +24,7 @@ class FightersTable extends Table
       if (!empty($fighter['name']))
       {
         $fighter['player_id'] = $user['id'];
-        $fighter['level'] = 1;
+        $fighter['level'] = 0;
         $fighter['skill_strength'] = 1;
         $fighter['skill_sight'] = 2;
         $fighter['skill_health'] = 3;
@@ -177,6 +177,34 @@ class FightersTable extends Table
             $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
         }
         return $message;
+    }
+
+    function findNbPoints($fighter){
+        $nbPointsActuel = $fighter->skill_health+$fighter->skill_strength+$fighter->skill_sight;
+        $xp = $fighter->xp;
+        $levelReel = intval($xp/4);
+        $nbPointsDejaAjoute = $nbPointsActuel - 6;
+        $res = $levelReel - $nbPointsDejaAjoute;
+        return $res;
+    }
+
+    function augmenterCompetences($data){
+        $fighter = $this->findById($data["id"]);
+        switch ($data["skill"]) {
+            case 'force':
+                $fighter->skill_strength++;
+                break;
+
+            case 'vue':
+                $fighter->skill_sight++;
+            break;
+
+            case 'sante':
+                $fighter->skill_health++;
+            break;
+        }
+        $fighter->level++;
+        $this->save($fighter);
     }
 }
 ?>
