@@ -13,10 +13,15 @@
 
 	<div class="form-group">
 
-		<?= $this->Form->input(__('Nom'),array('class'=>'form-control','type'=>'text','placeholder'=>'Exemple : Raptors','required')) ?>
+		<?= $this->Form->input(__('name'),array('class'=>'form-control','type'=>'text','placeholder'=>'Exemple : Raptors','required')) ?>
 		<?= $this->Form->button(__('Reset'),array('type'=>'reset','class'=>'btn-warning btn-lg')) ?>
 		<?= $this->Form->button(__('Créer'),array('type'=>'submit','class'=>'btn-primary btn-lg')) ?>
-		
+		<?php if(isset($failInsertGuild)){ ?>
+			<div> Ce nom de guilde est déjà utilisé ! </div>
+			<div> Veuillez reessayer avec un autre nom, svp </div>
+		<?php }else{ ?>
+			<div>La guilde a bien été insérée. </div>
+		<?php } ?>
 	</div>
 
 	<?= $this->Form->end(); ?>

@@ -14,6 +14,7 @@ class MemberController extends AppController
 		$user = $this->Auth->user();
         $this->set('authUser', $user);
         $this->loadModel('Fighters');
+        $this->loadModel('Guilds');
     }
 
 		public function index(){
@@ -64,11 +65,27 @@ class MemberController extends AppController
     }
 
     public function creerGuilde(){
+        $guild = $this->Guilds->newEntity();
+        if($this->request->is('post')){
+            
+            $guild = $this->Guilds->patchEntity($guild, $this->request->data);
+            $value = $this->Guilds->insert($guild);
+            if($value == null){
+                $this->set("failInsertGuild",$value);
+            }
+            
+        }
 
     }
 
     public function rejoindreGuilde(){
-
+        $guild = $this->Guilds->newEntity();
+            $guild = $this->Guilds->patchEntity($guild,$this->request->data);
+            $value = $this->Guilds->findAllGuild($guild);
+            $this->set("allGuild",$value);
+            if($this->request->is('post')){
+                echo'1';
+            }
     }
 
     public function arena($id){
