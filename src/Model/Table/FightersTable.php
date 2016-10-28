@@ -107,7 +107,7 @@ class FightersTable extends Table
     }
 
     function supprime($id){
-      $fighter = $this->Fighters->get($id);
+      $fighter = $this->get($id);
     	return $this->delete($fighter);
     }
 

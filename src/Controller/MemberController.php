@@ -14,6 +14,7 @@ class MemberController extends AppController
 		$user = $this->Auth->user();
 		$this->set('authUser', $user);
 		$this->loadModel('Fighters');
+        $this->loadModel('Events');
 	}
 
 	public function index(){
@@ -30,6 +31,7 @@ class MemberController extends AppController
 				$value = $this->Fighters->insert($fighter,$user);
 				if ($value)
 				{
+
 					$this->Flash->success(__("Le combattant a été ajouté."));
 					return $this->redirect(['action' => 'index']);
 				}
