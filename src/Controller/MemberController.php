@@ -71,23 +71,6 @@ class MemberController extends AppController
 
 	}
 
-	public function deconnexion(){
-		$this->Flash->success('Vous êtes maintenant déconnecté.');
-		return $this->redirect($this->Auth->logout());
-	}
-
-	public function guild(){
-		
-	}
-
-	public function creerGuilde(){
-
-	}
-
-	public function rejoindreGuilde(){
-
-	}
-
 	public function arena($id){
 		if($this->request->is('post')){
 			$action = $this->request->data["action"];
