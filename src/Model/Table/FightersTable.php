@@ -34,7 +34,7 @@ class FightersTable extends Table
         // génération aléatoires des coordonnées avec vérification qu'il n'y est pas d'autre combattant sur la case
         $fighters = TableRegistry::get('Fighters');
         $boolean = FALSE;
-        while (!$boolean)
+        while (!$boolean){
         $x = rand (1, 15);
         $y = rand (1, 10);
         $query = $fighters->find();
@@ -177,6 +177,8 @@ class FightersTable extends Table
       $evenement = $player->name.' attaque '.$enemy->name.' et le râte';
       $this->insererEvenement($evenement,$player->coordinate_x,$player->coordinate_y);
     }
+    return $message;
+   }
 
 
     function findNbPoints($fighter){
@@ -206,7 +208,6 @@ class FightersTable extends Table
         $fighter->level++;
         $this->save($fighter);
     }
-    return $message;
-  }
+  
 }
 ?>
