@@ -1,6 +1,6 @@
 <?php $this->assign('title','Inscription'); ?>
 <div>
-  <?= $this->Form->create($player,["class"=>"form-horizontal"]) ?>
+  <?= $this->Form->create("",["class"=>"form-horizontal"]) ?>
   <fieldset>
     <legend><?= __('Ajouter un joueur') ?></legend>
     <div class="form-group">
