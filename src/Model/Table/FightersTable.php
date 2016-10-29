@@ -30,27 +30,27 @@ class FightersTable extends Table
         $fighter['level'] = 0;
         $fighter['skill_strength'] = 1;
         $fighter['skill_sight'] = 2;
-        $fighter['skill_health'] = 3;
-        $fighter['current_health'] = 3;
+        $fighter['skill_health'] = 5;
+        $fighter['current_health'] = 5;
         $fighter['xp'] = 0;
         // génération aléatoires des coordonnées avec vérification qu'il n'y est pas d'autre combattant sur la case
-        $fighters = TableRegistry::get('Fighters');
         $boolean = FALSE;
-        while (!$boolean){
-        $x = rand (1, 15);
-        $y = rand (1, 10);
-        $query = $fighters->find();
-        $query->select(['count' => $query->func()->count('*')]);
-        $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
-
-        foreach ($query as $f)
+        while (!$boolean)
         {
-          if ($f->count == 0)
+          $x = rand (1, 15);
+          $y = rand (1, 10);
+          $query = find();
+          $query->select(['count' => $query->func()->count('*')]);
+          $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
+
+          foreach ($query as $f)
           {
-            $boolean = TRUE;
+            if ($f->count == 0)
+            {
+              $boolean = TRUE;
+            }
           }
         }
-      }
       $fighter['coordinate_x'] = $x;
       $fighter['coordinate_y'] = $y;
       $Value = $this->save($fighter);

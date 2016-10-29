@@ -28,7 +28,7 @@
 						</ul>
 						<p><?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
-							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique<?= $fighter->id ?>">Boutique</button>
+							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique<?= $fighter->id ?>">Passer de niveau</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>
 							<?= $this->Html->link('Guilde', array('action' => 'guild',$fighter->id), array('class' => 'btn btn-success'));?>
 						</div>
@@ -95,7 +95,7 @@
 									<?php if($fighter->nbPoints>0){ ?>
 									<p>Vous avez <?= $fighter->nbPoints?> points à ajouter</p>
 									<table class="table">
-									<?php 
+									<?php
 										$arrayligne = array();
 										$vue = $this->Form->create();
 										$vue.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
@@ -124,7 +124,7 @@
 									</table>
 									<?php }else{?>
 										<p>Vous n'avez pas de points de compétences disponibles</p>
-									<?php }?> 
+									<?php }?>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
