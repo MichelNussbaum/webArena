@@ -58,13 +58,35 @@ class FightersTable extends Table
     }
     return FALSE;
   }
+/*
+  function checkdisplacement($x,$y)
+  {
+      $query = find();
+      $query->select(['count' => $query->func()->count('*')]);
+      $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
+
+        if ($query->count == 0)
+        {
+          return TRUE;
+        }
+        else
+        {
+          return FALSE;
+        }
+  }*/
 
   function moove($id,$action){
     $fighter = $this->get($id);
     $message = '';
     switch($action){
       case 'monter':
-      if($fighter["coordinate_y"] -1 != 0){
+      /*
+      $x = $fighter["coordinate_x"];
+      $y = $fighter["coordinate_y"] -1;
+      $value = checkdisplacement($x,$y);
+      echo "$value";
+      */
+      if(($fighter["coordinate_y"] -1 != 0)){
         $fighter["coordinate_y"] = $fighter["coordinate_y"]-1;
       }else{
         $message = "vous ne pouvez pas monter";
