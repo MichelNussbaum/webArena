@@ -114,19 +114,31 @@ class MemberController extends AppController
 			$action = $this->request->data["action"];
 			switch ($action) {
 				case 'monter':
-				$this->Fighters->moove($id,"monter");
+				$message = $this->Fighters->moove($id,"monter");
+				if(!empty($message)){
+					$this->Flash->error(__($message));
+				}
 				break;
 
 				case 'descendre':
-				$this->Fighters->moove($id,"descendre");
+				$message = $this->Fighters->moove($id,"descendre");
+				if(!empty($message)){
+					$this->Flash->error(__($message));
+				}
 				break;
 
 				case 'gauche':
-				$this->Fighters->moove($id,"gauche");
+				$message = $this->Fighters->moove($id,"gauche");
+				if(!empty($message)){
+					$this->Flash->error(__($message));
+				}
 				break;
 
 				case 'droite':
-				$this->Fighters->moove($id,"droite");
+				$message = $this->Fighters->moove($id,"droite");
+				if(!empty($message)){
+					$this->Flash->error(__($message));
+				}
 				break;
 
 				case 'attaquer':

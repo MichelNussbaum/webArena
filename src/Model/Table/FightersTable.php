@@ -61,12 +61,13 @@ class FightersTable extends Table
 
   function moove($id,$action){
     $fighter = $this->get($id);
+    $message = '';
     switch($action){
       case 'monter':
       if($fighter["coordinate_y"] -1 != 0){
         $fighter["coordinate_y"] = $fighter["coordinate_y"]-1;
       }else{
-        print_r("vous ne pouvez pas monter");
+        $message = "vous ne pouvez pas monter";
       }
 
       break;
@@ -74,14 +75,14 @@ class FightersTable extends Table
       if($fighter["coordinate_y"]+1 != 11){
         $fighter["coordinate_y"] = $fighter["coordinate_y"]+1;
       }else{
-        print_r("vous ne pouvez pas descendre");
+        $message = "vous ne pouvez pas descendre";
       }
       break;
       case 'gauche':
       if($fighter["coordinate_x"]-1 != 0){
         $fighter["coordinate_x"] = $fighter["coordinate_x"]-1;
       }else{
-        print_r("vous ne pouvez pas aller à gauche");
+        $message = "vous ne pouvez pas aller à gauche";
       }
 
       break;
@@ -89,14 +90,14 @@ class FightersTable extends Table
       if($fighter["coordinate_x"]+1 != 16){
         $fighter["coordinate_x"] = $fighter["coordinate_x"]+1;
       }else{
-        print_r("vous ne pouvez pas aller a droite");
+        $message = "vous ne pouvez pas aller a droite";
       }
 
       break;
 
     }
-    if($this->save($fighter)){
-    }
+    $this->save($fighter);
+    return $message;
   }
 
   function findEnemies($id){
