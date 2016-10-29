@@ -15,7 +15,7 @@
 	<?= $this->Form->hidden('action',["value"=>"droite"]);?>
 	<?= $this->Form->button(__('Droite'),array('class' => 'btn btn-default'));?>
   	<?= $this->Form->end();?>
-	<?php 
+	<?php
 	for ($i=0; $i < 10; $i++) {?>
 		<div>
 		<?php for ($j=0; $j < 15; $j++) {
@@ -46,7 +46,7 @@
 						<li>❇ X: '.$enemy["coordinate_x"].'</li>
 						<li>❇ Y: '.$enemy["coordinate_y"].'</li>
 						<li>guild : '.$enemy["guild_id"].'</li>';
-						if(($enemy["coordinate_x"] == $fighter["coordinate_x"] && ($enemy["coordinate_y"] == $fighter["coordinate_y"]-1 || $enemy["coordinate_y"] == $fighter["coordinate_y"]+1)) || ($enemy["coordinate_y"] == $fighter["coordinate_y"] && ($enemy["coordinate_x"] == $fighter["coordinate_x"]-1 || $enemy["coordinate_x"] == $fighter["coordinate_x"]+1))){
+						if( !($enemy["player_id"] == $fighter["player_id"]) && ($enemy["coordinate_x"] == $fighter["coordinate_x"] && ($enemy["coordinate_y"] == $fighter["coordinate_y"]-1 || $enemy["coordinate_y"] == $fighter["coordinate_y"]+1)) || ($enemy["coordinate_y"] == $fighter["coordinate_y"] && ($enemy["coordinate_x"] == $fighter["coordinate_x"]-1 || $enemy["coordinate_x"] == $fighter["coordinate_x"]+1))){
 							$array["data-content"].='<li>'.$this->Form->create().
 							$this->Form->hidden('action',['value' => 'attaquer']).
 							$this->Form->hidden('idP',['value' => $fighter->id]).
@@ -54,7 +54,12 @@
 							$this->Form->button(__('Attaquer'),['class'=>'btn btn-default']).
 							$this->Form->end().'</li>';
 						}
-						?><div class="cell"><?=$this->Html->image('enemy.jpg', $array)?></div><?php
+						if($enemy["player_id"] == $fighter["player_id"]) {
+							?><div class="cell"><?=$this->Html->image('warrior.png', $array)?></div><?php
+						}
+						else {
+							?><div class="cell"><?=$this->Html->image('enemy.jpg', $array)?></div><?php
+						}
 						$trouve = true;
 					}
 				}
