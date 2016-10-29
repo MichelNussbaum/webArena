@@ -18,3 +18,4 @@
 - faire le chat
 - ajouter git log dans le footer
 - ajouter flash sortie de la map
+- lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok

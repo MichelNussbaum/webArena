@@ -203,10 +203,11 @@ class FightersTable extends Table
             break;
 
             case 'sante':
-                $fighter->skill_health++;
+                $fighter->skill_health+3;
             break;
         }
         $fighter->level++;
+        $fighter->current_health = $fighter->skill_health;
         $this->save($fighter);
     }
     public function joinAGuild($data,$idFighter){
