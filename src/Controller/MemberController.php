@@ -155,16 +155,5 @@ class MemberController extends AppController
 		$this->set("fighter",$fighter);
 		$this->set("enemies",$this->Fighters->findEnemies($id));
 	}
-
-	function boutique($id){
-		$fighter = $this->Fighters->findById($id);
-		$nbPoints = $this->Fighters->findNbPoints($fighter);
-		$this->set("fighter",$fighter);
-		$this->set("nbPoints",$nbPoints);
-		if($this->request->is('post')){
-			$this->Fighters->augmenterCompetences($this->request->data);
-			return $this->redirect(['action' => 'index']);
-		}
-	}
 }
 ?>

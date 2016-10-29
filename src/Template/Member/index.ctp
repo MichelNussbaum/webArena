@@ -89,7 +89,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="Boutique<?= $fighter->id ?>">Boutique</h4>
+									<h4 class="modal-title" id="Boutique<?= $fighter->id ?>">Passer de niveau</h4>
 								</div>
 								<div class="modal-body">
 									<?php if($fighter->nbPoints>0){ ?>
