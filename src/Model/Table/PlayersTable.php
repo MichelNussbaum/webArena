@@ -6,16 +6,26 @@ use Cake\Utility\Text;
 
 class PlayersTable extends Table {
 
-	public function insert($player)
+	public function insert($data)
 	{
+		$player = $this->patchEntity($this->newEntity(), $data);
 		$player['id'] = Text::uuid();
 		$Value = $this->save($player);
 		return $Value;
 	}
 
-	public function findByEmail($player){
+	public function insertFacebook($email){
+		$player = $this->newEntity();
+		$player['id'] = Text::uuid();
+		$player['email'] = $email;
+		$player['password'] = 'facebook';
+		$this->save($player);
+		return $player;
+	}
+
+	public function findByEmail($mail){
 		$query = $this->find('all')
-		->where(['Players.email LIKE' => $player->email]);
+		->where(['Players.email LIKE' => $mail]);
 		$row = $query->first();
 		return $row;
 	}
