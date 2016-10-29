@@ -28,6 +28,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
   <!--<?= $this->Html->css('base.css') ?>-->
   <!--<?= $this->Html->css('cake.css') ?>-->
+  <?= $this->Html->css('footer.css') ?>
   <?= $this->Html->css('bootstrap.min.css') ?>
   <?= $this->Html->script('jQuery.min');?>
   <?= $this->Html->script('bootstrap.min'); ?>
@@ -65,8 +66,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   <div class="container clearfix">
     <?= $this->fetch('content') ?>
   </div>
-  <footer>
-    <p> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir POUTINE - Options :  B,F,G <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
-  </footer>
 </body>
+<footer>
+  <p class="text-muted"> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir POUTINE - Options :  B,F,G <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
+</footer>
 </html>
