@@ -3,7 +3,7 @@
 - Ajout option choisir avatar
 - Ajouter une page regroupant les evenements sous 24h
 - Revoir position du footer + ajouter option FB
-- Faire en sorte qu'il puisse avoir qu'un seul combattant par case                - Filipe - en cours
+- Faire en sorte qu'il puisse avoir qu'un seul combattant par case                - Filipe - ok
 - changer point de vie intitial à 5                                               - Filipe - ok
 - ne plus descendre skill_health mais current skill_health                        - Michel - OK
 - enlever bouton inutile barre                                                    - Filipe - ok
