@@ -1,0 +1,19 @@
+- Revoir fonction mot de passe oublié
+- Renommer boutique en passer niveau
+- Ajout option choisir avatar
+- Ajouter une page regroupant les evenements sous 24h
+- Revoir position du footer + ajouter option FB
+- Faire en sorte qu'il puisse avoir qu'un seul combattant par case
+- changer point de vie intitial à 5
+- ne plus descendre skill_health mais current health
+- enlever bouton inutile barre
+- régler probleme lorsque l'on tue les xp ne sont pas changé
+- passer la taille de la map dans le model 
+- redirection vers index lorsque notre perso meurt
+- ne pas afficher les combattants mort (x:-1000 y:-100)
+- revoir algo boutique XP/4 - level réel
+- gérer que lorsque l'on passe de niveau on regagne toute notre vie
+- gérer +1 force par nombre de membre de la guilde autour de la cible
+- ne pas voir en enemies ces autres perso
+- faire le chat
+- ajouter git log dans le footer

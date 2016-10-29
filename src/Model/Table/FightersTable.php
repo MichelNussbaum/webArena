@@ -155,7 +155,7 @@ class FightersTable extends Table
       if ($this->updateVie($enemy,$enemy->skill_health - $player->skill_strength)) {
         $xp = $player->xp+1;
         if($enemy->skill_health <= 0){
-          $xp = $player->xp + $enemy->level;
+          $xp = $xp + $enemy->level;
           $this->mourir($enemy);
           //ajout de l'évenement de tue
           $message = "tué";
@@ -169,7 +169,7 @@ class FightersTable extends Table
         }
         $this->updateXp($player,$xp);
       }else{
-        //$this->Flash->error(__("Erreur lors de l'attaque"));
+        $message = "Erreur lors de l'attaque";
       }
     }else{
       $message = "Attaque râté";
