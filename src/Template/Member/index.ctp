@@ -26,7 +26,8 @@
 							<li>❇ Y: <?= $fighter->coordinate_y ?></li>
 							<li>guild : <?= $fighter->guild_id ?></li>
 						</ul>
-						<p><?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
+							<?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
+							<?= $this->Html->link('Communiquer', array('action' => 'chat',$fighter->id), array('class' => 'btn btn-success'));?>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
 							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique<?= $fighter->id ?>">Passer de niveau</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>

@@ -17,6 +17,7 @@ class MemberController extends AppController
 		$this->loadModel('Fighters');
 		$this->loadModel('Events');
         $this->loadModel('Guilds');
+        $this->loadModel('Messages');
 	}
 
 	public function index(){
@@ -154,6 +155,17 @@ class MemberController extends AppController
 		$fighter = $this->Fighters->findById($id);
 		$this->set("fighter",$fighter);
 		$this->set("enemies",$this->Fighters->findEnemies($id));
+	}
+
+	public function chat($idFighter){
+		$enemies = $this->Fighters->findEnemies($idFighter);
+		$this->set("enemies",$enemies);
+		$this->set("fighterCo",$this->Fighters->findById($idFighter));
+		$fighters = $this->Messages->findDistinctConversationByFighterId($idFighter);
+		$this->set("fighters",$fighters);
+		if($this->request->is('post')){
+			$this->Messages->insert($this->request->data);
+		}
 	}
 }
 ?>
