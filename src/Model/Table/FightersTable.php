@@ -58,35 +58,32 @@ class FightersTable extends Table
     }
     return FALSE;
   }
-/*
+
   function checkdisplacement($x,$y)
   {
-      $query = find();
-      $query->select(['count' => $query->func()->count('*')]);
-      $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
+    $query = $this->find();
+    $query->select(['count' => $query->func()->count('*')]);
+    $query->where(['coordinate_x' => $x,'coordinate_y'=>$y]);
 
-        if ($query->count == 0)
-        {
-          return TRUE;
-        }
-        else
-        {
-          return FALSE;
-        }
-  }*/
+    foreach ($query as $f)
+    {
+      if ($f->count == 0)
+      {
+        return TRUE;
+      }
+      else
+      {
+        return FALSE;
+      }
+    }
+  }
 
   function moove($id,$action){
     $fighter = $this->get($id);
     $message = '';
     switch($action){
       case 'monter':
-      /*
-      $x = $fighter["coordinate_x"];
-      $y = $fighter["coordinate_y"] -1;
-      $value = checkdisplacement($x,$y);
-      echo "$value";
-      */
-      if(($fighter["coordinate_y"] -1 != 0)){
+      if(($fighter["coordinate_y"] -1 != 0) && $this->checkdisplacement($fighter["coordinate_x"],$fighter["coordinate_y"] -1)){
         $fighter["coordinate_y"] = $fighter["coordinate_y"]-1;
       }else{
         $message = "vous ne pouvez pas monter";
@@ -94,14 +91,14 @@ class FightersTable extends Table
 
       break;
       case 'descendre':
-      if($fighter["coordinate_y"]+1 != 11){
+      if(($fighter["coordinate_y"]+1 != 11) && $this->checkdisplacement($fighter["coordinate_x"],$fighter["coordinate_y"] +1)){
         $fighter["coordinate_y"] = $fighter["coordinate_y"]+1;
       }else{
         $message = "vous ne pouvez pas descendre";
       }
       break;
       case 'gauche':
-      if($fighter["coordinate_x"]-1 != 0){
+      if(($fighter["coordinate_x"]-1 != 0) && $this->checkdisplacement($fighter["coordinate_x"]-1,$fighter["coordinate_y"])){
         $fighter["coordinate_x"] = $fighter["coordinate_x"]-1;
       }else{
         $message = "vous ne pouvez pas aller à gauche";
@@ -109,7 +106,7 @@ class FightersTable extends Table
 
       break;
       case 'droite':
-      if($fighter["coordinate_x"]+1 != 16){
+      if(($fighter["coordinate_x"]+1 != 16) && $this->checkdisplacement($fighter["coordinate_x"]+1,$fighter["coordinate_y"])){
         $fighter["coordinate_x"] = $fighter["coordinate_x"]+1;
       }else{
         $message = "vous ne pouvez pas aller a droite";
