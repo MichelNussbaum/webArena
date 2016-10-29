@@ -36,6 +36,7 @@ class MemberController extends AppController
 				{
 					$this->Events->insert("Entrée de ".$value["name"],$value["coordinate_x"],$value["coordinate_y"]);
 					$this->Flash->success(__("Le combattant a été ajouté."));
+					return $this->redirect(['action' => 'index']);
 				}
 				else
 				{
@@ -50,6 +51,7 @@ class MemberController extends AppController
 				{
 					$this->Events->insert($oldFighter->name." devient ".$value->name,$value["coordinate_x"],$value["coordinate_y"]);
 					$this->Flash->success(__("Le combattant a été modifié."));
+					return $this->redirect(['action' => 'index']);
 				}
 				else
 				{
@@ -64,6 +66,7 @@ class MemberController extends AppController
 				{
 					$this->Events->insert("Suppression du combattant ".$oldFighter->name,$oldFighter->coordinate_x,$oldFighter->coordinate_y);
 					$this->Flash->success(__("Le combattant {0} a été supprimé.",$oldFighter->name));
+					return $this->redirect(['action' => 'index']);
 				}
 				else {
 					$this->Flash->error(__("Impossible de supprimer le combattant."));
@@ -87,13 +90,13 @@ class MemberController extends AppController
     public function creerGuilde(){
         $guild = $this->Guilds->newEntity();
         if($this->request->is('post')){
-            
+
             $guild = $this->Guilds->patchEntity($guild, $this->request->data);
             $value = $this->Guilds->insert($guild);
             if($value == null){
                 $this->set("failInsertGuild",$value);
             }
-            
+
         }
 
     }
@@ -143,11 +146,12 @@ class MemberController extends AppController
 
 	function boutique($id){
 		$fighter = $this->Fighters->findById($id);
-		$nbPoints = $this->Fighters->findNbPoints($fighter); 
+		$nbPoints = $this->Fighters->findNbPoints($fighter);
 		$this->set("fighter",$fighter);
 		$this->set("nbPoints",$nbPoints);
 		if($this->request->is('post')){
 			$this->Fighters->augmenterCompetences($this->request->data);
+			return $this->redirect(['action' => 'index']);
 		}
 	}
 }
