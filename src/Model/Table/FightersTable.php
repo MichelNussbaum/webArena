@@ -14,7 +14,9 @@ class FightersTable extends Table
   function findByPlayerId($player_id)
   {
     $query = $this->find("all")
-    ->where(['Fighters.player_id =' => $player_id]);
+    ->where(['Fighters.player_id =' => $player_id,
+        'Fighters.coordinate_x !='=> -100,
+        'Fighters.coordinate_Y !='=> -100]);
 
     return $query;
   }
