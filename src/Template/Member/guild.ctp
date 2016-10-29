@@ -1,9 +1,9 @@
 <div class="containerGuild">
-
+<?php echo $idFighter ?>
 	<!-- Si joueur n'a pas de guilde dans BD -->
 	<p> Vous n'appartenez pas à une guilde ! </p>
 
-	<?= $this->Html->link('RejoindreUneGuilde', array('action' => 'rejoindreGuilde'), array('class' => 'btn btn-primary btn-lg'));?>
+	<?= $this->Html->link('RejoindreUneGuilde', array('action' => 'rejoindreGuilde',$idFighter), array('class' => 'btn btn-primary btn-lg'));?>
 	<?= $this->Html->link('CréerUneGuilde', array('action' => 'creerGuilde'), array('class' => 'btn btn-primary btn-lg'));?>
 
 	<p>---------------------------------------------------------------</p>

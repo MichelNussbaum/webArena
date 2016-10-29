@@ -21,12 +21,16 @@
 	<?php if(isset($allGuild)){ ?>
 		
 		<ul class="list-group">
-		
-		<?php foreach($allGuild as $guild){?>
-			<li class="list-group-item"> <p>Name : <?php echo $guild; ?></p> <?= $this->Form->button(__('Rejoindre'),array('class'=>'btn btn-primary','type'=>'submit')) ?> 
-			</li>
-		<?php } ?>
 	
+		<?php foreach($allGuild as $guild){?>
+				<?= $this->Form->create(); ?>
+			<li class="list-group-item"> <p>Name : <?php echo $guild["name"]; ?></p>
+			<?= $this->Form->hidden("idGuild",["value"=>$guild["id"]]);?>
+			 <?= $this->Form->button(__('Rejoindre'),array('class'=>'btn btn-primary','type'=>'submit')) ?> 
+			</li>
+			<?= $this->Form->end(); ?>
+		<?php } ?>
+		
 	<?php }else{
 			echo 'Il n\' y a pas de Guilde existante';
 		} ?>

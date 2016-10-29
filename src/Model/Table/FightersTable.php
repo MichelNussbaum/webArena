@@ -178,5 +178,11 @@ class FightersTable extends Table
         }
         return $message;
     }
+    public function joinAGuild($data,$idFighter){
+        $fighter = $this->findById($idFighter);
+        $fighter->guild_id = $data["idGuild"];
+        $this->save($fighter);
+
+    }
 }
 ?>

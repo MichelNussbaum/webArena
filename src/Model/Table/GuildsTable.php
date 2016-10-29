@@ -16,17 +16,15 @@ class GuildsTable extends Table {
 	    return $value;
 	}
 
-	public function findAllGuild($guild){
-		$query = $this->find('list',array('guildname'=>array('Guilds.id','Guilds.name')));
+	public function findAllGuild(){
+		$query = $this->find('all');
 		$data = $query->toArray();
 		return $data;
 	}
 
-	/*
-	public function joinAGuild($guild){
-		$query = $this->set()
-	}
-	*/
+	
+
+	
 
 	public function findByName($guild){
 	  	$query = $this->find('all')

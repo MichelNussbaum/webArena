@@ -29,6 +29,7 @@
 						<p><?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>
+							<?= $this->Html->link('Guilde', array('action' => 'guild',$fighter->id), array('class' => 'btn btn-success'));?>
 						</div>
 					</div>
 					<!-- ModifierFighter -->

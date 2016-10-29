@@ -77,8 +77,8 @@ class MemberController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
-    public function guild(){
-
+    public function guild($id){
+        $this->set('idFighter',$id);
     }
 
     public function creerGuilde(){
@@ -95,13 +95,11 @@ class MemberController extends AppController
 
     }
 
-    public function rejoindreGuilde(){
-        $guild = $this->Guilds->newEntity();
-            $guild = $this->Guilds->patchEntity($guild,$this->request->data);
-            $value = $this->Guilds->findAllGuild($guild);
+    public function rejoindreGuilde($idFighter){
+            $value = $this->Guilds->findAllGuild();
             $this->set("allGuild",$value);
             if($this->request->is('post')){
-                echo'1';
+                $value = $this->Fighters->joinAGuild($this->request->data,$idFighter);
             }
     }
 
