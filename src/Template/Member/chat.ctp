@@ -3,8 +3,7 @@
 		<li role="presentation" class="active">
 		<a href="#nouveau" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="badge">+</span> Nouveau</a>
 		</li>
-		<?php foreach ($fighters as $fighter) {
-			$options[$fighter[0]->id] = $fighter[0]->name; ?>
+		<?php foreach ($fighters as $fighter) {?>
 			<li role="presentation">
 				<a href="#<?=$fighter[0]->id?>" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><?=$fighter[0]->name?>	<span class="badge"><?=count($fighter[1])?></span></a>
 			</li>
@@ -17,6 +16,9 @@
 	<div class="tab-pane fade active in" role="tabpanel" id="nouveau">
 		<div class="panel panel-default">
 			<div class="panel-body">
+				<?php foreach ($enemies as $enemy) {
+					$options[$enemy->id] = $enemy->name; 
+				}?>
 				<?= $this->Form->create() ?>
 				<?= $this->Form->hidden('fighter_id_from',['value' =>  $fighterCo->id]) ?>
 				<label for="messagepour">Envoyer à</label>

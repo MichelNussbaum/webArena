@@ -14,8 +14,8 @@
 - revoir algo boutique XP/4 - level réel                                          - Michel Ok
 - gérer que lorsque l'on passe de niveau on regagne toute notre vie			      	  - Michel ok
 - gérer +1 force par nombre de membre de la guilde autour de la cible
-- ne pas voir en enemies ces autres perso                                         - Filipe ok
-- faire le chat
+- ne pas voir en enemis ses autres perso                                         - Michel ok
+- faire le chat																	  - Michel ok
 - ajouter git log dans le footer												                          - Michel - OK
 - ajouter flash sortie de la map											                         	  - Michel - OK
 - lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok

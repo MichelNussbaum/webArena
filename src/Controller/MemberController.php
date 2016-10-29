@@ -158,7 +158,8 @@ class MemberController extends AppController
 	}
 
 	public function chat($idFighter){
-		$enemies = $this->Fighters->findEnemies($idFighter);
+		$user = $this->Auth->user();
+		$enemies = $this->Fighters->findAllFighterNotOwn($user->id);
 		$this->set("enemies",$enemies);
 		$this->set("fighterCo",$this->Fighters->findById($idFighter));
 		$fighters = $this->Messages->findDistinctConversationByFighterId($idFighter);

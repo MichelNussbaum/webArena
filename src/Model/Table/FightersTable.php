@@ -21,6 +21,14 @@ class FightersTable extends Table
     return $query;
   }
 
+  function findAllFighterNotOwn($playerId){
+    $query = $this->find()
+    ->select(['id','name'])
+    ->where(['player_id !=' => $playerId])
+    ->all();
+    return $query;
+  }
+
   function insert($data,$user)
   {
     $fighter = $this->patchEntity($this->newEntity(), $data);
@@ -112,7 +120,8 @@ class FightersTable extends Table
   function findEnemies($id){
     $fighter = $this->get($id);
     $query = $this->find("all")
-    ->where(["id !="=>$id,"ABS(coordinate_x-".$fighter["coordinate_x"].") + ABS(coordinate_y - ".$fighter["coordinate_y"].") <="=>$fighter["skill_sight"]]);
+    ->where(["player_id !="=>$fighter->player_id,
+      "ABS(coordinate_x-".$fighter["coordinate_x"].") + ABS(coordinate_y - ".$fighter["coordinate_y"].") <="=>$fighter["skill_sight"]]);
     return $query;
 
   }
