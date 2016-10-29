@@ -18,6 +18,7 @@ class PlayersTable extends Table {
 		$player = $this->newEntity();
 		$player['id'] = Text::uuid();
 		$player['email'] = $email;
+		$player['password'] = 'facebook';
 		$this->save($player);
 		return $player;
 	}
