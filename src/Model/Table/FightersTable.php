@@ -125,7 +125,7 @@ class FightersTable extends Table
   }
 
   function updateVie($enemy,$nbPoints){
-    $enemy['skill_health'] = $nbPoints;
+    $enemy['current_health'] = $nbPoints;
     return $this->save($enemy);
   }
 
@@ -152,9 +152,9 @@ class FightersTable extends Table
     $seuil = 10+$player->level-$enemy->level;
     $message = array();
     if($rand > $seuil){
-      if ($this->updateVie($enemy,$enemy->skill_health - $player->skill_strength)) {
+      if ($this->updateVie($enemy,$enemy->current_health - $player->skill_strength)) {
         $xp = $player->xp+1;
-        if($enemy->skill_health <= 0){
+        if($enemy->current_health <= 0){
           $xp = $xp + $enemy->level;
           $this->mourir($enemy);
           //ajout de l'évenement de tue
@@ -182,11 +182,10 @@ class FightersTable extends Table
 
 
     function findNbPoints($fighter){
-        $nbPointsActuel = $fighter->skill_health+$fighter->skill_strength+$fighter->skill_sight;
+        $levelActu = $fighter->level;
         $xp = $fighter->xp;
         $levelReel = intval($xp/4);
-        $nbPointsDejaAjoute = $nbPointsActuel - 6;
-        $res = $levelReel - $nbPointsDejaAjoute;
+        $res = $levelReel - $levelActu;
         return $res;
     }
 

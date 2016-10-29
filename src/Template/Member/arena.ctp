@@ -25,7 +25,7 @@
 				$array["data-content"] = '<ul class="list-unstyled">
 				<li>LVL : '.$fighter->level.'</li>
 				<li>XP : <progress value="'.$fighter->xp%4 .'" max="4"></progress></li>
-				<li>♥️ : '.$fighter->skill_health.'</li>
+				<li>♥️ : '.$fighter->current_health.'</li>
 				<li>💪 : '.$fighter->skill_strength.'</li>
 				<li>👀 : '.$fighter->skill_sight.'</li>
 				<li>❇ X: '.$fighter->coordinate_x.'</li>
@@ -40,7 +40,7 @@
 						$array["data-content"] = '<ul class="list-unstyled">
 						<li>LVL : '.$enemy["level"].'</li>
 						<li>XP : <progress value="'.$enemy["xp"]%4 .'" max="4"></progress></li>
-						<li>♥️ : '.$enemy["skill_health"].'</li>
+						<li>♥️ : '.$enemy["current_health"].'</li>
 						<li>💪 : '.$enemy["skill_strength"].'</li>
 						<li>👀 : '.$enemy["skill_sight"].'</li>
 						<li>❇ X: '.$enemy["coordinate_x"].'</li>
