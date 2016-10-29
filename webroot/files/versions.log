@@ -1,0 +1,839 @@
+commit 7a2efae011dec2217c3bc42d09555ee2c1455fb2
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 18:20:49 2016 +0200
+
+    ajouter flash sortie de la map
+
+ TODO.txt                            |  4 ++--
+ src/Controller/MemberController.php | 20 ++++++++++++++++----
+ src/Model/Table/FightersTable.php   | 13 +++++++------
+ 3 files changed, 25 insertions(+), 12 deletions(-)
+
+commit 37ec7da1cefc6fdf5a3f895a6c50b3127aff8e41
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 18:15:18 2016 +0200
+
+    gérer que lorsque l'on passe de niveau on regagne toute notre vie        + lorsque l'on augment la competences santé elle augment de 3 et pas de 1
+
+ TODO.txt                          | 1 +
+ src/Model/Table/FightersTable.php | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit 81b849088ecd858bbb8512d6aa99d45e0dfbcf8f
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 18:11:16 2016 +0200
+
+    ne pas afficher les combattants mort (x:-100 y:-100)
+
+ TODO.txt                          | 8 ++++----
+ src/Model/Table/FightersTable.php | 4 +++-
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+commit 7f3de42fd00c831638169fc972bd38d70343fb57
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 18:08:14 2016 +0200
+
+    - revoir algo boutique XP/4 - level réel et - ne plus descendre skill_health mais current skill_health
+
+ src/Model/Table/FightersTable.php | 11 +++++------
+ src/Template/Member/arena.ctp     |  4 ++--
+ 2 files changed, 7 insertions(+), 8 deletions(-)
+
+commit d7943330d76b7ddd4f65ad253fc0ad73552ab6b5
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 17:58:39 2016 +0200
+
+    maj todo + modification app id facebook
+
+ TODO.txt                            | 1 +
+ src/Controller/PublicController.php | 6 +++---
+ src/Template/Public/connexion.ctp   | 4 ++--
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+commit a6799dfa32bff0a6c36a218ba2c7d767b905ddcf
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Sat Oct 29 17:21:17 2016 +0200
+
+    maj todo
+
+ TODO.txt | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit 48c9ddbd6030d8eb18f524fc3fe302c9e7708ae3
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 16:58:18 2016 +0200
+
+    ajout du fichier todo + bonne gestion lorsque des xp lorsque l'on tue un enemy
+
+ TODO.txt                          | 19 +++++++++++++++++++
+ src/Model/Table/FightersTable.php |  4 ++--
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+commit fd11eda78ee611a22e5939f3c8a2b5458b11561c
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Sat Oct 29 16:48:55 2016 +0200
+
+    fix redirection apres supprimer, modifier, crée
+
+ src/Controller/MemberController.php | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+commit a910e4d08a460c5d13ca319636ba61ab0387344f
+Merge: aa6029f 223934e
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Sat Oct 29 16:47:21 2016 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/Model/Table/FightersTable.php
+
+commit aa6029ff9cb1fb8b6517d111b3c69f6bc93af955
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Sat Oct 29 16:42:21 2016 +0200
+
+    Rejoindre guilde
+
+ src/Controller/MemberController.php      | 12 +++++-------
+ src/Model/Table/FightersTable.php        |  6 ++++++
+ src/Model/Table/GuildsTable.php          | 12 +++++-------
+ src/Template/Member/guild.ctp            |  4 ++--
+ src/Template/Member/index.ctp            |  1 +
+ src/Template/Member/rejoindre_guilde.ctp | 10 +++++++---
+ 6 files changed, 26 insertions(+), 19 deletions(-)
+
+commit 223934e91da9430eed636c741db1c2621dbe0ef4
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 15:19:25 2016 +0200
+
+    ajouter un mot de passe par défaut quand on se connecte via facebook
+
+ src/Model/Table/PlayersTable.php | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 89ca5ccecb0dd0e82c253a77b7265be7464f413b
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Sat Oct 29 00:16:00 2016 +0200
+
+    créer de l'utilisateur Facebook + connexion
+
+ src/Controller/PublicController.php | 29 ++++++++++++++++++++++-------
+ src/Model/Table/PlayersTable.php    | 11 +++++++++--
+ src/Template/Public/connexion.ctp   |  9 ++++++---
+ 3 files changed, 37 insertions(+), 12 deletions(-)
+
+commit 57c5de04ef00754e968b929bfba099a688ce17e4
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 23:45:11 2016 +0200
+
+    add Facebook in php
+    
+    pour le moment je récupère l’email de la personne connecté
+
+ src/Controller/PublicController.php | 83 ++++++++++++++++++++++++++++++++-
+ src/Template/Public/connexion.ctp   | 92 ++++---------------------------------
+ src/Template/Public/facebook.ctp    |  0
+ 3 files changed, 92 insertions(+), 83 deletions(-)
+
+commit a73c73b68f338786f60cead7459274379e99cac7
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 21:34:59 2016 +0200
+
+    add Facebook in composer
+
+ composer.json                     |   3 +-
+ composer.lock                     | 116 ++++++++++++++++++++++++++++----------
+ src/Template/Public/connexion.ctp |  87 +++++++++++++++++++++++++++-
+ 3 files changed, 175 insertions(+), 31 deletions(-)
+
+commit eb2bd6eb736c9458c700510da7189aa22dc372b0
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 20:40:39 2016 +0200
+
+    résolution de conflits
+
+ src/Model/Table/FightersTable.php | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit 40fbb87d8a438c05d5d0719b31e6d5eccbdb96dd
+Merge: a01f268 4c6ff57
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 20:34:45 2016 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/Model/Table/FightersTable.php
+
+commit a01f26800178db407688649fb4d3d3c96ac75f03
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 20:26:38 2016 +0200
+
+    ajout de la boutique avec augmentation des points de compétences et du level du combattant
+
+ src/Controller/MemberController.php | 20 ++++++++++++---
+ src/Model/Table/FightersTable.php   | 30 +++++++++++++++++++++-
+ src/Template/Member/boutique.ctp    | 49 +++++++++++++++++++++++++++++++++++
+ src/Template/Member/index.ctp       | 51 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 145 insertions(+), 5 deletions(-)
+
+commit 4c6ff577135a44e5eec38ccf77b33110c185ff50
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Fri Oct 28 16:24:00 2016 +0200
+
+    Maintenant on fais les chose bien!!
+    
+    j'ai modifier les models et les controllers afin que tout les requettes
+    se fasse dans les models et pas dans les conrollers!
+
+ src/Controller/MemberController.php |   7 +-
+ src/Controller/PublicController.php | 100 ++++++------
+ src/Model/Table/FightersTable.php   | 312 ++++++++++++++++++------------------
+ src/Model/Table/PlayersTable.php    |   6 +-
+ src/Template/Public/inscription.ctp |   2 +-
+ 5 files changed, 212 insertions(+), 215 deletions(-)
+
+commit 05f00f7a2138f4db7de4881eac930e87391aa896
+Merge: cb8b0b0 30c96d1
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Fri Oct 28 15:57:58 2016 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/Controller/MemberController.php
+
+commit cb8b0b01fcbf2fd10f077eaa78727f193b4fb8f7
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Fri Oct 28 15:50:37 2016 +0200
+
+    Création, lister et "début Rejoigner" guilde
+    
+    Rejoigner guilde pas encore tester avec les "Players"
+
+ src/Controller/MemberController.php      | 19 +++++++++++++++-
+ src/Model/Table/GuildsTable.php          | 27 +++++++++++++++++------
+ src/Template/Member/creer_guilde.ctp     |  9 ++++++--
+ src/Template/Member/rejoindre_guilde.ctp | 37 +++++++++++++++++++++++++++++++-
+ 4 files changed, 82 insertions(+), 10 deletions(-)
+
+commit 30c96d1211d664480c693c18213dd80e8a3bab3d
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 14:59:43 2016 +0200
+
+    ajout app php dis
+
+ config/app.php.dist | 346 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 346 insertions(+)
+
+commit b4225ebf4fb84bfb67d22f154d9f20d4725c6766
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 14:49:04 2016 +0200
+
+    ajout événement suppression
+
+ src/Controller/MemberController.php | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 8ac12bc9d795a59d80ab4c2ed508539e00cbf179
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 14:31:53 2016 +0200
+
+    insertion des événement d'attaque et d'entrée du combattant
+
+ src/Controller/MemberController.php |  5 +++--
+ src/Model/Table/EventsTable.php     |  9 +++++++--
+ src/Model/Table/FightersTable.php   | 16 +++++++++++-----
+ 3 files changed, 21 insertions(+), 9 deletions(-)
+
+commit 280945b99b3584ceb38ecca5a79f9ae67b8f1b77
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Fri Oct 28 14:10:52 2016 +0200
+
+    ajout de modifier fighter + fix de la fonction supprimer
+
+ src/Controller/MemberController.php | 21 ++++++++++++++++-----
+ src/Model/Table/FightersTable.php   | 16 ++++++++++++++--
+ src/Template/Member/index.ctp       |  9 +++++----
+ 3 files changed, 35 insertions(+), 11 deletions(-)
+
+commit 31c877519d4f37d5471b5ec69659d9120ac35090
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Fri Oct 28 12:20:54 2016 +0200
+
+    fix suppresion
+
+ src/Controller/MemberController.php |   4 +-
+ src/Template/Member/index.ctp       | 141 ++++++++++++++++++------------------
+ 2 files changed, 72 insertions(+), 73 deletions(-)
+
+commit 96ec806b58d4a0ed400ba4818a3bad4b98acef07
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 11:55:50 2016 +0200
+
+    fix fonction supprimer
+
+ src/Controller/MemberController.php | 2 ++
+ src/Model/Table/FightersTable.php   | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit caef095ccf9347f3f9ab86c1bac34d6a7c613ed5
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 11:32:29 2016 +0200
+
+    suppression des méthodes en doublons
+
+ src/Controller/MemberController.php | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+commit 3796d49627b7cac14381e84f3e9f3beffe96062f
+Merge: ddd910e 42fecca
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Fri Oct 28 11:24:33 2016 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/Controller/MemberController.php
+    suppesion des fonction attaquer et de arena qui a pas attaquer
+
+commit ddd910e0152bb73f56cc188894d0d7fef0642f4b
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Fri Oct 28 11:20:20 2016 +0200
+
+    fix creation fighter sans nom
+
+ src/Controller/MemberController.php | 194 ++++++++++++++++++------------------
+ src/Model/Table/FightersTable.php   |  65 ++++++------
+ 2 files changed, 132 insertions(+), 127 deletions(-)
+
+commit 42feccaddc53bf3ef244825868063d43e94112fe
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 11:19:08 2016 +0200
+
+    attaque possible que lorsque l'on est a côté de l'ennemi
+
+ src/Model/Table/EventsTable.php | 13 +++++++++++++
+ src/Template/Member/arena.ctp   | 16 +++++++++-------
+ 2 files changed, 22 insertions(+), 7 deletions(-)
+
+commit a6156bae79c9e956421f75a3583e7e8b8a78fc60
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Fri Oct 28 10:30:59 2016 +0200
+
+    Ajout Form pour création guilde
+
+ src/Template/Member/creer_guilde.ctp | 24 ++++++++++++++----------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
+
+commit 3e9f244602744c68082c23bbd6e918053e80d548
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Fri Oct 28 10:29:54 2016 +0200
+
+    ajout de l'attaque en formulaire + deplacement de l'attaque coté model
+
+ src/Controller/MemberController.php | 40 ++++++++-----------------------------
+ src/Model/Table/FightersTable.php   | 40 +++++++++++++++++++++++++++++++++++++
+ src/Template/Layout/member.ctp      |  2 ++
+ src/Template/Member/arena.ctp       |  9 ++++++---
+ src/Template/Member/index.ctp       |  3 ---
+ 5 files changed, 56 insertions(+), 38 deletions(-)
+
+commit af4475c7fc5de5b3d1f0ce4357465c6e0728ea7d
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Fri Oct 28 09:41:42 2016 +0200
+
+    ajout en bootstrap des la fonction supprimer fighter
+    
+    suppresion de la page addfighters
+
+ src/Controller/MemberController.php | 32 +-------------------------------
+ src/Model/Table/FightersTable.php   | 13 +++++++------
+ src/Template/Member/addfighters.ctp |  9 ---------
+ src/Template/Member/index.ctp       |  3 +--
+ 4 files changed, 9 insertions(+), 48 deletions(-)
+
+commit ac7413fec7e0a46a78b2a49de302b9d374cb54a4
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Thu Oct 27 19:45:18 2016 +0200
+
+    ajout de la fonction supprimer le fighter
+    
+    La modification est en cour de dev
+
+ src/Controller/MemberController.php | 44 +++++++++++++++++++++++-----
+ src/Template/Member/index.ctp       | 58 +++++++++++++++++++++++++++++++++++--
+ 2 files changed, 91 insertions(+), 11 deletions(-)
+
+commit 0c27f9a62cf5be75373fa500e413534b04b09e72
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Thu Oct 27 13:51:38 2016 +0200
+
+    ajout addfighters en modal boopstrap
+
+ src/Controller/MemberController.php | 27 ++++++++++---
+ src/Template/Member/index.ctp       | 81 ++++++++++++++++++++++++-------------
+ src/Template/Public/inscription.ctp | 40 +++++++++---------
+ 3 files changed, 93 insertions(+), 55 deletions(-)
+
+commit b50fb0dbfdfd1f5000e03d4fb44af48848106be2
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 20:43:56 2016 +0200
+
+    ajout de l'attaque
+
+ src/Controller/MemberController.php | 37 +++++++++++++++++++++++++++++++++++++
+ src/Model/Table/FightersTable.php   | 14 ++++++++++++++
+ src/Template/Member/arena.ctp       |  2 +-
+ 3 files changed, 52 insertions(+), 1 deletion(-)
+
+commit 6b324ccbd1317654aa4fd296707886bdd233a031
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 26 17:47:34 2016 +0200
+
+    nodification d'un lien et indentation
+
+ src/Model/Table/PlayersTable.php |  46 ++++++------
+ src/Template/Layout/member.ctp   | 154 +++++++++++++++++++--------------------
+ src/Template/Member/index.ctp    |   2 +-
+ 3 files changed, 101 insertions(+), 101 deletions(-)
+
+commit eb9391a61e0b20f474805830eaac174b5cd31836
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 17:39:53 2016 +0200
+
+    ajout des ennemies sur l'arène
+
+ src/Controller/MemberController.php | 2 +-
+ src/Model/Table/FightersTable.php   | 8 ++++++++
+ src/Template/Member/arena.ctp       | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+commit 829bd30ffba126b2a38c5e67dd48e7522d755589
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 26 16:48:39 2016 +0200
+
+    Affichage des Fighters du Player dans sa page index.ctp
+
+ src/Controller/MemberController.php |  7 ++++---
+ src/Model/Table/FightersTable.php   |  8 ++++++++
+ src/Template/Member/index.ctp       | 29 +++++++++++++++++++++++++++++
+ 3 files changed, 41 insertions(+), 3 deletions(-)
+
+commit 2208d033c8607b08df008b123e269a2e5d662a68
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 16:44:42 2016 +0200
+
+    remplacement des lien par des formulaire pour le déplacement + ajout popover fighter arènes
+
+ src/Controller/MemberController.php |  7 ++++++-
+ src/Template/Member/arena.ctp       | 22 ++++++++++++++++++----
+ webroot/js/bootstrap.min.js         |  7 +++++++
+ webroot/js/jQuery.min.js            |  4 ++++
+ 4 files changed, 35 insertions(+), 5 deletions(-)
+
+commit 2f25846456d558eb893724650471531d484c7ddc
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 15:38:00 2016 +0200
+
+    deplacement sans formulaire
+
+ src/Controller/MemberController.php | 20 +------------------
+ src/Model/Table/FightersTable.php   | 39 ++++++++++++++++++++++---------------
+ 2 files changed, 24 insertions(+), 35 deletions(-)
+
+commit 84a0c8594dce3b1b5bb8f929471643050fb8db73
+Merge: d0e386b 37d262a
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Wed Oct 26 15:13:14 2016 +0200
+
+    Merge branch 'master' of https://github.com/Michou54/webArena
+
+commit d0e386b81c1dc81e2126eb36390cfb7630bd6824
+Merge: e24e542 9750466
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Wed Oct 26 15:13:01 2016 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/Controller/MemberController.php
+
+commit 37d262ac66124cea4d882c2bdf642ce4878a504d
+Merge: 742eda8 9750466
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 26 15:03:58 2016 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/Controller/MemberController.php
+    #       src/Model/Table/FightersTable.php
+
+commit 742eda8467c808d4a47562819e9b08b4512ad643
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 26 14:56:33 2016 +0200
+
+    création des fighters
+    
+    ajout de la page addfighters
+    Modification de la page index.ctp des membre
+    créaion fightersTables
+
+ src/Controller/MemberController.php | 29 +++++++++++++++++++++++++----
+ src/Model/Table/FightersTable.php   | 37 ++++++++++++++++++++++++++++++++++++-
+ src/Template/Member/addfighters.ctp |  9 +++++++++
+ src/Template/Member/index.ctp       |  2 +-
+ 4 files changed, 71 insertions(+), 6 deletions(-)
+
+commit e24e54211145c04effca50c3d2ff7a3dd0a6b91e
+Author: vladoslocos <ignjatovic.vladimir93@gmail.com>
+Date:   Wed Oct 26 14:40:02 2016 +0200
+
+    guilde
+
+ config/app.php.dist                      | 346 -------------------------------
+ src/Controller/MemberController.php      |  12 ++
+ src/Model/Table/GuildsTable.php          |  30 +++
+ src/Template/Member/creer_guilde.ctp     |  20 ++
+ src/Template/Member/guild.ctp            |  21 ++
+ src/Template/Member/rejoindre_guilde.ctp |   1 +
+ 6 files changed, 84 insertions(+), 346 deletions(-)
+
+commit 9750466e17ccb5c10676f62ef6be6e1c4a62b9c7
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 14:38:23 2016 +0200
+
+    déplacement figurer
+
+ src/Controller/MemberController.php | 46 ++++++++++++++++++++++++++++++++++---
+ src/Model/Table/FightersTable.php   | 38 +++++++++++++++++++++++++++---
+ src/Template/Member/arena.ctp       |  8 +++----
+ 3 files changed, 82 insertions(+), 10 deletions(-)
+
+commit 9dabb34377847488031987e6c13755d0c1a3411b
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 13:44:08 2016 +0200
+
+    ajout de arena + fin in figurer table
+
+ src/Controller/MemberController.php |  9 ++++++-
+ src/Model/Table/FightersTable.php   |  4 ++--
+ src/Template/Member/arena.ctp       | 47 +++++++++++++++++++++++++++++++++++++
+ webroot/css/damier.css              | 18 ++++++++++++++
+ 4 files changed, 75 insertions(+), 3 deletions(-)
+
+commit 176999fb39465cda8f3af8591812f238a595a8e8
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 26 13:19:20 2016 +0200
+
+    ajout FightersTable
+    
+    Commencement de la page index.ctp quand tu es connecté
+
+ src/Model/Table/FightersTable.php | 14 ++++++++++++++
+ src/Template/Layout/member.ctp    |  2 +-
+ src/Template/Member/index.ctp     | 10 ++++++++++
+ 3 files changed, 25 insertions(+), 1 deletion(-)
+
+commit b366e01d2481c499137f606ff106b9a1d6a834ce
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 13:03:01 2016 +0200
+
+    render flash message to bootstrap
+
+ src/Template/Element/Flash/default.ctp | 2 +-
+ src/Template/Element/Flash/error.ctp   | 2 +-
+ src/Template/Element/Flash/success.ctp | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 560402517050e20470c27942c73d7770e57f302c
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 26 12:26:34 2016 +0200
+
+    optimisation securité
+    
+    Quand une personne est connecté il ne peut pas aller dans le
+    PublicController. cette interdiction ce ais maintenent dans le
+    controller directement et plus dans chaque fonction
+
+ src/Controller/PublicController.php | 8 +++-----
+ src/Template/Layout/default.ctp     | 2 +-
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+commit 2b1bff41cd779b60b10c4f921a9523d5dbee390a
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 26 12:36:14 2016 +0200
+
+    ajout entete en fonction de si on est connecté ou non
+
+ src/Controller/MemberController.php |  2 +
+ src/Template/Layout/default.ctp     | 27 +++++------
+ src/Template/Layout/member.ctp      | 92 +++++++++++++++++++++++++++++++++++++
+ src/Template/Member/index.ctp       |  1 -
+ 4 files changed, 108 insertions(+), 14 deletions(-)
+
+commit 0fc710b1333a4e1f68fe5f926636d023fd9c1053
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 19:26:40 2016 +0200
+
+    fixe de sécurité
+    
+    obligation d’être déconnecté pour accéder aux fonctions du contrôleur
+    public
+
+ src/Controller/PublicController.php | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit aa8ed4271616e1a91204994fec693bba7154a44d
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 19:18:47 2016 +0200
+
+    fix securité
+    
+    obligation d’être connecté pour accéder aux fonctions du contrôleur
+    member
+
+ src/Controller/MemberController.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 2d74058614652f05af2802973a1760eebb63e611
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 19:16:57 2016 +0200
+
+    ajout de la déconnexion
+
+ src/Controller/AppController.php    | 4 ++++
+ src/Controller/MemberController.php | 5 +++++
+ src/Template/Member/index.ctp       | 2 +-
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+
+commit 9e7e5ed0234672c66541e232f6e9991e950e8ba1
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 19:11:35 2016 +0200
+
+    redirection lorsque l'on est connecté vers l'index des membres
+
+ src/Controller/PagesController.php | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 5aac9cb784f8d133650278a8472ac36354d98988
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Tue Oct 25 19:07:21 2016 +0200
+
+    ajout auto connexion à l'inscription
+
+ src/Controller/PublicController.php | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit cbc947f38d1daf3c344f6980b11e27782f760a4d
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 19:03:29 2016 +0200
+
+    création membercontroller + modification des redirection du login
+
+ src/Controller/AppController.php    |  6 +++++-
+ src/Controller/MemberController.php | 21 +++++++++++++++++++++
+ src/Controller/PublicController.php |  2 +-
+ src/Template/Member/index.ctp       |  1 +
+ 4 files changed, 28 insertions(+), 2 deletions(-)
+
+commit 1ee9b832ea2599f32d2fcb3385d7e62363f60b02
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 18:53:14 2016 +0200
+
+    ajout du mot de passe oublié
+
+ src/Controller/PublicController.php     | 13 +++++++++++-
+ src/Model/Table/PlayersTable.php        | 35 +++++++++++++++++++++++++++------
+ src/Template/Public/connexion.ctp       |  2 +-
+ src/Template/Public/forget_password.ctp | 14 +++++++++++++
+ 4 files changed, 56 insertions(+), 8 deletions(-)
+
+commit ee1b35e94bcaeb86933450412a5a0c452d87d508
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Tue Oct 25 18:21:10 2016 +0200
+
+    ajout de la connexion
+
+ src/Controller/AppController.php    | 16 ++++++++++++++++
+ src/Controller/PagesController.php  |  8 ++++++++
+ src/Controller/PublicController.php | 24 ++++++++++++++++++++++++
+ src/Model/Entity/Player.php         | 23 +++++++++++++++++++++++
+ src/Model/Table/PlayersTable.php    |  2 +-
+ 5 files changed, 72 insertions(+), 1 deletion(-)
+
+commit 2fb4e37548f9a794605f325e5b8f0c2bb42f92bc
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 17:55:39 2016 +0200
+
+    ajout du formulaire de connexion
+
+ src/Template/Pages/home.ctp       |  2 +-
+ src/Template/Public/connexion.ctp | 24 ++++++++++++++++++++++++
+ 2 files changed, 25 insertions(+), 1 deletion(-)
+
+commit 8538219996293bb117c0623731f078e6cf5a5703
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 17:26:08 2016 +0200
+
+    a
+
+ src/Model/Table/PlayersTable.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a75ed840fe5eaf03030ad025ff1a0064740406e6
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Tue Oct 25 17:23:20 2016 +0200
+
+    suppretion de la fonction inscription dans pageController
+
+ src/Controller/PagesController.php | 23 -----------------------
+ 1 file changed, 23 deletions(-)
+
+commit 7849a8d973abab8ed0f9f47069e7207e850450c5
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Tue Oct 25 17:17:27 2016 +0200
+
+    correction errer inscertion player
+
+ src/Controller/PublicController.php            | 25 +++++++++++++++++++++++++
+ src/Model/Table/PlayersTable.php               | 26 ++------------------------
+ src/Template/Pages/home.ctp                    |  2 +-
+ src/Template/{Pages => Public}/inscription.ctp |  0
+ 4 files changed, 28 insertions(+), 25 deletions(-)
+
+commit 07376ad6f833f9fa9f4d1944e92b9dc06c2c6385
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Tue Oct 25 16:44:46 2016 +0200
+
+    model Players inscription + controller
+
+ src/Controller/PagesController.php | 20 +++++++++++++++++++-
+ src/Model/Table/PlayersTable.php   | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+), 1 deletion(-)
+
+commit 57d0e7abdb92fff4194e64556de601c290cbcf2f
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 16:43:34 2016 +0200
+
+    formulaire inscription avec bootstrap
+
+ src/Template/Pages/inscription.ctp | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+commit aa1a2ad4b0d7e85513302e321ca90d1c4a4bd620
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Tue Oct 25 15:49:57 2016 +0200
+
+    ajout page inscription & footer
+
+ src/Controller/PagesController.php |  5 +++++
+ src/Template/Layout/default.ctp    |  6 ++++--
+ src/Template/Pages/home.ctp        |  3 ++-
+ src/Template/Pages/inscription.ctp | 11 +++++++++++
+ 4 files changed, 22 insertions(+), 3 deletions(-)
+
+commit e1e9ff2f04c07b11d2f602fb45565abda6f10206
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Tue Oct 25 15:24:18 2016 +0200
+
+    page accueil avec css bootstrap
+
+ src/Template/Pages/home.ctp        | 296 +++++++++++++------------------------
+ webroot/css/bootstrap.min.css      |   6 +
+ webroot/css/bootstrap.min.css.map  |   1 +
+ webroot/img/enemy.jpg              | Bin 0 -> 113444 bytes
+ webroot/img/heart-compact-flat.png | Bin 0 -> 5410 bytes
+ webroot/img/sword.jpg              | Bin 0 -> 13212 bytes
+ webroot/img/warrior.png            | Bin 0 -> 1438334 bytes
+ 7 files changed, 111 insertions(+), 192 deletions(-)
+
+commit 392fb86d5a392bc63214a56de712b054e9a6d8e3
+Author: Filipe Carvalhais Sanches <filipe78190@gmail.com>
+Date:   Wed Oct 19 13:41:53 2016 +0200
+
+    Ajout du script BDD
+
+ ece_webarena.sql | 162 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 162 insertions(+)
+
+commit 98592690f8b68532986ba82598ff3651890b13df
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 19 13:41:08 2016 +0200
+
+    Modification du readme
+    
+    Nous avons ajouté les étapes d’installation du projet
+
+ README.md | 30 +++++++++++++-----------------
+ 1 file changed, 13 insertions(+), 17 deletions(-)
+
+commit 2b60fabfd8857df54db25a800e785270c928bd6c
+Author: Michel <michel.nussbaum@numericable.fr>
+Date:   Wed Oct 19 13:29:34 2016 +0200
+
+    premier commit
+
+ .gitignore                                        |    4 +
+ .htaccess                                         |   11 +
+ README.md                                         |   25 +
+ bin/cake                                          |   46 +
+ bin/cake.bat                                      |   27 +
+ bin/cake.php                                      |   34 +
+ composer.json                                     |   42 +
+ composer.lock                                     | 1402 +++++++++++++++++++++
+ config/app.default.php                            |  346 +++++
+ config/app.php.dist                               |  346 +++++
+ config/bootstrap.php                              |  225 ++++
+ config/bootstrap_cli.php                          |   36 +
+ config/paths.php                                  |   85 ++
+ config/routes.php                                 |   82 ++
+ config/schema/i18n.sql                            |   18 +
+ config/schema/sessions.sql                        |   13 +
+ index.php                                         |   16 +
+ phpunit.xml.dist                                  |   40 +
+ plugins/empty                                     |    0
+ src/Application.php                               |   52 +
+ src/Console/Installer.php                         |  195 +++
+ src/Controller/AppController.php                  |   62 +
+ src/Controller/Component/empty                    |    0
+ src/Controller/ErrorController.php                |   68 +
+ src/Controller/PagesController.php                |   65 +
+ src/Model/Behavior/empty                          |    0
+ src/Model/Entity/empty                            |    0
+ src/Model/Table/empty                             |    0
+ src/Shell/ConsoleShell.php                        |   81 ++
+ src/Template/Element/Flash/default.ctp            |   10 +
+ src/Template/Element/Flash/error.ctp              |    6 +
+ src/Template/Element/Flash/success.ctp            |    6 +
+ src/Template/Email/html/default.ctp               |   22 +
+ src/Template/Email/text/default.ctp               |   16 +
+ src/Template/Error/error400.ctp                   |   38 +
+ src/Template/Error/error500.ctp                   |   43 +
+ src/Template/Layout/Email/html/default.ctp        |   24 +
+ src/Template/Layout/Email/text/default.ctp        |   16 +
+ src/Template/Layout/ajax.ctp                      |   16 +
+ src/Template/Layout/default.ctp                   |   57 +
+ src/Template/Layout/error.ctp                     |   47 +
+ src/Template/Layout/rss/default.ctp               |   14 +
+ src/Template/Pages/home.ctp                       |  248 ++++
+ src/View/AjaxView.php                             |   49 +
+ src/View/AppView.php                              |   40 +
+ src/View/Helper/empty                             |    0
+ tests/Fixture/empty                               |    0
+ tests/TestCase/ApplicationTest.php                |   46 +
+ tests/TestCase/Controller/Component/empty         |    0
+ tests/TestCase/Controller/PagesControllerTest.php |   85 ++
+ tests/TestCase/Model/Behavior/empty               |    0
+ tests/TestCase/View/Helper/empty                  |    0
+ tests/bootstrap.php                               |   12 +
+ webroot/.htaccess                                 |    5 +
+ webroot/css/base.css                              |  450 +++++++
+ webroot/css/cake.css                              |  577 +++++++++
+ webroot/favicon.ico                               |  Bin 0 -> 1782 bytes
+ webroot/img/cake.icon.png                         |  Bin 0 -> 943 bytes
+ webroot/img/cake.power.gif                        |  Bin 0 -> 201 bytes
+ webroot/index.php                                 |   37 +
+ webroot/js/empty                                  |    0
+ 61 files changed, 5185 insertions(+)
