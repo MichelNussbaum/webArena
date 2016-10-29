@@ -17,3 +17,4 @@
 - ne pas voir en enemies ces autres perso
 - faire le chat
 - ajouter git log dans le footer
+- ajouter flash sortie de la map

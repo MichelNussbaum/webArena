@@ -69,8 +69,8 @@ class PublicController extends AppController
 
 	public function facebook(){
 		$fb = new Facebook(array(
-			'app_id' => '1242440412484253',
-			'app_secret' => '77412844f205bd09ed47a7954611259e',
+			'app_id' => '1242436859151275',
+			'app_secret' => 'd35c67c6507a9587e2657b27c0ae720e',
 			'default_graph_version' => 'v2.2'));
 		$helper = $fb->getRedirectLoginHelper();
 
@@ -112,7 +112,7 @@ class PublicController extends AppController
 		var_dump($tokenMetadata);*/
 
 		// Validation (these will throw FacebookSDKException's when they fail)
-		$tokenMetadata->validateAppId('1242440412484253'); // Replace {app-id} with your app id
+		$tokenMetadata->validateAppId('1242436859151275'); // Replace {app-id} with your app id
 		// If you know the user ID this access token belongs to, you can validate it here
 		//$tokenMetadata->validateUserId('123');
 		$tokenMetadata->validateExpiration();

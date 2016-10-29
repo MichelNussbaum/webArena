@@ -22,8 +22,8 @@
 <?= $this->Form->end() ?>
 <?php
 $fb = new Facebook\Facebook([
-  'app_id' => '1242440412484253', // Replace {app-id} with your app id
-  'app_secret' => '77412844f205bd09ed47a7954611259e',
+  'app_id' => '1242436859151275', // Replace {app-id} with your app id
+  'app_secret' => 'd35c67c6507a9587e2657b27c0ae720e',
   'default_graph_version' => 'v2.2',
   ]);
 
