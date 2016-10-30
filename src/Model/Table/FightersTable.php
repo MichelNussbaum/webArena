@@ -120,7 +120,7 @@ class FightersTable extends Table
   function findEnemies($id){
     $fighter = $this->get($id);
     $query = $this->find("all")
-    ->where(["player_id !="=>$fighter->player_id,
+    ->where(["id !="=>$id,
       "ABS(coordinate_x-".$fighter["coordinate_x"].") + ABS(coordinate_y - ".$fighter["coordinate_y"].") <="=>$fighter["skill_sight"]]);
     return $query;
 
