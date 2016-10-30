@@ -3,6 +3,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 use Cake\Utility\Text;
+use Cake\Mailer\Email;
 
 class PlayersTable extends Table {
 
@@ -31,19 +32,31 @@ class PlayersTable extends Table {
 	}
 
 	public function resetPassword($player){
-		$password = "bye";
+		$password = $this->generatePass();
 		$player->password = $password;
 		if ($this->save($player)) {
-			/*$email = new Email('default');
-			$email->from(['michelnussbaum54@gmail.com' => 'My Site'])
-			->to('cake@yopmail.com')
+			$email = new Email('default');
+			$email->from(['webarenaecemfv@gmail.com' => 'Web Arena ECE'])
+			->to($player->email)
 			->subject('Password reset '.$player->email)
-			->send('nouveau password : '.$password);*/
+			->send('nouveau password : '.$password);
 			//$this->Flash->success(__("Le password a été mis à jour."));
 			//return $this->redirect(['action' => 'index']);
 		}else{
 			//$this->Flash->error(__('Mise à jour du mot de passe échouée'));
 		}
+	}
+
+	function generatePass() {
+	    $nbChar = 8;
+	 
+	    $characters = '023456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ#!$';
+	    $specials = '#!?$%&*';
+	 
+	    $firstPart = substr(str_shuffle($characters), 0, $nbChar - 1);
+	    $lastPart = substr(str_shuffle($specials), 0, 1);
+	 
+	    return str_shuffle($firstPart . $lastPart);
 	}
 }
 ?>

@@ -1,4 +1,4 @@
-- Revoir fonction mot de passe oublié
+- Revoir fonction mot de passe oublié											- Michel - OK
 - Renommer boutique en passer niveau                                              - Filipe - ok
 - Ajout option choisir avatar
 - Ajouter une page regroupant les evenements sous 24h							 - Michel - ok

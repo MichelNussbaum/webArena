@@ -55,10 +55,10 @@ class PublicController extends AppController
 
 	public function forgetPassword(){
 		if ($this->request->is('post')) {
-			$playerFind = $this->Players->findByEmail($this->request->data);
+			$playerFind = $this->Players->findByEmail($this->request->data["email"]);
 			$this->Players->resetPassword($playerFind);
 		}
-		$this->set('player', $player);
+		$this->set('player', $this->Auth->user());
 	}
 
 	public function verifyConnect(){
