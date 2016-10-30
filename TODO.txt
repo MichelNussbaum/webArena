@@ -1,7 +1,7 @@
 - Revoir fonction mot de passe oublié
 - Renommer boutique en passer niveau                                              - Filipe - ok
 - Ajout option choisir avatar
-- Ajouter une page regroupant les evenements sous 24h
+- Ajouter une page regroupant les evenements sous 24h							 - Michel - ok
 - Revoir position du footer + ajouter option FB
 - Faire en sorte qu'il puisse avoir qu'un seul combattant par case                - Filipe - ok
 - changer point de vie intitial à 5                                               - Filipe - ok

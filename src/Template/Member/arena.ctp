@@ -1,20 +1,34 @@
 <?php echo $this->Html->css('damier');?>
-	<?= $this->Form->create();?>
-	<?= $this->Form->hidden('action',["value"=>"monter"]);?>
-	<?= $this->Form->button(__('Monter'),array('class' => 'btn btn-default'));?>
-  	<?= $this->Form->end();?>
-  	<?= $this->Form->create();?>
-	<?= $this->Form->hidden('action',["value"=>"descendre"]);?>
-	<?= $this->Form->button(__('Descendre'),array('class' => 'btn btn-default'));?>
-  	<?= $this->Form->end();?>
-  	<?= $this->Form->create();?>
-	<?= $this->Form->hidden('action',["value"=>"gauche"]);?>
-	<?= $this->Form->button(__('Gauche'),array('class' => 'btn btn-default'));?>
-  	<?= $this->Form->end();?>
-  	<?= $this->Form->create();?>
-	<?= $this->Form->hidden('action',["value"=>"droite"]);?>
-	<?= $this->Form->button(__('Droite'),array('class' => 'btn btn-default'));?>
-  	<?= $this->Form->end();?>
+	<div class="row">
+	  	<div class="col-xs-offset-5">
+			<?= $this->Form->create();?>
+			<?= $this->Form->hidden('action',["value"=>"monter"]);?>
+			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
+		  	<?= $this->Form->end();?>
+	  	</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-xs-1 col-xs-offset-4">
+		  	<?= $this->Form->create();?>
+			<?= $this->Form->hidden('action',["value"=>"gauche"]);?>
+			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
+		  	<?= $this->Form->end();?>
+		</div>
+		<div class="col-xs-1 col-xs-offset-1">
+		  	<?= $this->Form->create();?>
+			<?= $this->Form->hidden('action',["value"=>"droite"]);?>
+			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
+		  	<?= $this->Form->end();?>
+		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-xs-offset-5">
+		  	<?= $this->Form->create();?>
+			<?= $this->Form->hidden('action',["value"=>"descendre"]);?>
+			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
+		  	<?= $this->Form->end();?>
+		</div>
+  	</div>
   	<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
 	<?php
 	for ($i=0; $i < 10; $i++) {?>
