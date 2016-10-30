@@ -168,5 +168,10 @@ class MemberController extends AppController
 			$this->Messages->insert($this->request->data);
 		}
 	}
+
+	public function evenements(){
+		$events = $this->Events->findLastDay();
+		$this->set("events",$events);
+	}
 }
 ?>

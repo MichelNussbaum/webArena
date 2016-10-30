@@ -14,5 +14,13 @@ class EventsTable extends Table
         $event["coordinate_y"] = $posY;
         $this->save($event);
     }
+
+    function findLastDay(){
+    	$rows = $this->find("all")
+    	->where(["date >=" => mktime(date("H"), date("i"), date("s"), date("m"), date("d")-1,date("Y"))])
+    	->order(['date' => 'DESC'])
+    	->all();
+    	return $rows;
+    }
 }
 ?>

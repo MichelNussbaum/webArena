@@ -15,6 +15,7 @@
 	<?= $this->Form->hidden('action',["value"=>"droite"]);?>
 	<?= $this->Form->button(__('Droite'),array('class' => 'btn btn-default'));?>
   	<?= $this->Form->end();?>
+  	<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
 	<?php
 	for ($i=0; $i < 10; $i++) {?>
 		<div>
