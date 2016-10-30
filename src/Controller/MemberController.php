@@ -166,6 +166,7 @@ class MemberController extends AppController
 		$this->set("fighters",$fighters);
 		if($this->request->is('post')){
 			$this->Messages->insert($this->request->data);
+			return $this->redirect(['action' => 'chat',$idFighter]);
 		}
 	}
 

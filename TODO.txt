@@ -19,3 +19,4 @@
 - ajouter git log dans le footer												                          - Michel - OK
 - ajouter flash sortie de la map											                         	  - Michel - OK
 - lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok
+- passer la page mot de passe oublié en modal
