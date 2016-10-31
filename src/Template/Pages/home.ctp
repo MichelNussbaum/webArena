@@ -97,7 +97,7 @@ $cakeDescription = 'Web Arena';
             <p>Le système doit gérer la possibilité de créer et ou de rejoindre une guilde. Un combattant qui attaque une cible gagne +1 en attaque par autre membre de sa guilde au contact de sa cible.</p>
         </li>
         <li>
-            <h3>Option F : Utilisation de Bootstrap <small> - bibliothèque externe</h3>
+            <h3>Option F : Utilisation de Bootstrap <small> - bibliothèque externe</small></h3>
             <p>Utilisez bootstrap 3 (attention c'est une version récente, beaucoup de tutoriels en ligne concernent la version 2) pour la composition de vos pages. Respectez les conventions bootstrap, utilisez les classes et les id de bootstrap dans votre HTML et utilisez la css personnalisée la plus restreinte possible.</p>
         </li>
         <li>
