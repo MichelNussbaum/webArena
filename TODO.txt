@@ -15,7 +15,7 @@
 - gérer +1 force par nombre de membre de la guilde autour de la cible
 - ne pas voir en enemis ses autres perso                                          - Filipe ok
 - faire le chat							                                 										  - Michel ok
-- ajouter git log dans le footer												                          - Michel - OK
+- ajouter git log dans le footer												                          - Michel - KO - en cours
 - ajouter flash sortie de la map											                         	  - Michel - OK
 - lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok
 - Rajouter un lien lorsque que l'on créer une guilde, idem quand on rejoint

@@ -65,11 +65,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div><!-- /.container-fluid -->
   </nav>
   <?= $this->Flash->render() ?>
-  <div class="container clearfix">
+  <div class="container">
     <?= $this->fetch('content') ?>
   </div>
 </body>
-<footer class="navbar-fixed-bottom">
+<footer>
   <p class="text-muted"> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir POUTINE - Options :  B,F,G <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
-</footer>
+  </div>
 </html>
