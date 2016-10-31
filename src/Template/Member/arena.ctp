@@ -46,7 +46,7 @@
 				<li>👀 : '.$fighter->skill_sight.'</li>
 				<li>❇ X: '.$fighter->coordinate_x.'</li>
 				<li>❇ Y: '.$fighter->coordinate_y.'</li>
-				<li>guild : '.$fighter->guild_id.'</li>';
+				<li>guild : '.$fighterGuilde->name.'</li>';
 				?><div class="cell"><?=$this->Html->image('warrior.png', $array)?></div><?php
 			}else{
 				$trouve = false;
@@ -61,7 +61,7 @@
 						<li>👀 : '.$enemy["skill_sight"].'</li>
 						<li>❇ X: '.$enemy["coordinate_x"].'</li>
 						<li>❇ Y: '.$enemy["coordinate_y"].'</li>
-						<li>guild : '.$enemy["guild_id"].'</li>';
+						<li>guild : '.$enemy["guild_name"].'</li>';
 						if( ($enemy["player_id"] != $fighter["player_id"]) && (($enemy["coordinate_x"] == $fighter["coordinate_x"] && ($enemy["coordinate_y"] == $fighter["coordinate_y"]-1 || $enemy["coordinate_y"] == $fighter["coordinate_y"]+1)) || ($enemy["coordinate_y"] == $fighter["coordinate_y"] && ($enemy["coordinate_x"] == $fighter["coordinate_x"]-1 || $enemy["coordinate_x"] == $fighter["coordinate_x"]+1)))){
 							$array["data-content"].='<li>'.$this->Form->create().
 							$this->Form->hidden('action',['value' => 'attaquer']).

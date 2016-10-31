@@ -125,11 +125,18 @@ class FightersTable extends Table
   }
 
   function findEnemies($id){
+    $guildsTable = TableRegistry::get('Guilds');
     $fighter = $this->get($id);
-    $query = $this->find("all")
+    $rows = $this->find("all")
     ->where(["id !="=>$id,
       "ABS(coordinate_x-".$fighter["coordinate_x"].") + ABS(coordinate_y - ".$fighter["coordinate_y"].") <="=>$fighter["skill_sight"]]);
-    return $query;
+    foreach ($rows as $row) {
+      if(!empty($row->guild_id)){
+        $guild = $guildsTable->findById($row->guild_id);
+        $row["guild_name"] = $guild->name;
+      }
+    }
+    return $rows;
 
   }
 
