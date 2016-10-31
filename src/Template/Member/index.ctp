@@ -24,7 +24,7 @@
 							<li>👀 : <?= $fighter->skill_sight ?></li>
 							<li>❇ X: <?= $fighter->coordinate_x ?></li>
 							<li>❇ Y: <?= $fighter->coordinate_y ?></li>
-							<li>guild : <?= $fighter->guild_id ?></li>
+							<li>guild : <?= $fighter->guild_name ?></li>
 						</ul>
 							<?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
 							<?= $this->Html->link('Communiquer', array('action' => 'chat',$fighter->id), array('class' => 'btn btn-success'));?>

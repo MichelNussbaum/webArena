@@ -8,7 +8,6 @@
 - ne plus descendre skill_health mais current skill_health                        - Michel - OK
 - enlever bouton inutile barre                                                    - Filipe - ok
 - régler probleme lorsque l'on tue les xp ne sont pas changé           					  - Michel - OK
-- passer la taille de la map dans le model
 - redirection vers index lorsque notre perso meurt                                - Filipe - ok
 - ne pas afficher les combattants mort (x:-1000 y:-100)                           - MICHEL - OK
 - revoir algo boutique XP/4 - level réel                                          - Michel Ok
