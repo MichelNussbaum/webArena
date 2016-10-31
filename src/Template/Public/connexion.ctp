@@ -34,16 +34,16 @@ $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://localhost:8888/webArena/Public/facebook', $permissions);
 
 echo '<a type="button" class="btn btn-primary" href="' . htmlspecialchars($loginUrl) . '">Se Connecter avec Facebook</a>';?>
-<button type="button" class="btn btn-link" data-toggle="modal" data-target="#MDPOublié">Mot de passe oublié ?</button>
+<button type="button" class="btn btn-link" data-toggle="modal" data-target="#MDPOublie">Mot de passe oublié ?</button>
 </div>
 
 <!-- Mot de passe oublié ? -->
-<div class="modal fade" id="MDPOublié" tabindex="-1" role="dialog" aria-labelledby="MDPOublié">
+<div class="modal fade" id="MDPOublie" tabindex="-1" role="dialog" aria-labelledby="MDPOublie">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="MDPOublié">Mot de passe oublié ?</h4>
+        <h4 class="modal-title" id="MDPOublie">Mot de passe oublié ?</h4>
       </div>
       <div class="modal-body">
         <div class="players form">
