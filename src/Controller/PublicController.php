@@ -56,7 +56,13 @@ class PublicController extends AppController
 	public function forgetPassword(){
 		if ($this->request->is('post')) {
 			$playerFind = $this->Players->findByEmail($this->request->data["email"]);
-			$this->Players->resetPassword($playerFind);
+			if(!empty($playerFind)){
+				$this->Players->resetPassword($playerFind);
+				$this->Flash->success(__('Un mail vous a été envoyé à '.$playerFind->email));
+			}else{
+				$this->Flash->error(__('Aucun joueur trouvé avec cette adresse email'));
+			}
+			
 		}
 		$this->set('player', $this->Auth->user());
 	}
