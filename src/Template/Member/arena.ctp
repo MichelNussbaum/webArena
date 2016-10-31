@@ -46,6 +46,12 @@
 		<?php for ($j=0; $j < 15; $j++) {
 			$array = ['alt' => 'warrior',"class"=>"img-responsive","data-toggle"=>"popover","data-trigger"=>"click"];
 			if($fighter->coordinate_x-1 == $j && $fighter->coordinate_y-1 == $i){
+				if(!empty($fighterGuilde)){
+					$guildName = $fighterGuilde->name;
+				}
+				else{
+					$guildName = "";
+				}
 				$array["title"] = $fighter->name;
 				$array["data-content"] = '<ul class="list-unstyled">
 				<li>LVL : '.$fighter->level.'</li>
@@ -55,7 +61,7 @@
 				<li>👀 : '.$fighter->skill_sight.'</li>
 				<li>❇ X: '.$fighter->coordinate_x.'</li>
 				<li>❇ Y: '.$fighter->coordinate_y.'</li>
-				<li>guild : '.$fighterGuilde->name.'</li>';
+				<li>guild : '.$guildName.'</li>';
 				?><div class="cell"><?=$this->Html->image('warrior.png', $array)?></div><?php
 			}else{
 				$trouve = false;
