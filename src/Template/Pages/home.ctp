@@ -101,7 +101,7 @@ $cakeDescription = 'Web Arena';
             <p>Utilisez bootstrap 3 (attention c'est une version récente, beaucoup de tutoriels en ligne concernent la version 2) pour la composition de vos pages. Respectez les conventions bootstrap, utilisez les classes et les id de bootstrap dans votre HTML et utilisez la css personnalisée la plus restreinte possible.</p>
         </li>
         <li>
-            <h3>Option G : Utilisation d'une connexion externe Google/Facebook<small> - (bibliothèque externe)</small></h3>
+            <h3>Option G : Utilisation d'une connexion externe Google/Facebook<small> - bibliothèque externe</small></h3>
             <p>Permettre aux utilisateurs de se connecter avec leur compte facebook</p>
         </li>
     </ul>
@@ -110,14 +110,14 @@ $cakeDescription = 'Web Arena';
     </div>
     <ul>
         <li>
-            <h3>Utilisation d'un suivi de version GIT<small> - (1 point)</small></h3>
+            <h3>Utilisation d'un suivi de version GIT<small> - 1 point</small></h3>
             <p>
                 Utiliser un système de suivi de version, type subversion(svn) pour toute la durée du projet. L'école en propose un (webapps.ece.fr/svn-manager), mais un autre est possible (git par exemple).
             <p>Pour obtenir le bonus, il faudra livrer avec le projet le fichier de log du gestionnaire avec mention des fichiers modifiés (pour svn, il s'agit du résultat de svn log -v, pour git, il s'agit du résultat de git log). Le fichier devra s'appeler versions.log et un lien dans le footer de toutes les pages devra y mener.</p>
             </p>
         </li>
         <li>
-            <h3>Mise en ligne sur Internet<small> - (2 points)</small></h3>
+            <h3>Mise en ligne sur Internet<small> - 2 points</small></h3>
             <p>Le site devra être disponible et fonctionnel sur un hébergement accessible sur Internet. Il existe des hébergements gratuits. L'école propose également des hébergements, mais la compatibilité avec notre Framework est inconnue. L'adresse d'hébergement devra être indiquée dans le footer de toutes les pages.</p>
             </p>
         </li>

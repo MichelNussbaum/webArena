@@ -59,8 +59,15 @@ class FightersTable extends Table
         }
       $fighter['coordinate_x'] = $x;
       $fighter['coordinate_y'] = $y;
-      $Value = $this->save($fighter);
-      return $Value;
+      $value = $this->save($fighter);
+      if (!empty($data['avatar_file']['tmp_name']))
+        {
+          $extension = strtolower(pathinfo($data['avatar_file']['name'], PATHINFO_EXTENSION));
+          if(in_array($extension, array('jpg', 'jpeg', 'png'))){
+            move_uploaded_file($data['avatar_file']['tmp_name'], WWW_ROOT. 'img' . DS . 'Avatars' . DS . $value['id']. '.' .$extension);
+          }
+        }
+      return $value;
     }
     return FALSE;
   }
