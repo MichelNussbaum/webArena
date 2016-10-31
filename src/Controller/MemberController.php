@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
 
 class MemberController extends AppController
 {
@@ -35,6 +37,16 @@ class MemberController extends AppController
 				$value = $this->Fighters->insert($this->request->data,$user);
 				if ($value)
 				{
+
+						$extension = strtolower(pathinfo($this->request->data['avatar_file']['name'], PATHINFO_EXTENSION));
+						echo $extension;
+
+						if (!empty($this->request->data['User']['avatar_file']['tmp_name']) && in_array($extension, array('jpg', 'jepg', 'png')))
+						{
+							move_uploaded_file($this->request->data['User']['avatar_file']['tmp_name'], IMAGES . 'Avatars' . DS . $user['id']. '.' .$extension);
+							$this->user->saveField('Avatar', $extension);
+						}
+
 					$this->Events->insert("Entrée de ".$value["name"],$value["coordinate_x"],$value["coordinate_y"]);
 					$this->Flash->success(__("Le combattant a été ajouté."));
 					return $this->redirect(['action' => 'index']);

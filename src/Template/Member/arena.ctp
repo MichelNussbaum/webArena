@@ -48,7 +48,7 @@
 				<li>❇ X: '.$fighter->coordinate_x.'</li>
 				<li>❇ Y: '.$fighter->coordinate_y.'</li>
 				<li>guild : '.$fighterGuilde->name.'</li>';
-				?><div class="cell"><?=$this->Html->image('warrior.png', $array)?></div><?php
+				?><div class="cell"><?=$this->Html->image('Avatars/warrior.png', $array)?></div><?php
 			}else{
 				$trouve = false;
 				foreach ($enemies as $enemy) {
@@ -75,10 +75,10 @@
 							//echo "ok";
 						}
 						if($enemy["player_id"] == $fighter["player_id"]) {
-							?><div class="cell"><?=$this->Html->image('warrior.png', $array)?></div><?php
+							?><div class="cell"><?=$this->Html->image('Avatars/warrior.png', $array)?></div><?php
 						}
 						else {
-							?><div class="cell"><?=$this->Html->image('enemy.jpg', $array)?></div><?php
+							?><div class="cell"><?=$this->Html->image('Avatars/enemy.jpg', $array)?></div><?php
 						}
 						$trouve = true;
 					}

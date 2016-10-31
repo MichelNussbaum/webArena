@@ -13,7 +13,7 @@
 		<?php foreach ($fighters as $fighter): ?>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<?php echo $this->Html->image('warrior.png', ['alt' => 'warrior',"width" => 75,"class"=>"img-responsive"]);?>
+					<?php echo $this->Html->image('Avatars/warrior.png', ['alt' => 'warrior',"width" => 75,"class"=>"img-responsive"]);?>
 					<div class="caption">
 						<h1><?= $fighter->name ?></h1>
 						<h2>LVL : <?= $fighter->level ?></h2>
@@ -150,14 +150,15 @@
 					</div>
 					<div class="modal-body">
 						<div class="fighters form">
-							<?= $this->Form->create() ?>
+							<?= $this->Form->create('fighter' , array('type' => 'file' )) ?>
 							<?= $this->Form->hidden('type',['value' => 'addfighters']) ?>
 							<?= $this->Form->input('name',['class' => 'form-control']) ?>
+							<?= $this->Form->input('avatar_file' , array('label' => 'Votre avatar (au format pmg ou jpg)' , 'type' => 'file')) ?>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<?= $this->Form->button(__('Ajouter'),['class'=>'btn btn-default']); ?>
+						<?= $this->Form->button(__('Ajouter'),['class'=>'btn btn-primary']); ?>
 						<?= $this->Form->end() ?>
 					</div>
 				</div>
