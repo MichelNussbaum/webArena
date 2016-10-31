@@ -11,7 +11,6 @@ class MessagesTable extends Table{
     	->select(['fighter_id'])
     	->where(['fighter_id_from' => $idFighter])
     	->distinct(['fighter_id'])
-    	->order(['date' => 'DESC'])
     	->all();
     	$fightersTable = TableRegistry::get('Fighters');
     	$fighters = array();
