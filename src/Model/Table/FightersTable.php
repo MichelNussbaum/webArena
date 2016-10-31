@@ -83,6 +83,20 @@ class FightersTable extends Table
     }
   }
 
+  function findNbPartenaireGuildAutourCible($x,$y,$guilde){
+    $query = $this->find();
+    $query->select(['count' => $query->func()->count('*')])
+    ->where(["coordinate_x"=>$x-1,"coordinate_y"=>$y])
+    ->orWhere(["coordinate_x"=>$x+1,"coordinate_y"=>$y])
+    ->orWhere([["coordinate_x"=>$x,"coordinate_y"=>$y+1],["coordinate_x"=>$x,"coordinate_y"=>$y-1]])
+    ->andWhere(["guild_id"=>$guilde]);
+    foreach ($query as $f)
+    {
+      $res = $f->count-1;
+    }
+    return $res;
+  }
+
   function moove($id,$action){
     $fighter = $this->get($id);
     $message = '';
@@ -198,7 +212,8 @@ class FightersTable extends Table
     $seuil = 10+$player->level-$enemy->level;
     $message = array();
     if($rand > $seuil){
-      if ($this->updateVie($enemy,$enemy->current_health - $player->skill_strength)) {
+      $bonusGuilde = $this->findNbPartenaireGuildAutourCible($enemy->coordinate_x,$enemy->coordinate_y,$player->guild_id);
+      if ($this->updateVie($enemy,$enemy->current_health - $player->skill_strength - $bonusGuilde)) {
         $xp = $player->xp+1;
         if($enemy->current_health <= 0){
           $xp = $xp + $enemy->level;

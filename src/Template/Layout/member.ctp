@@ -71,5 +71,5 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </body>
 <footer>
   <p class="text-muted"> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir POUTINE - Options :  B,F,G <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
-  </div>
+  </footer>
 </html>
