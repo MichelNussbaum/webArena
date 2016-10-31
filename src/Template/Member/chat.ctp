@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Communication');?>
 <div class="row">
 	<div class="col-md-3">
 		<ul class="nav nav-pills nav-stacked" id="myTabs" role="tablist">

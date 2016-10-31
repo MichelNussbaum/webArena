@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Guilde');?>
 <div class="containerGuild">
 <?php echo $idFighter ?>
 	<!-- Si joueur n'a pas de guilde dans BD -->

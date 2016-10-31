@@ -1,4 +1,5 @@
 <?php echo $this->Html->css('damier');?>
+<?php $this->assign('title', 'Arène');?>
 	<div class="row">
 	  	<div class="col-xs-offset-5">
 			<?= $this->Form->create();?>

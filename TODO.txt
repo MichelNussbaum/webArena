@@ -2,7 +2,7 @@
 - Renommer boutique en passer niveau                                              - Filipe - ok
 - Ajout option choisir avatar
 - Ajouter une page regroupant les evenements sous 24h                             - Michel - ok
-- Revoir position du footer + ajouter option FB									  - Michel - ok
+- Revoir position du footer + ajouter option FB									  - Michel - ko - en cours
 - Faire en sorte qu'il puisse avoir qu'un seul combattant par case                - Filipe - ok
 - changer point de vie intitial à 5                                               - Filipe - ok
 - ne plus descendre skill_health mais current skill_health                        - Michel - OK
@@ -12,10 +12,10 @@
 - ne pas afficher les combattants mort (x:-1000 y:-100)                           - MICHEL - OK
 - revoir algo boutique XP/4 - level réel                                          - Michel Ok
 - gérer que lorsque l'on passe de niveau on regagne toute notre vie			      	  - Michel ok
-- gérer +1 force par nombre de membre de la guilde autour de la cible
+- gérer +1 force par nombre de membre de la guilde autour de la cible			  - Michel - ok
 - ne pas voir en enemis ses autres perso                                          - Filipe ok
 - faire le chat							                                 										  - Michel ok
-- ajouter git log dans le footer												                          - Michel - KO - en cours
+- ajouter git log dans le footer												                          - Michel - ok
 - ajouter flash sortie de la map											                         	  - Michel - OK
 - lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok
 - Rajouter un lien lorsque que l'on créer une guilde, idem quand on rejoint

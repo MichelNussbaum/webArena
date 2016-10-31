@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Création de guilde');?>
 <div class="col-md-6 col-sm-offset-3">
 	<h1> Création de guilde </h1>
 	<p> Vous êtes prêt à diriger une guilde ?</p>

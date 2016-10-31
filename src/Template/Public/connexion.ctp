@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Connexion');?>
 <div class="players form">
 <?= $this->Flash->render('auth') ?>
 <?= $this->Form->create("test",["class"=>"form-horizontal"]) ?>
@@ -34,11 +35,11 @@ $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://localhost:8888/webArena/Public/facebook', $permissions);
 
 echo '<a type="button" class="btn btn-primary" href="' . htmlspecialchars($loginUrl) . '">Se Connecter avec Facebook</a>';?>
-<button type="button" class="btn btn-link" data-toggle="modal" data-target="#MDPOublié">Mot de passe oublié ?</button>
+<button type="button" class="btn btn-link" data-toggle="modal" data-target="#MDPOublie">Mot de passe oublié ?</button>
 </div>
 
 <!-- Mot de passe oublié ? -->
-<div class="modal fade" id="MDPOublié" tabindex="-1" role="dialog" aria-labelledby="MDPOublié">
+<div class="modal fade" id="MDPOublie" tabindex="-1" role="dialog" aria-labelledby="MDPOublie">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Évenements');?>
 <table class="table table-bordered" id="example">
 	<thead>
   	<?= $this->Html->tableHeaders(['Name', 'Date', 'posX','posY']);?>

@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Rejoindre une guilde');?>
 <div class="col-md-3 col-sm-offset-4">
 	
 	<!-- Formulaire de création de guilde -->

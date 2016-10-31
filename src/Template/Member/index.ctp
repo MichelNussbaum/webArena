@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Combattants');?>
 <div class="container">
 	<div class="jumbotron">
 		<h1>Vos Combattants</h1>
