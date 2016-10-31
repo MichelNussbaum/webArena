@@ -161,6 +161,17 @@ class FightersTable extends Table
     $this->save($enemy);
   }
 
+  function iamdead($idFighter)
+  {
+    $fighter = $this->get($idFighter);
+    if (($fighter["coordinate_x"] == -100) && ($fighter["coordinate_y"] == -100)) {
+      return 1;
+    }
+    else {
+      return 0;
+    }
+  }
+
   function insererEvenement($message,$posX,$posY){
     $eventsTable = TableRegistry::get('Events');
     $eventsTable->insert($message,$posX,$posX);
@@ -229,6 +240,7 @@ class FightersTable extends Table
         $fighter->current_health = $fighter->skill_health;
         $this->save($fighter);
     }
+    
     public function joinAGuild($data,$idFighter){
         $fighter = $this->findById($idFighter);
         $fighter->guild_id = $data["idGuild"];

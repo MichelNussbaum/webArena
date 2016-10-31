@@ -75,6 +75,7 @@ class MemberController extends AppController
 			}
 			elseif ($this->request->data['type'] == 'ajoutCompetence'){
 				$this->Fighters->augmenterCompetences($this->request->data);
+				return $this->redirect(['action' => 'index']);
 			}
 		}
 	}
@@ -110,52 +111,56 @@ class MemberController extends AppController
             }
     }
 
-	public function arena($id){
-		if($this->request->is('post')){
-			$action = $this->request->data["action"];
-			switch ($action) {
-				case 'monter':
-				$message = $this->Fighters->moove($id,"monter");
-				if(!empty($message)){
-					$this->Flash->error(__($message));
-				}
-				break;
+		public function arena($id){
+			$value = $this->Fighters->iamdead($id);
+			if ($value == 0) {
+				if($this->request->is('post')){
+					$action = $this->request->data["action"];
+					switch ($action) {
+						case 'monter':
+						$message = $this->Fighters->moove($id,"monter");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
 
-				case 'descendre':
-				$message = $this->Fighters->moove($id,"descendre");
-				if(!empty($message)){
-					$this->Flash->error(__($message));
-				}
-				break;
+						case 'descendre':
+						$message = $this->Fighters->moove($id,"descendre");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
 
-				case 'gauche':
-				$message = $this->Fighters->moove($id,"gauche");
-				if(!empty($message)){
-					$this->Flash->error(__($message));
-				}
-				break;
+						case 'gauche':
+						$message = $this->Fighters->moove($id,"gauche");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
 
-				case 'droite':
-				$message = $this->Fighters->moove($id,"droite");
-				if(!empty($message)){
-					$this->Flash->error(__($message));
-				}
-				break;
+						case 'droite':
+						$message = $this->Fighters->moove($id,"droite");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
 
-				case 'attaquer':
-				$idP = $this->request->data["idP"];
-				$idE = $this->request->data["idE"];
-				$message = $this->Fighters->attaquer($idP,$idE);
-				$this->Flash->default(__($message));
-				break;
+						case 'attaquer':
+						$idP = $this->request->data["idP"];
+						$idE = $this->request->data["idE"];
+						$message = $this->Fighters->attaquer($idP,$idE);
+						$this->Flash->default(__($message));
+						break;
+					}
+				}
+				$fighter = $this->Fighters->findById($id);
+				$this->set("fighter",$fighter);
+				$this->set("enemies",$this->Fighters->findEnemies($id));
 			}
-		}else{
-
+			else {
+				return $this->redirect(['action' => 'index']);
+			}
 		}
-		$fighter = $this->Fighters->findById($id);
-		$this->set("fighter",$fighter);
-		$this->set("enemies",$this->Fighters->findEnemies($id));
-	}
 
 	public function chat($idFighter){
 		$user = $this->Auth->user();
