@@ -30,11 +30,12 @@
 		</div>
   	</div>
   	<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
+	<div>
 	<?php
 	for ($i=0; $i < 10; $i++) {?>
-		<div>
+		<div class="ligne">
 		<?php for ($j=0; $j < 15; $j++) {
-			$array = ['alt' => 'warrior',"class"=>"contentDamier","data-toggle"=>"popover","data-trigger"=>"click"];
+			$array = ['alt' => 'warrior',"class"=>"img-responsive","data-toggle"=>"popover","data-trigger"=>"click"];
 			if($fighter->coordinate_x-1 == $j && $fighter->coordinate_y-1 == $i){
 				$array["title"] = $fighter->name;
 				$array["data-content"] = '<ul class="list-unstyled">
@@ -86,4 +87,9 @@
 		}?>
 		</div>
 	<?php }?>
-	<script type="text/javascript">$(".contentDamier").popover({ html : true })</script>
+	</div>
+	<script type="text/javascript">$(".img-responsive").popover({ html : true });
+	$('.cell').height($('.cell').width());
+	$( window ).resize(function() {
+	  $('.cell').height($('.cell').width());
+	});</script>

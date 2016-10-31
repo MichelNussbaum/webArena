@@ -1,10 +1,17 @@
 .cell{
 	display: inline-block;
-	background-color: black;
+	background-color: #CCCCCC;
 	border-style: solid;
-	border-color: red;
+	border-color: black;
+	border-width: 1px 1px 0px 0px;
 	width: 6.66%;
 }
+
+.cell:first-child{
+	border-width: 1px 1px 0px 1px;
+}
+
+
 
 .cell:after {
   content: "";
@@ -12,7 +19,14 @@
   padding-bottom: 100%;
 }
 
-.contentDamier{
-	position: absolute;
-	width: 5.3%;
+.ligne{
+	margin-bottom: -5px;
+}
+
+.ligne:last-child .cell{
+	border-width: 1px 1px 1px 0px;
+}
+
+.ligne:last-child .cell:first-child{
+	border-width: 1px 1px 1px 1px;
 }
