@@ -1,7 +1,7 @@
-- Revoir fonction mot de passe oublié											- Michel - OK
+- Revoir fonction mot de passe oublié									                         		- Michel - OK
 - Renommer boutique en passer niveau                                              - Filipe - ok
 - Ajout option choisir avatar
-- Ajouter une page regroupant les evenements sous 24h							 - Michel - ok
+- Ajouter une page regroupant les evenements sous 24h                             - Michel - ok
 - Revoir position du footer + ajouter option FB
 - Faire en sorte qu'il puisse avoir qu'un seul combattant par case                - Filipe - ok
 - changer point de vie intitial à 5                                               - Filipe - ok
@@ -14,8 +14,9 @@
 - revoir algo boutique XP/4 - level réel                                          - Michel Ok
 - gérer que lorsque l'on passe de niveau on regagne toute notre vie			      	  - Michel ok
 - gérer +1 force par nombre de membre de la guilde autour de la cible
-- ne pas voir en enemis ses autres perso                                         - Filipe ok
-- faire le chat																	  - Michel ok
+- ne pas voir en enemis ses autres perso                                          - Filipe ok
+- faire le chat							                                 										  - Michel ok
 - ajouter git log dans le footer												                          - Michel - OK
 - ajouter flash sortie de la map											                         	  - Michel - OK
 - lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok
+- Rajouter un lien lorsque que l'on créer une guilde, idem quand on rejoint
