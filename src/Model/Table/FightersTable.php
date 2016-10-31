@@ -85,16 +85,20 @@ class FightersTable extends Table
   }
 
   function findNbPartenaireGuildAutourCible($x,$y,$guilde){
-    $query = $this->find();
-    $query->select(['count' => $query->func()->count('*')])
-    ->where(["coordinate_x"=>$x-1,"coordinate_y"=>$y])
-    ->orWhere(["coordinate_x"=>$x+1,"coordinate_y"=>$y])
-    ->orWhere([["coordinate_x"=>$x,"coordinate_y"=>$y+1],["coordinate_x"=>$x,"coordinate_y"=>$y-1]])
-    ->andWhere(["guild_id"=>$guilde]);
-    foreach ($query as $f)
-    {
-      $res = $f->count-1;
+    $res = 0;
+    if(!empty($guilde)){
+      $query = $this->find();
+      $query->select(['count' => $query->func()->count('*')])
+      ->where(["coordinate_x"=>$x-1,"coordinate_y"=>$y])
+      ->orWhere(["coordinate_x"=>$x+1,"coordinate_y"=>$y])
+      ->orWhere([["coordinate_x"=>$x,"coordinate_y"=>$y+1],["coordinate_x"=>$x,"coordinate_y"=>$y-1]])
+      ->andWhere(["guild_id"=>$guilde]);
+      foreach ($query as $f)
+      {
+        $res = $f->count-1;
+      }
     }
+    
     return $res;
   }
 

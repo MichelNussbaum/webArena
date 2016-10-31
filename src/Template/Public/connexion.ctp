@@ -23,16 +23,26 @@
 	</div>
 <?= $this->Form->end() ?>
 <?php
+if($_SERVER['HTTP_HOST'] == "localhost:8888"){
+  //on met les id de l'application de test
+  $appId = "1242440412484253";
+  $appSecret = "77412844f205bd09ed47a7954611259e";
+}elseif ($_SERVER['HTTP_HOST'] == "michelnussbaum.fr") {
+  //on met les id de l'application de prod
+  $appId = "1242436859151275";
+  $appSecret = "d35c67c6507a9587e2657b27c0ae720e";
+}
 $fb = new Facebook\Facebook([
-  'app_id' => '1242436859151275', // Replace {app-id} with your app id
-  'app_secret' => 'd35c67c6507a9587e2657b27c0ae720e',
+  'app_id' => $appId, 
+  'app_secret' => $appSecret,
   'default_graph_version' => 'v2.2',
   ]);
 
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('http://localhost:8888/webArena/Public/facebook', $permissions);
+$loginUrl = $helper->getLoginUrl('http://'.$_SERVER['HTTP_HOST'].'/webArena/Public/facebook', $permissions); //app test
+//$loginUrl = $helper->getLoginUrl('http://michelnussbaum.fr/webArena/Public/facebook', $permissions); //app prod
 
 echo '<a type="button" class="btn btn-primary" href="' . htmlspecialchars($loginUrl) . '">Se Connecter avec Facebook</a>';?>
 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#MDPOublie">Mot de passe oublié ?</button>

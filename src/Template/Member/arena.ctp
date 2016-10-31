@@ -1,12 +1,21 @@
 <?php echo $this->Html->css('damier');?>
 <?php $this->assign('title', 'Arène');?>
 	<div class="row">
-	  	<div class="col-xs-offset-5">
+		<div class="col-xs-1">
+			<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
+		</div>
+	  	<div class="col-xs-1 col-xs-offset-4">
 			<?= $this->Form->create();?>
 			<?= $this->Form->hidden('action',["value"=>"monter"]);?>
 			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
 		  	<?= $this->Form->end();?>
 	  	</div>
+	  	<div class="col-xs-1 col-xs-offset-5">
+		  	<?= $this->Form->create();?>
+			<?= $this->Form->hidden('action',["value"=>"hurler"]);?>
+			<?= $this->Form->button(__('Hurler'),array('class' => 'btn btn-warning'));?>
+		  	<?= $this->Form->end();?>
+		</div>
   	</div>
   	<div class="row">
   		<div class="col-xs-1 col-xs-offset-4">
@@ -23,14 +32,13 @@
 		</div>
   	</div>
   	<div class="row">
-  		<div class="col-xs-offset-5">
+  		<div class="col-xs-1 col-xs-offset-5">
 		  	<?= $this->Form->create();?>
 			<?= $this->Form->hidden('action',["value"=>"descendre"]);?>
 			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
 		  	<?= $this->Form->end();?>
 		</div>
   	</div>
-  	<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
 	<div>
 	<?php
 	for ($i=0; $i < 10; $i++) {?>
@@ -38,6 +46,12 @@
 		<?php for ($j=0; $j < 15; $j++) {
 			$array = ['alt' => 'warrior',"class"=>"img-responsive","data-toggle"=>"popover","data-trigger"=>"click"];
 			if($fighter->coordinate_x-1 == $j && $fighter->coordinate_y-1 == $i){
+				if(!empty($fighterGuilde)){
+					$guildName = $fighterGuilde->name;
+				}
+				else{
+					$guildName = "";
+				}
 				$array["title"] = $fighter->name;
 				$array["data-content"] = '<ul class="list-unstyled">
 				<li>LVL : '.$fighter->level.'</li>
@@ -47,7 +61,7 @@
 				<li>👀 : '.$fighter->skill_sight.'</li>
 				<li>❇ X: '.$fighter->coordinate_x.'</li>
 				<li>❇ Y: '.$fighter->coordinate_y.'</li>
-				<li>guild : '.$fighterGuilde->name.'</li>';
+				<li>guild : '.$guildName.'</li>';
 				?><div class="cell"><?=$this->Html->image('Avatars/warrior.png', $array)?></div><?php
 			}else{
 				$trouve = false;

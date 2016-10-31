@@ -43,8 +43,8 @@ $cakeDescription = 'Web Arena';
 <body class="home">
     <div class="container">
     <div class="jumbotron">
-      <h1>Bienvenue sur THE game</h1>
-      <p>The game est un jeu de rôle créé dans le cadre de notre formation en web à l'ECE Paris par Julien Falconnet</p>
+      <h1>Bienvenue sur Web Areana</h1>
+      <p>Web Arena est un jeu de rôle créé dans le cadre de notre formation sur CakePHP à l'ECE Paris par Julien Falconnet</p>
       <p>
           <!-- Lien Inscription -->
           <?php echo $this->Html->link('Inscription', array('controller' => 'Public','action' => 'inscription'), array('class' => 'btn btn-primary btn-lg'));?>
@@ -55,110 +55,76 @@ $cakeDescription = 'Web Arena';
     <div class="page-header">
         <h1>Règles du jeu</h1>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-
-    <p>Quisque nec cursus mauris. Nulla dignissim justo et lectus ultricies commodo. Ut condimentum vehicula congue. Pellentesque commodo eget tellus eget facilisis. Fusce eu arcu venenatis, convallis turpis at, ornare ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus hendrerit, mi id aliquam aliquam, nisi dolor gravida justo, vitae lobortis lectus justo at sem. Maecenas velit sem, aliquam vitae mollis sed, porta eget nibh. Aliquam eu massa mollis, dapibus arcu nec, semper odio. Aliquam vitae nibh eros. Curabitur sed ligula sapien. Aliquam mollis dolor lobortis gravida cursus. Sed aliquam leo neque, eu hendrerit dui mollis ac.</p>
-
-    <p>Duis condimentum quam in turpis suscipit pharetra. Nullam vitae laoreet lacus, vitae pretium mi. Phasellus efficitur justo est, vitae accumsan tellus ullamcorper ac. Ut eget tempus erat. Mauris leo odio, eleifend egestas dignissim ac, tempus ut nulla. Vestibulum placerat neque quis massa finibus congue. Maecenas a ipsum porta, rutrum eros ac, lacinia ex. Duis at blandit nulla. Maecenas auctor viverra lectus eget placerat. Integer efficitur arcu sit amet hendrerit dapibus. Duis fermentum consectetur turpis non cursus. Duis placerat dapibus arcu, eu rutrum felis fermentum quis. Morbi nisl arcu, lacinia in nisi eget, rutrum faucibus nulla. Praesent et est massa.</p>
-
-    <p>Sed venenatis lectus vel libero vehicula tincidunt. Vestibulum auctor ullamcorper tortor, sit amet vestibulum nulla. Donec in commodo augue. In pellentesque tempus augue, ac maximus dolor consequat a. Etiam aliquam suscipit erat. Aenean sem velit, dapibus vitae sagittis nec, aliquet eget nulla. Morbi vestibulum lorem vel mi condimentum mollis commodo non velit. Fusce interdum ex eget condimentum viverra. Sed turpis urna, laoreet nec tristique sed, faucibus in nunc. Vestibulum quis rhoncus turpis, at mattis neque. In quis metus nunc. Donec augue libero, commodo id tortor pulvinar, egestas imperdiet lectus. Quisque ac mauris vitae mi faucibus efficitur ut id lacus. Suspendisse tellus risus, sodales et ullamcorper vel, facilisis convallis magna.</p>
-
-    <p>Nunc pulvinar pulvinar nulla. Duis auctor, velit in maximus interdum, nisi ex vestibulum turpis, ac pellentesque lectus lorem at erat. Phasellus nec nulla pretium, finibus ipsum non, aliquam sem. Etiam vulputate at neque ut tempor. Integer bibendum lobortis magna, sed vulputate ex. Aenean posuere diam ut blandit commodo. Vestibulum ante felis, auctor eget sollicitudin ut, hendrerit vitae diam. Cras sodales at elit tempus elementum. Nunc efficitur scelerisque felis at tincidunt. Maecenas ac efficitur leo, at gravida velit. Pellentesque ac viverra libero. Vivamus non finibus justo, ut laoreet dolor. Quisque rutrum lacus vestibulum semper volutpat. Sed non facilisis sapien.</p>
+    <ul>
+        <li>
+            Un combattant se trouve dans une arène en damier à une position X,Y. Cette position ne peut pas se trouver hors des dimension de l'arène. Un seul combattant par case. Une arène par site.
+        </li>
+        <li>
+            Un combattant commence avec les caractéristiques suivantes : vue= 2, force=1, point de vie=5 (ces valeurs doivent être paramétrées). Il apparaît à une position libre aléatoire.
+        </li>
+        <li>
+            Constantes paramétrées et valeurs de livraison : largeur (x) de l'arène (15), longueur (y) de l'arène (10) (ces valeurs doivent être paramétrées dans un modèle).
+        </li>
+        <li>
+            La caractéristique de vue détermine à quelle distance (de Manhattan = x+y) un combattant peut voir. Ainsi seuls les combattants et les éléments du décor à portée sont affichés sur la page concernée. 0 correspond à la case courante.
+        </li>
+        <li>
+            La caractéristique de force détermine combien de point de vie perd son adversaire quand le combattant réussit son action d'attaque...
+        </li>
+        <li>
+            Lorsque le combattant voit ses points de vie atteindre 0, il est retiré du jeu. Un joueur dont le combattant a été retiré du jeu est invité à en recréer un nouveau.
+        </li>
+        <li>
+            Une action d'attaque réussit si une valeur aléatoire entre 1 et 20 (d20) est supérieur à un seuil calculé comme suit : 10 + niveau de l'attaqué - niveau de l'attaquant.
+        </li>
+        <li>
+            Progression : à chaque attaque réussie le combattant gagne 1 point d'expérience. Si l'attaque tue l'adversaire, le combattant gagne en plus autant de points d'expériences que le niveau de l'adversaire vaincu. Tous les 4 points d'expériences, le combattant change de niveau et peut choisir d'augmenter une de ses caractéristiques : vue +1 ou force+1 ou point de vie+3. En cas de progression, les points de vie maximaux augmentent ET les points de vie courants remontent au maximum.
+        </li>
+        <li>
+            En pratique, on incrémentera le niveau que lorsqu'une augmentation sera prise, et on utilisera (xp/4) - niveau pour savoir s'il reste des augmentations à prendre. Le niveau commence et les points d'expérience commencent à 0.
+        </li>
+        <li>
+            Chaque action provoque la création d'un événement avec une description claire. Par exemple : « jonh attaque bill et le touche ».
+        </li>
+    </ul>
     <div class="page-header">
-        <h1>Combattants</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-
-        <p>Quisque nec cursus mauris. Nulla dignissim justo et lectus ultricies commodo. Ut condimentum vehicula congue. Pellentesque commodo eget tellus eget facilisis. Fusce eu arcu venenatis, convallis turpis at, ornare ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus hendrerit, mi id aliquam aliquam, nisi dolor gravida justo, vitae lobortis lectus justo at sem. Maecenas velit sem, aliquam vitae mollis sed, porta eget nibh. Aliquam eu massa mollis, dapibus arcu nec, semper odio. Aliquam vitae nibh eros. Curabitur sed ligula sapien. Aliquam mollis dolor lobortis gravida cursus. Sed aliquam leo neque, eu hendrerit dui mollis ac.</p>
+        <h1>Options choisies</h1>
     </div>
-
+    <ul>
+        <li>
+            <h3>Option B : Gestion de la communication et de guilde<small> - amélioration</small></h3>
+            <p>Le système doit permettre d'envoyer un message à un autre combattant. Il doit aussi ajouter l'action crier qui permet de créer un événement avec une description à saisir.</p>
+            <p>Le système doit gérer la possibilité de créer et ou de rejoindre une guilde. Un combattant qui attaque une cible gagne +1 en attaque par autre membre de sa guilde au contact de sa cible.</p>
+        </li>
+        <li>
+            <h3>Option F : Utilisation de Bootstrap <small> - bibliothèque externe</small></h3>
+            <p>Utilisez bootstrap 3 (attention c'est une version récente, beaucoup de tutoriels en ligne concernent la version 2) pour la composition de vos pages. Respectez les conventions bootstrap, utilisez les classes et les id de bootstrap dans votre HTML et utilisez la css personnalisée la plus restreinte possible.</p>
+        </li>
+        <li>
+            <h3>Option G : Utilisation d'une connexion externe Google/Facebook<small> - (bibliothèque externe)</small></h3>
+            <p>Permettre aux utilisateurs de se connecter avec leur compte facebook</p>
+        </li>
+    </ul>
     <div class="page-header">
-        <h1>Objets</h1>
+        <h1>Bonus choisis</h1>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
-                <div class="caption">
-                    <h3>Objet 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-                    <p>
-                    <!-- Lien détails objets -->
-                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
-                <div class="caption">
-                    <h3>Objet 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-                    <p>
-                    <!-- Lien détails objets -->
-                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
-                <div class="caption">
-                    <h3>Objet 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-                    <p>
-                    <!-- Lien détails objets -->
-                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
-                <div class="caption">
-                    <h3>Objet 4</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-                    <p>
-                    <!-- Lien détails objets -->
-                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
-                <div class="caption">
-                    <h3>Objet 5</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-                    <p>
-                    <!-- Lien détails objets -->
-                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <?php echo $this->Html->image('sword.jpg', ['alt' => 'épée',"width" => 50]);?>
-                <div class="caption">
-                    <h3>Objet 6</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at finibus enim. Quisque vitae odio et enim hendrerit tincidunt et vitae nisl. Fusce dapibus scelerisque sem sit amet vestibulum. Fusce dolor enim, dictum quis libero a, suscipit scelerisque velit. Aenean aliquet erat in quam gravida, id eleifend nibh vestibulum. Quisque elit felis, porttitor eu tincidunt vitae, ornare ac mauris. Suspendisse at viverra mi. Aenean sit amet porta augue. Ut enim elit, commodo ac volutpat eu, rutrum eget nulla.</p>
-                    <p>
-                    <!-- Lien détails objets -->
-                    <?php echo $this->Html->link('Détails', array('controller' => 'Objets', 'action' => 'details'), array('class' => 'btn btn-primary'));?>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <ul>
+        <li>
+            <h3>Utilisation d'un suivi de version GIT<small> - (1 point)</small></h3>
+            <p>
+                Utiliser un système de suivi de version, type subversion(svn) pour toute la durée du projet. L'école en propose un (webapps.ece.fr/svn-manager), mais un autre est possible (git par exemple).
+            <p>Pour obtenir le bonus, il faudra livrer avec le projet le fichier de log du gestionnaire avec mention des fichiers modifiés (pour svn, il s'agit du résultat de svn log -v, pour git, il s'agit du résultat de git log). Le fichier devra s'appeler versions.log et un lien dans le footer de toutes les pages devra y mener.</p>
+            </p>
+        </li>
+        <li>
+            <h3>Mise en ligne sur Internet<small> - (2 points)</small></h3>
+            <p>Le site devra être disponible et fonctionnel sur un hébergement accessible sur Internet. Il existe des hébergements gratuits. L'école propose également des hébergements, mais la compatibilité avec notre Framework est inconnue. L'adresse d'hébergement devra être indiquée dans le footer de toutes les pages.</p>
+            </p>
+        </li>
+    </ul>
 </div>
 </body>
 <footer>
-      <p> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir POUTINE - Options :  B,F,G <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
+      <p> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir POUTINE - Options :  B,F,G - Bonus 1 : <?= $this->Html->link('Hébergement','http://michelnussbaum.fr/webArena');?> - Bonus 2 : <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
 </footer>
 </html>
