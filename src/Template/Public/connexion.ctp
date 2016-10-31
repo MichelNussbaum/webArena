@@ -12,6 +12,7 @@
 	    <div class="form-group">
          	<label class="col-sm-2 control-label">Password</label>
          	<div class="col-sm-6">
+            <?= $this->Form->hidden('type',['value' => 'connexion']) ?>
         		<?= $this->Form->password('password',['class' => 'form-control']) ?>
         	</div>
         </div>
@@ -33,8 +34,37 @@ $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://localhost:8888/webArena/Public/facebook', $permissions);
 
 echo '<a type="button" class="btn btn-primary" href="' . htmlspecialchars($loginUrl) . '">Se Connecter avec Facebook</a>';?>
-<?= $this->Html->link('Mot de passe oublié ?', array('controller' => 'Public', 'action' => 'forgetPassword'), array('class' => 'btn btn-link'));?>
-
-
+<button type="button" class="btn btn-link" data-toggle="modal" data-target="#MDPOublié">Mot de passe oublié ?</button>
 </div>
 
+<!-- Mot de passe oublié ? -->
+<div class="modal fade" id="MDPOublié" tabindex="-1" role="dialog" aria-labelledby="MDPOublié">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="MDPOublié">Mot de passe oublié ?</h4>
+      </div>
+      <div class="modal-body">
+        <div class="players form">
+        <?= $this->Form->create($player,["class"=>"form-horizontal"]) ?>
+            <fieldset>
+                <legend><?= __("Merci de rentrer votre email") ?></legend>
+                <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+        	        <div class="col-sm-6">
+                    <?= $this->Form->hidden('type',['value' => 'MDPOublié']) ?>
+                		<?= $this->Form->email('email',['class' => 'form-control']) ?>
+                	</div>
+                </div>
+            </fieldset>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <?= $this->Form->button(__('Envoyer'),['class'=>'btn btn-default']); ?>
+        <?= $this->Form->end() ?>
+      </div>
+    </div>
+  </div>
+</div>

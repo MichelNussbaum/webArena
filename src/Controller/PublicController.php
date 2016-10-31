@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
-use Facebook\Facebook; 
+use Facebook\Facebook;
 
 class PublicController extends AppController
 {
@@ -40,15 +40,21 @@ class PublicController extends AppController
 
 	public function connexion()
 	{
+		$this->set('player', $this->Auth->user());
 		if ($this->request->is('post')) {
-			$player = $this->Auth->identify();
-			if ($player) {
-				$this->Auth->setUser($player);
-				$this->Flash->success(__("Connexion réussi."));
-				return $this->redirect($this->Auth->redirectUrl());
-			}
-			else {
-				$this->Flash->error(__('Invalid player or password, try again'));
+			if ($this->request->data['type'] == 'connexion')
+			{
+				$player = $this->Auth->identify();
+				if ($player) {
+					$this->Auth->setUser($player);
+					$this->Flash->success(__("Connexion réussi."));
+					return $this->redirect($this->Auth->redirectUrl());
+				}
+				else {
+					$this->Flash->error(__('Invalid player or password, try again'));
+				}
+			}elseif ($this->request->data['type'] == 'MDPOublié') {
+				$playerFind = $this->Players->findByEmail($this->request->data["email"]);
 			}
 		}
 	}
@@ -72,93 +78,93 @@ class PublicController extends AppController
 			'app_id' => '1242436859151275',
 			'app_secret' => 'd35c67c6507a9587e2657b27c0ae720e',
 			'default_graph_version' => 'v2.2'));
-		$helper = $fb->getRedirectLoginHelper();
+			$helper = $fb->getRedirectLoginHelper();
 
-		try {
-		  $accessToken = $helper->getAccessToken();
-		} catch(Facebook\Exceptions\FacebookResponseException $e) {
-		  // When Graph returns an error
-		  echo 'Graph returned an error: ' . $e->getMessage();
-		  exit;
-		} catch(Facebook\Exceptions\FacebookSDKException $e) {
-		  // When validation fails or other local issues
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		  exit;
-		}
+			try {
+				$accessToken = $helper->getAccessToken();
+			} catch(Facebook\Exceptions\FacebookResponseException $e) {
+				// When Graph returns an error
+				echo 'Graph returned an error: ' . $e->getMessage();
+				exit;
+			} catch(Facebook\Exceptions\FacebookSDKException $e) {
+				// When validation fails or other local issues
+				echo 'Facebook SDK returned an error: ' . $e->getMessage();
+				exit;
+			}
 
-		if (! isset($accessToken)) {
-		  if ($helper->getError()) {
-		    header('HTTP/1.0 401 Unauthorized');
-		    echo "Error: " . $helper->getError() . "\n";
-		    echo "Error Code: " . $helper->getErrorCode() . "\n";
-		    echo "Error Reason: " . $helper->getErrorReason() . "\n";
-		    echo "Error Description: " . $helper->getErrorDescription() . "\n";
-		  } else {
-		    header('HTTP/1.0 400 Bad Request');
-		    echo 'Bad request';
-		  }
-		  exit;
-		}
+			if (! isset($accessToken)) {
+				if ($helper->getError()) {
+					header('HTTP/1.0 401 Unauthorized');
+					echo "Error: " . $helper->getError() . "\n";
+					echo "Error Code: " . $helper->getErrorCode() . "\n";
+					echo "Error Reason: " . $helper->getErrorReason() . "\n";
+					echo "Error Description: " . $helper->getErrorDescription() . "\n";
+				} else {
+					header('HTTP/1.0 400 Bad Request');
+					echo 'Bad request';
+				}
+				exit;
+			}
 
-		// Logged in
-		/*echo '<h3>Access Token</h3>';
-		var_dump($accessToken->getValue());*/
+			// Logged in
+			/*echo '<h3>Access Token</h3>';
+			var_dump($accessToken->getValue());*/
 
-		// The OAuth 2.0 client handler helps us manage access tokens
-		$oAuth2Client = $fb->getOAuth2Client();
-		// Get the access token metadata from /debug_token
-		$tokenMetadata = $oAuth2Client->debugToken($accessToken);
-		/*echo '<h3>Metadata</h3>';
-		var_dump($tokenMetadata);*/
+			// The OAuth 2.0 client handler helps us manage access tokens
+			$oAuth2Client = $fb->getOAuth2Client();
+			// Get the access token metadata from /debug_token
+			$tokenMetadata = $oAuth2Client->debugToken($accessToken);
+			/*echo '<h3>Metadata</h3>';
+			var_dump($tokenMetadata);*/
 
-		// Validation (these will throw FacebookSDKException's when they fail)
-		$tokenMetadata->validateAppId('1242436859151275'); // Replace {app-id} with your app id
-		// If you know the user ID this access token belongs to, you can validate it here
-		//$tokenMetadata->validateUserId('123');
-		$tokenMetadata->validateExpiration();
+			// Validation (these will throw FacebookSDKException's when they fail)
+			$tokenMetadata->validateAppId('1242436859151275'); // Replace {app-id} with your app id
+			// If you know the user ID this access token belongs to, you can validate it here
+			//$tokenMetadata->validateUserId('123');
+			$tokenMetadata->validateExpiration();
 
-		if (! $accessToken->isLongLived()) {
-		  // Exchanges a short-lived access token for a long-lived one
-		  try {
-		    $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-		  } catch (Facebook\Exceptions\FacebookSDKException $e) {
-		    echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
-		    exit;
-		  }
+			if (! $accessToken->isLongLived()) {
+				// Exchanges a short-lived access token for a long-lived one
+				try {
+					$accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+				} catch (Facebook\Exceptions\FacebookSDKException $e) {
+					echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
+					exit;
+				}
 
-		  echo '<h3>Long-lived</h3>';
-		  var_dump($accessToken->getValue());
-		}
+				echo '<h3>Long-lived</h3>';
+				var_dump($accessToken->getValue());
+			}
 
-		try {
-		  // Returns a `Facebook\FacebookResponse` object
-		  $response = $fb->get('/me?fields=email', $accessToken);
-		} catch(Facebook\Exceptions\FacebookResponseException $e) {
-		  echo 'Graph returned an error: ' . $e->getMessage();
-		  exit;
-		} catch(Facebook\Exceptions\FacebookSDKException $e) {
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		  exit;
-		}
+			try {
+				// Returns a `Facebook\FacebookResponse` object
+				$response = $fb->get('/me?fields=email', $accessToken);
+			} catch(Facebook\Exceptions\FacebookResponseException $e) {
+				echo 'Graph returned an error: ' . $e->getMessage();
+				exit;
+			} catch(Facebook\Exceptions\FacebookSDKException $e) {
+				echo 'Facebook SDK returned an error: ' . $e->getMessage();
+				exit;
+			}
 
-		$user = $response->getGraphUser();
-		$player = $this->Players->findByEmail($user['email']);
-		if($player){
-			$this->Auth->setUser($player);
-			$this->Flash->success(__("Connexion réussi."));
-			return $this->redirect($this->Auth->redirectUrl());
-		}else{
-			$player = $this->Players->insertFacebook($user['email']);
-			if ($player) {
+			$user = $response->getGraphUser();
+			$player = $this->Players->findByEmail($user['email']);
+			if($player){
 				$this->Auth->setUser($player);
 				$this->Flash->success(__("Connexion réussi."));
 				return $this->redirect($this->Auth->redirectUrl());
+			}else{
+				$player = $this->Players->insertFacebook($user['email']);
+				if ($player) {
+					$this->Auth->setUser($player);
+					$this->Flash->success(__("Connexion réussi."));
+					return $this->redirect($this->Auth->redirectUrl());
+				}
+				else {
+					$this->Flash->error(__('Invalid player or password, try again'));
+				}
 			}
-			else {
-				$this->Flash->error(__('Invalid player or password, try again'));
-			}
-		}
-		
 
+
+		}
 	}
-}

@@ -5,6 +5,7 @@
 		<p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addfighters">Créer un combattant</button></p>
 	</div>
 </div>
+
 <!-- Affichage des fighters -->
 <div class="row">
 	<div class="row">
