@@ -10,7 +10,7 @@
 					<a href="#<?=$fighter[0]->id?>" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><?=$fighter[0]->name?>	<span class="badge"><?=count($fighter[1])?></span></a>
 				</li>
 			<?php } ?>
-			
+
 		</ul>
 	</div>
 	<div class="col-md-9">
@@ -19,7 +19,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<?php foreach ($enemies as $enemy) {
-						$options[$enemy->id] = $enemy->name; 
+						$options[$enemy->id] = $enemy->name;
 					}
 					if(!empty($options)){
 					?>
@@ -30,7 +30,7 @@
 					<?= $this->Form->input('title',['class' => 'form-control']) ?>
 					<label for="message">Message</label>
 					<?= $this->Form->textarea('message',['class' => 'form-control',"id"=>"message"]) ?>
-					<?= $this->Form->button(__('Envoyer'),['class'=>'btn btn-default']); ?>
+					<?= $this->Form->button(__('Envoyer'),['class'=>'btn btn-primary']); ?>
 					<?= $this->Form->end() ?>
 					<?php }else{ ?>
 					<p>Aucun combattants enemis disponibles</p>
@@ -50,9 +50,9 @@
 							  <div class="panel-body">
 							    <p>
 							    <?php if($fighter[0]->id == $message->fighter_id_from){?>
-							    	<?= $fighter[0]->name ?> : 
+							    	<?= $fighter[0]->name ?> :
 							    <?php }else{ ?>
-							    	Moi : 
+							    	Moi :
 							    <?php } ?>
 							    <?= $message->message?>
 							    </p>
@@ -70,12 +70,12 @@
 						<?= $this->Form->input('title',['class' => 'form-control']) ?>
 						<label for="message">Message</label>
 						<?= $this->Form->textarea('message',['class' => 'form-control',"id"=>"message"]) ?>
-						<?= $this->Form->button(__('Envoyer'),['class'=>'btn btn-default']); ?>
+						<?= $this->Form->button(__('Envoyer'),['class'=>'btn btn-primary']); ?>
 						<?= $this->Form->end() ?>
 					</div>
 				</div>
 			</div>
 		<?php } ?>
-		</div>	
+		</div>
 	</div>
 </div>

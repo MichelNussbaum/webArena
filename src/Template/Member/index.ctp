@@ -54,7 +54,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<?= $this->Form->button(__('Modifer'),['class'=>'btn btn-default']); ?>
+									<?= $this->Form->button(__('Modifer'),['class'=>'btn btn-primary']); ?>
 									<?= $this->Form->end() ?>
 								</div>
 							</div>
@@ -80,7 +80,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<?= $this->Form->button(__('Supprimer'),['class'=>'btn btn-default']); ?>
+									<?= $this->Form->button(__('Supprimer'),['class'=>'btn btn-primary']); ?>
 									<?= $this->Form->end() ?>
 								</div>
 							</div>
@@ -104,21 +104,21 @@
 										$vue.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
 										$vue.= $this->Form->hidden('skill',['value' => 'vue']);
 										$vue.= $this->Form->hidden('id',['value' =>  $fighter->id]);
-										$vue.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-default']);
+										$vue.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-primary']);
 										$vue.=$this->Form->end();
 										$arrayligne["vue"] = $vue;
 										$force = $this->Form->create();
 										$force.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
 										$force.= $this->Form->hidden('skill',['value' => 'force']);
 										$force.= $this->Form->hidden('id',['value' =>  $fighter->id]);
-										$force.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-default']);
+										$force.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-primary']);
 										$force.=$this->Form->end();
 										$arrayligne["force"] = $force;
 										$sante = $this->Form->create();
 										$sante.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
 										$sante.= $this->Form->hidden('skill',['value' => 'sante']);
 										$sante.= $this->Form->hidden('id',['value' =>  $fighter->id]);
-										$sante.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-default']);
+										$sante.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-primary']);
 										$sante.=$this->Form->end();
 										$arrayligne["sante"] = $sante;
 									?>
