@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 
+
 class FightersTable extends Table
 {
   function findById($id)
@@ -23,7 +24,7 @@ class FightersTable extends Table
         $guild = $guildsTable->findById($row->guild_id);
         $row["guild_name"] = $guild->name;
       }
-      
+
     }
     return $rows;
   }
@@ -269,7 +270,7 @@ class FightersTable extends Table
         $fighter->current_health = $fighter->skill_health;
         $this->save($fighter);
     }
-    
+
     public function joinAGuild($data,$idFighter){
         $fighter = $this->findById($idFighter);
         $fighter->guild_id = $data["idGuild"];
