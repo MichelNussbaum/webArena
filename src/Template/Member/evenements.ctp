@@ -1,5 +1,5 @@
 <?php $this->assign('title', 'Évenements');?>
-<table class="table table-bordered" id="example">
+<table class="table table-bordered" id="evenements">
 	<thead>
   	<?= $this->Html->tableHeaders(['Name', 'Date', 'posX','posY']);?>
   	</thead>
@@ -11,6 +11,8 @@
 </table>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#evenements').DataTable({
+    	 "order": [[ 1, "desc" ]]
+    });
 } );
 </script>

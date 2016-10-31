@@ -150,6 +150,15 @@ class MemberController extends AppController
 						$message = $this->Fighters->attaquer($idP,$idE);
 						$this->Flash->default(__($message));
 						break;
+
+						case 'hurler':
+						$fighter = $this->Fighters->findById($id);
+						$message = $fighter->name.' hurle !';
+						$res = $this->Events->insert($message,$fighter->coordinate_x,$fighter->coordinate_y);
+						if($res){
+							$this->Flash->success(__($message));
+						}
+						break;
 					}
 				}
 				$fighter = $this->Fighters->findById($id);

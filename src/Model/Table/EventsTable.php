@@ -12,7 +12,7 @@ class EventsTable extends Table
         $event["name"] = $message;
         $event["coordinate_x"] = $posX;
         $event["coordinate_y"] = $posY;
-        $this->save($event);
+        return $this->save($event);
     }
 
     function findLastDay(){

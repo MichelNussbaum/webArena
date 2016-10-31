@@ -1,12 +1,21 @@
 <?php echo $this->Html->css('damier');?>
 <?php $this->assign('title', 'Arène');?>
 	<div class="row">
-	  	<div class="col-xs-offset-5">
+		<div class="col-xs-1">
+			<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
+		</div>
+	  	<div class="col-xs-1 col-xs-offset-4">
 			<?= $this->Form->create();?>
 			<?= $this->Form->hidden('action',["value"=>"monter"]);?>
 			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
 		  	<?= $this->Form->end();?>
 	  	</div>
+	  	<div class="col-xs-1 col-xs-offset-5">
+		  	<?= $this->Form->create();?>
+			<?= $this->Form->hidden('action',["value"=>"hurler"]);?>
+			<?= $this->Form->button(__('Hurler'),array('class' => 'btn btn-warning'));?>
+		  	<?= $this->Form->end();?>
+		</div>
   	</div>
   	<div class="row">
   		<div class="col-xs-1 col-xs-offset-4">
@@ -23,14 +32,13 @@
 		</div>
   	</div>
   	<div class="row">
-  		<div class="col-xs-offset-5">
+  		<div class="col-xs-1 col-xs-offset-5">
 		  	<?= $this->Form->create();?>
 			<?= $this->Form->hidden('action',["value"=>"descendre"]);?>
 			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
 		  	<?= $this->Form->end();?>
 		</div>
   	</div>
-  	<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
 	<div>
 	<?php
 	for ($i=0; $i < 10; $i++) {?>
