@@ -18,7 +18,9 @@
 			<div class="panel-body">
 				<?php foreach ($enemies as $enemy) {
 					$options[$enemy->id] = $enemy->name; 
-				}?>
+				}
+				if(!empty($options)){
+				?>
 				<?= $this->Form->create() ?>
 				<?= $this->Form->hidden('fighter_id_from',['value' =>  $fighterCo->id]) ?>
 				<label for="messagepour">Envoyer à</label>
@@ -28,6 +30,9 @@
 				<?= $this->Form->textarea('message',['class' => 'form-control',"id"=>"message"]) ?>
 				<?= $this->Form->button(__('Envoyer'),['class'=>'btn btn-default']); ?>
 				<?= $this->Form->end() ?>
+				<?php }else{ ?>
+				<p>Aucun combattants enemis disponibles</p>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

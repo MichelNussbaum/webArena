@@ -20,3 +20,4 @@
 - ajouter flash sortie de la map											                         	  - Michel - OK
 - lorsque l'on augment la competences santé elle augment de 3 et pas de 1         - Michel - Ok
 - Rajouter un lien lorsque que l'on créer une guilde, idem quand on rejoint
+- passer la page mot de passe oublié en modal

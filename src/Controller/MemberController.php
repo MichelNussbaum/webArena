@@ -159,13 +159,14 @@ class MemberController extends AppController
 
 	public function chat($idFighter){
 		$user = $this->Auth->user();
-		$enemies = $this->Fighters->findAllFighterNotOwn($user->id);
+		$enemies = $this->Fighters->findAllFighterNotOwn($user['id']);
 		$this->set("enemies",$enemies);
 		$this->set("fighterCo",$this->Fighters->findById($idFighter));
 		$fighters = $this->Messages->findDistinctConversationByFighterId($idFighter);
 		$this->set("fighters",$fighters);
 		if($this->request->is('post')){
 			$this->Messages->insert($this->request->data);
+			return $this->redirect(['action' => 'chat',$idFighter]);
 		}
 	}
 
