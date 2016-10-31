@@ -154,6 +154,8 @@ class MemberController extends AppController
 				}
 				$fighter = $this->Fighters->findById($id);
 				$this->set("fighter",$fighter);
+				$fighterGuilde = $this->Guilds->findById($fighter->guild_id);
+				$this->set("fighterGuilde",$fighterGuilde);
 				$this->set("enemies",$this->Fighters->findEnemies($id));
 			}
 			else {

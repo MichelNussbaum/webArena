@@ -22,20 +22,16 @@ class GuildsTable extends Table {
 		return $data;
 	}
 
-	
-
-	
-
-	public function findByName($guild){
+	public function findByName($guild_name){
 	  	$query = $this->find('all')
-	    	->where(['Guilds.name LIKE' => $guild->name]);
+	    	->where(['Guilds.name LIKE' => $guild_name]);
 	    $row = $query->first();
 	    return $row;
 	}
 
-	public function findById($guild){
+	public function findById($guild_id){
 		$query = $this->find('all')
-			->where(['Guilds.id =' => $guild->id]);
+			->where(['Guilds.id =' => $guild_id]);
 		$row  = $query->first();
 		return $row;
 	}
