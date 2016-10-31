@@ -112,8 +112,7 @@ class MemberController extends AppController
     }
 
 		public function arena($id){
-			$value = $this->Fighters->iamdead($id);
-			if ($value == 0) {
+			if (!$this->Fighters->iamdead($id)) {
 				if($this->request->is('post')){
 					$action = $this->request->data["action"];
 					switch ($action) {

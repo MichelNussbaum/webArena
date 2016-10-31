@@ -165,10 +165,10 @@ class FightersTable extends Table
   {
     $fighter = $this->get($idFighter);
     if (($fighter["coordinate_x"] == -100) && ($fighter["coordinate_y"] == -100)) {
-      return 1;
+      return true;
     }
     else {
-      return 0;
+      return false;
     }
   }
 
