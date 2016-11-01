@@ -84,7 +84,6 @@ class MemberController extends AppController
 	}
 
     public function deconnexion(){
-    	$this->Flash->success('Vous êtes maintenant déconnecté.');
         return $this->redirect($this->Auth->logout());
     }
 

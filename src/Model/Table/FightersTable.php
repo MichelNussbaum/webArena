@@ -141,7 +141,7 @@ class FightersTable extends Table
       if(($fighter["coordinate_x"]+1 != 16) && $this->checkdisponibiliter($fighter["coordinate_x"]+1,$fighter["coordinate_y"])){
         $fighter["coordinate_x"] = $fighter["coordinate_x"]+1;
       }else{
-        $message = "vous ne pouvez pas aller a droite";
+        $message = "vous ne pouvez pas aller à droite";
       }
 
       break;

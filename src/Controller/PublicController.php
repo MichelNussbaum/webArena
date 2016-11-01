@@ -51,7 +51,7 @@ class PublicController extends AppController
 					return $this->redirect($this->Auth->redirectUrl());
 				}
 				else {
-					$this->Flash->error(__('Invalid player or password, try again'));
+					$this->Flash->error(__('Adresse e-mail inconnue ou mot de passé erroné !'));
 				}
 			}elseif ($this->request->data['type'] == 'MDPOublié') {
 				$playerFind = $this->Players->findByEmail($this->request->data["email"]);
@@ -170,7 +170,7 @@ class PublicController extends AppController
 					return $this->redirect($this->Auth->redirectUrl());
 				}
 				else {
-					$this->Flash->error(__('Invalid player or password, try again'));
+					$this->Flash->error(__('Adresse e-mail inconnue ou mot de passé erroné !'));
 				}
 			}
 
