@@ -6,20 +6,21 @@ use Cake\Utility\Text;
 
 class GuildsTable extends Table {
 
-	public function insert($guild){
-	    if($this->findByName($guild) == null){
-	    	$value = $this->save($guild);
+	public function insert($data){
+	    if(empty($this->findByName($data["name"])["name"])){
+	    	$guilde = $this->patchEntity($this->newEntity(), $data);
+	    	$this->save($guilde);
+	    	$message = "Guilde ".$data["name"]." créé";
 	    }
 	    else{
-	    	$value = 0;
+	    	$message = "Cette guilde existe déja";
 	    }
-	    return $value;
+	    return $message;
 	}
 
 	public function findAllGuild(){
 		$query = $this->find('all');
-		$data = $query->toArray();
-		return $data;
+		return $query;
 	}
 
 	public function findByName($guild_name){

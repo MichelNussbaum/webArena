@@ -156,7 +156,7 @@
 						$force.=$this->Form->end();
 						$arrayligne["force"] = $force;
 						$sante = $this->Form->create();
-						$sante =$this->Form->hidden('action',["value"=>"monterdeniveau"]);
+						$sante=$this->Form->hidden('action',["value"=>"monterdeniveau"]);
 						$sante.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
 						$sante.= $this->Form->hidden('skill',['value' => 'sante']);
 						$sante.= $this->Form->hidden('id',['value' =>  $fighter->id]);

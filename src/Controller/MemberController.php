@@ -87,32 +87,24 @@ class MemberController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
-    public function guild($id){
-        $this->set('idFighter',$id);
+    public function guild(){
+    	if($this->request->is('post')){
+    		if($this->request->data['action'] == 'guilde'){
+    			$this->set("guilds",$this->Guilds->findAllGuild());
+        		$this->set("fighter",$this->Fighters->findById($this->request->data['id']));
+    		}elseif ($this->request->data['action'] == 'rejoindre') {
+    			$this->Fighters->joinAGuild($this->request->data);
+    			$this->set("guilds",$this->Guilds->findAllGuild());
+        		$this->set("fighter",$this->Fighters->findById($this->request->data['idFighter']));
+    		}elseif ($this->request->data['action'] == 'creer') {
+    			$message = $this->Guilds->insert($this->request->data);
+    			$this->set("guilds",$this->Guilds->findAllGuild());
+        		$this->set("fighter",$this->Fighters->findById($this->request->data['idFighter']));
+    			$this->Flash->success(__($message));
+    		}
+    	}
+        
     }
-
-    public function creerGuilde(){
-        $guild = $this->Guilds->newEntity();
-        if($this->request->is('post')){
-
-            $guild = $this->Guilds->patchEntity($guild, $this->request->data);
-            $value = $this->Guilds->insert($guild);
-            if($value == null){
-                $this->set("failInsertGuild",$value);
-            }
-
-        }
-
-    }
-
-    public function rejoindreGuilde($idFighter){
-            $value = $this->Guilds->findAllGuild();
-            $this->set("allGuild",$value);
-            if($this->request->is('post')){
-                $value = $this->Fighters->joinAGuild($this->request->data,$idFighter);
-            }
-    }
-
 		public function arena($id){
 			if (!$this->Fighters->iamdead($id)) {
 						$fighter = $this->Fighters->findById($id);

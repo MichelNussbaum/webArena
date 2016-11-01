@@ -9,7 +9,13 @@ class FightersTable extends Table
 {
   function findById($id)
   {
-    return $this->get($id);
+    $fighter = $this->get($id);
+    $guildsTable = TableRegistry::get('Guilds'); 
+    if(!empty($fighter->guild_id)){
+      $guild = $guildsTable->findById($fighter["guild_id"]);
+      $fighter["guild_name"] = $guild["name"];
+    }
+    return $fighter;
   }
 
   function findByPlayerId($player_id)
@@ -22,7 +28,7 @@ class FightersTable extends Table
     foreach ($rows as $row) {
       if(!empty($row->guild_id)){
         $guild = $guildsTable->findById($row->guild_id);
-        $row["guild_name"] = $guild->name;
+        $row["guild_name"] = $guild["name"];
       }
 
     }
@@ -282,8 +288,8 @@ class FightersTable extends Table
         $this->save($fighter);
     }
 
-    public function joinAGuild($data,$idFighter){
-        $fighter = $this->findById($idFighter);
+    public function joinAGuild($data){
+        $fighter = $this->findById($data["idFighter"]);
         $fighter->guild_id = $data["idGuild"];
         $this->save($fighter);
 

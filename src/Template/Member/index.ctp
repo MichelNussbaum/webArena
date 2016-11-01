@@ -37,7 +37,11 @@
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
 							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique<?= $fighter->id ?>">Passer de niveau</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>
-							<?= $this->Html->link('Guilde', array('action' => 'guild',$fighter->id), array('class' => 'btn btn-success'));?>
+							<?=$this->Form->create(null,['url' => ['action' => 'guild']]);?>
+							<?=$this->Form->hidden('action',['value' => "guilde"]);?>
+							<?=$this->Form->hidden('id',['value' => $fighter->id]);?>
+							<?=$this->Form->button(__('Guilde'),['class'=>'btn btn-primary']);?>
+							<?=$this->Form->end();?>
 						</div>
 					</div>
 					<!-- ModifierFighter -->
