@@ -182,13 +182,6 @@ class FightersTable extends Table
       $value = $this->save($newfighter);
       return $value;
     }
-    if (!empty($data['avatar_file']['tmp_name'])) {
-      $extension = strtolower(pathinfo($data['avatar_file']['name'], PATHINFO_EXTENSION));
-      if($extension=="jpg")
-      {
-        move_uploaded_file($data['avatar_file']['tmp_name'], WWW_ROOT. 'img' . DS . 'Avatars' . DS . $data['id']. '.' .$extension);
-      }
-    }
     return FALSE;
   }
 

@@ -54,7 +54,6 @@
 										<?= $this->Form->hidden('type',['value' => 'ModifierFighter']) ?>
 										<?= $this->Form->hidden('id',['value' =>  $fighter->id]) ?>
 										<?= $this->Form->input('name',['class' => 'form-control']) ?>
-										<?= $this->Form->input('avatar_file' , array('label' => 'Votre avatar (au format jpg)' , 'type' => 'file')) ?>
 									</div>
 								</div>
 								<div class="modal-footer">
