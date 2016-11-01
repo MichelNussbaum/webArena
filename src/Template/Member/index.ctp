@@ -13,7 +13,7 @@
 		<?php foreach ($fighters as $fighter): ?>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<?php echo $this->Html->image('Avatars/warrior.png', ['alt' => 'warrior',"width" => 75,"class"=>"img-responsive"]);?>
+					<?php echo $this->Html->image('Avatars/'.$fighter['id'].'.', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]); ?>
 					<div class="caption">
 						<h1><?= $fighter->name ?></h1>
 						<h2>LVL : <?= $fighter->level ?></h2>
