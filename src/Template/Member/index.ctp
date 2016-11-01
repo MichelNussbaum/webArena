@@ -25,7 +25,7 @@
 						<!-- progression dans le niveau	 -->
 						<progress value="<?= $fighter->xp%4 ?>" max="4"></progress>
 						<ul>
-							<li>♥️ <?= $fighter->current_health ?></li>
+							<li>♥️ <?= $fighter->current_health ?>/<?= $fighter->skill_health ?></li>
 							<li>💪 : <?= $fighter->skill_strength ?></li>
 							<li>👀 : <?= $fighter->skill_sight ?></li>
 							<li>❇ X: <?= $fighter->coordinate_x ?></li>
@@ -127,7 +127,7 @@
 										$arrayligne["sante"] = $sante;
 									?>
 										<?= $this->Html->tableHeaders(['Compétence', 'Point actuel', 'Ajouter']);?>
-										<?= $this->Html->tableCells([['Vue',$fighter->skill_sight,$arrayligne["vue"]],['Force',$fighter->skill_strength,$arrayligne["force"]],['Santé',$fighter->current_health,$arrayligne["sante"]]]);?>
+										<?= $this->Html->tableCells([['Vue',$fighter->skill_sight,$arrayligne["vue"]],['Force',$fighter->skill_strength,$arrayligne["force"]],['Santé',$fighter->skill_health,$arrayligne["sante"]]]);?>
 									</table>
 									<?php }else{?>
 										<p>Vous n'avez pas de points de compétences disponibles</p>
