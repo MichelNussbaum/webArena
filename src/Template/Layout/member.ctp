@@ -70,6 +70,6 @@ $cakeDescription = 'Web Arena';
   </div>
 </body>
 <footer>
-  <p> The Winner! - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir IGNAJATOVIĆ - Options :  B,F,G - Bonus 1 : <?= $this->Html->link('Hébergement','http://michelnussbaum.fr/webArena');?> - Bonus 2 : <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
+  <p> Gr1-05-BF - Michel NUSSBAUM , Filipe CARVALHAIS SANCHES, Vladimir IGNAJATOVIĆ - Options :  B,F,G - Bonus 1 : <?= $this->Html->link('Hébergement','http://michelnussbaum.fr/webArena');?> - Bonus 2 : <?= $this->Html->link('GIT Log',DS.'webroot' . DS . 'files' . DS .'versions.log');?></p>
   </footer>
 </html>
