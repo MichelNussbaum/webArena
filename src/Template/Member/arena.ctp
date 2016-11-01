@@ -62,7 +62,13 @@
 				<li>❇ X: '.$fighter->coordinate_x.'</li>
 				<li>❇ Y: '.$fighter->coordinate_y.'</li>
 				<li>guild : '.$guildName.'</li>';
-				?><div class="cell"><?=$this->Html->image('Avatars/'.$fighter['id'].'.', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"], $array)?></div><?php
+				?><div class="cell">
+				<?php if($fighter->avatar){
+					echo $this->Html->image('Avatars/'.$fighter['id'].'.jpg', $array);
+				}else{
+					echo $this->Html->image('Avatars/warrior.png', $array);
+				}?>
+				</div><?php
 			}else{
 				$trouve = false;
 				foreach ($enemies as $enemy) {
@@ -86,10 +92,22 @@
 							$this->Form->end().'</li>';
 						}
 						if($enemy["player_id"] == $fighter["player_id"]) {
-							?><div class="cell"><?=$this->Html->image('Avatars/'.$enemy['id'].'.', ['alt' => 'enemy',"width" => 75,"class"=>"img-responsive"], $array)?></div><?php
+							?><div class="cell">
+								<?php if($fighter->avatar){
+									echo $this->Html->image('Avatars/'.$fighter['id'].'.jpg', $array);
+								}else{
+									echo $this->Html->image('Avatars/warrior.png', $array);
+								}?>
+							</div><?php
 						}
 						else {
-							?><div class="cell"><?=$this->Html->image('Avatars/'.$enemy['id'].'.', ['alt' => 'enemy',"width" => 75,"class"=>"img-responsive"], $array)?></div><?php
+							?><div class="cell">
+								<?php if($enemy->avatar){
+									echo $this->Html->image('Avatars/'.$enemy['id'].'.jpg', $array);
+								}else{
+									echo $this->Html->image('Avatars/enemy.jpg', $array);
+								}?>
+							</div><?php
 						}
 						$trouve = true;
 					}

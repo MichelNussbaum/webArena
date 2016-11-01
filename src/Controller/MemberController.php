@@ -27,6 +27,7 @@ class MemberController extends AppController
 		$fighters = $this->Fighters->findByPlayerId($user["id"]);
 		foreach ($fighters as $fighter) {
 			$fighter["nbPoints"] = $this->Fighters->findNbPoints($fighter);
+			$fighter["avatar"] = $this->Fighters->avatar($fighter->id);
 		}
 		$this->set('fighters', $fighters);
 
@@ -164,6 +165,7 @@ class MemberController extends AppController
 					}
 				}
 				$fighter = $this->Fighters->findById($id);
+				$fighter["avatar"] = $this->Fighters->avatar($id);
 				$this->set("fighter",$fighter);
 				$fighterGuilde = $this->Guilds->findById($fighter->guild_id);
 				$this->set("fighterGuilde",$fighterGuilde);

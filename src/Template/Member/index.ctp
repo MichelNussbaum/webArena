@@ -13,7 +13,11 @@
 		<?php foreach ($fighters as $fighter): ?>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<?php echo $this->Html->image('Avatars/'.$fighter['id'].'.', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]); ?>
+					<?php if($fighter["avatar"]){
+						echo $this->Html->image('Avatars/'.$fighter['id'].'.jpg', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]); 
+					}else{
+						echo $this->Html->image('Avatars/warrior.png', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]); 
+					}?>
 					<div class="caption">
 						<h1><?= $fighter->name ?></h1>
 						<h2>LVL : <?= $fighter->level ?></h2>
@@ -153,7 +157,7 @@
 							<?= $this->Form->create('fighter' , array('type' => 'file' )) ?>
 							<?= $this->Form->hidden('type',['value' => 'addfighters']) ?>
 							<?= $this->Form->input('name',['class' => 'form-control']) ?>
-							<?= $this->Form->input('avatar_file' , array('label' => 'Votre avatar (au format pmg ou jpg)' , 'type' => 'file')) ?>
+							<?= $this->Form->input('avatar_file' , array('label' => 'Votre avatar (au format jpg)' , 'type' => 'file')) ?>
 						</div>
 					</div>
 					<div class="modal-footer">

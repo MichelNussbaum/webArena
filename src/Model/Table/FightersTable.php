@@ -63,7 +63,7 @@ class FightersTable extends Table
       if (!empty($data['avatar_file']['tmp_name']))
         {
           $extension = strtolower(pathinfo($data['avatar_file']['name'], PATHINFO_EXTENSION));
-          if(in_array($extension, array('jpg', 'jpeg', 'png')))
+          if($extension=="jpg")
           {
             move_uploaded_file($data['avatar_file']['tmp_name'], WWW_ROOT. 'img' . DS . 'Avatars' . DS . $value['id']. '.' .$extension);
           }
@@ -161,6 +161,7 @@ class FightersTable extends Table
       if(!empty($row->guild_id)){
         $guild = $guildsTable->findById($row->guild_id);
         $row["guild_name"] = $guild->name;
+        $row["avatar"] = $this->avatar($row->id);
       }
     }
     return $rows;
@@ -292,10 +293,9 @@ class FightersTable extends Table
 
     public function avatar($idfighter)
     {
-      $file = WWW_ROOT. 'img' . DS . 'Avatars' . DS . $idfighter. '.';
+      $file = WWW_ROOT. 'img' . DS . 'Avatars' . DS . $idfighter. '.jpg';
       if(file_exists($file))
       {
-        echo "ok";
         return true;
       }else {
         return false;
