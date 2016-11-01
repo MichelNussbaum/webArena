@@ -24,7 +24,7 @@ $cakeDescription = 'Web Arena';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->meta('ece.ico','/ece.ico',['type' => 'icon']) ?>
 
     <!--<?= $this->Html->css('base.css') ?>-->
     <!--<?= $this->Html->css('cake.css') ?>-->

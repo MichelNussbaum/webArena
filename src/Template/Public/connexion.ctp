@@ -27,7 +27,7 @@ if($_SERVER['HTTP_HOST'] == "localhost:8888"){
   //on met les id de l'application de test
   $appId = "1242440412484253";
   $appSecret = "77412844f205bd09ed47a7954611259e";
-}elseif ($_SERVER['HTTP_HOST'] == "michelnussbaum.fr") {
+}elseif ($_SERVER['HTTP_HOST'] == "michelnussbaum.fr" || $_SERVER['HTTP_HOST'] == "www.michelnussbaum.fr") {
   //on met les id de l'application de prod
   $appId = "1242436859151275";
   $appSecret = "d35c67c6507a9587e2657b27c0ae720e";
