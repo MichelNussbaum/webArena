@@ -3,7 +3,6 @@
 	<div class="row">
 		<div class="col-xs-1">
 			<?= $this->Html->link('Evenements', array('action' => 'evenements'), array('class' => 'btn btn-success'));?>
-			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique">Passer de niveau</button>
 		</div>
 	  	<div class="col-xs-1 col-xs-offset-4">
 			<?= $this->Form->create();?>
@@ -19,18 +18,26 @@
 		</div>
   	</div>
   	<div class="row">
-  		<div class="col-xs-1 col-xs-offset-4">
+			<div class="col-xs-1">
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique">Passer de niveau</button>
+			</div>
+  		<div class="col-xs-1 col-xs-offset-3">
 		  	<?= $this->Form->create();?>
 			<?= $this->Form->hidden('action',["value"=>"gauche"]);?>
 			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
 		  	<?= $this->Form->end();?>
-		</div>
-		<div class="col-xs-1 col-xs-offset-1">
+			</div>
+			<div class="col-xs-1 col-xs-offset-1">
 		  	<?= $this->Form->create();?>
-			<?= $this->Form->hidden('action',["value"=>"droite"]);?>
-			<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
+				<?= $this->Form->hidden('action',["value"=>"droite"]);?>
+				<?= $this->Form->button(__('<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>'),array('class' => 'btn btn-default'));?>
 		  	<?= $this->Form->end();?>
-		</div>
+			</div>
+			<div class="col-xs-1 col-xs-offset-4">
+				<?= $this->Form->create($fighter, ['url' => ['action' => 'chat',$fighter->id]]) ?>
+				<?= $this->Form->button(__('Communiquer'),array('class'=>'btn btn-success')); ?>
+				<?= $this->Form->end() ?>
+			</div>
   	</div>
   	<div class="row">
   		<div class="col-xs-1 col-xs-offset-5">

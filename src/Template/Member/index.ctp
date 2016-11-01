@@ -32,10 +32,11 @@
 							<li>❇ Y: <?= $fighter->coordinate_y ?></li>
 							<li>guild : <?= $fighter->guild_name ?></li>
 						</ul>
-							<?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
-							<?= $this->Html->link('Communiquer', array('action' => 'chat',$fighter->id), array('class' => 'btn btn-success'));?>
+							<?= $this->Form->create($fighter, ['url' => ['action' => 'arena',$fighter->id]]) ?>
+							<?= $this->Form->button(__('Utiliser'),['class'=>'btn btn-success']); ?>
+							<?= $this->Form->end() ?>
+
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
-							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Boutique<?= $fighter->id ?>">Passer de niveau</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>
 							<?= $this->Html->link('Guilde', array('action' => 'guild',$fighter->id), array('class' => 'btn btn-success'));?>
 						</div>
@@ -90,56 +91,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Boutique -->
-					<div class="modal fade" id="Boutique<?= $fighter->id ?>" tabindex="-1" role="dialog" aria-labelledby="Boutique">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="Boutique<?= $fighter->id ?>">Passer de niveau</h4>
-								</div>
-								<div class="modal-body">
-									<?php if($fighter->nbPoints>0){ ?>
-									<p>Vous avez <?= $fighter->nbPoints?> points à ajouter</p>
-									<table class="table">
-									<?php
-										$arrayligne = array();
-										$vue = $this->Form->create();
-										$vue.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
-										$vue.= $this->Form->hidden('skill',['value' => 'vue']);
-										$vue.= $this->Form->hidden('id',['value' =>  $fighter->id]);
-										$vue.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-primary']);
-										$vue.=$this->Form->end();
-										$arrayligne["vue"] = $vue;
-										$force = $this->Form->create();
-										$force.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
-										$force.= $this->Form->hidden('skill',['value' => 'force']);
-										$force.= $this->Form->hidden('id',['value' =>  $fighter->id]);
-										$force.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-primary']);
-										$force.=$this->Form->end();
-										$arrayligne["force"] = $force;
-										$sante = $this->Form->create();
-										$sante.= $this->Form->hidden('type',['value' => 'ajoutCompetence']);
-										$sante.= $this->Form->hidden('skill',['value' => 'sante']);
-										$sante.= $this->Form->hidden('id',['value' =>  $fighter->id]);
-										$sante.= $this->Form->button(__('Augmenter'),['class'=>'btn btn-primary']);
-										$sante.=$this->Form->end();
-										$arrayligne["sante"] = $sante;
-									?>
-										<?= $this->Html->tableHeaders(['Compétence', 'Point actuel', 'Ajouter']);?>
-										<?= $this->Html->tableCells([['Vue',$fighter->skill_sight,$arrayligne["vue"]],['Force',$fighter->skill_strength,$arrayligne["force"]],['Santé',$fighter->skill_health,$arrayligne["sante"]]]);?>
-									</table>
-									<?php }else{?>
-										<p>Vous n'avez pas de points de compétences disponibles</p>
-									<?php }?>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
-
 				</div>
 			<?php endforeach ?>
 		</div>
