@@ -115,6 +115,9 @@ class MemberController extends AppController
 
 		public function arena($id){
 			if (!$this->Fighters->iamdead($id)) {
+						$fighter = $this->Fighters->findById($id);
+						$fighter["nbPoints"] = $this->Fighters->findNbPoints($fighter);
+						$this->set('fighterNbPoints', $fighter["nbPoints"]);
 				if($this->request->is('post')){
 					$action = $this->request->data["action"];
 					switch ($action) {
@@ -160,6 +163,11 @@ class MemberController extends AppController
 						if($res){
 							$this->Flash->success(__($message));
 						}
+						break;
+
+						case 'monterdeniveau':
+							$this->Fighters->augmenterCompetences($this->request->data);
+							return $this->redirect(['action' => 'arena',$this->request->data['id']]);
 						break;
 					}
 				}
