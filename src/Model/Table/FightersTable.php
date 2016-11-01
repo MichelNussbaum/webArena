@@ -175,14 +175,19 @@ class FightersTable extends Table
 
   function modifer($data)
   {
-    $fighter = $this->patchEntity($this->newEntity(), $data);
-    $id = $fighter['id'];
-    $newfighter = $this->get($id);
-    if (!empty($fighter['name']))
+    $newfighter = $this->get($data['id']);
+    if (!empty($data['name']))
     {
-      $newfighter['name'] = $fighter['name'];
-      $Value = $this->save($newfighter);
-      return $Value;
+      $newfighter['name'] = $data['name'];
+      $value = $this->save($newfighter);
+      return $value;
+    }
+    if (!empty($data['avatar_file']['tmp_name'])) {
+      $extension = strtolower(pathinfo($data['avatar_file']['name'], PATHINFO_EXTENSION));
+      if($extension=="jpg")
+      {
+        move_uploaded_file($data['avatar_file']['tmp_name'], WWW_ROOT. 'img' . DS . 'Avatars' . DS . $data['id']. '.' .$extension);
+      }
     }
     return FALSE;
   }

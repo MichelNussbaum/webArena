@@ -14,9 +14,9 @@
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 					<?php if($fighter["avatar"]){
-						echo $this->Html->image('Avatars/'.$fighter['id'].'.jpg', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]); 
+						echo $this->Html->image('Avatars/'.$fighter['id'].'.jpg', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]);
 					}else{
-						echo $this->Html->image('Avatars/warrior.png', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]); 
+						echo $this->Html->image('Avatars/warrior.png', ['alt' => 'Avatar',"width" => 75,"class"=>"img-responsive"]);
 					}?>
 					<div class="caption">
 						<h1><?= $fighter->name ?></h1>
@@ -54,6 +54,7 @@
 										<?= $this->Form->hidden('type',['value' => 'ModifierFighter']) ?>
 										<?= $this->Form->hidden('id',['value' =>  $fighter->id]) ?>
 										<?= $this->Form->input('name',['class' => 'form-control']) ?>
+										<?= $this->Form->input('avatar_file' , array('label' => 'Votre avatar (au format jpg)' , 'type' => 'file')) ?>
 									</div>
 								</div>
 								<div class="modal-footer">
