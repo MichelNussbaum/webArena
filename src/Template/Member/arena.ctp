@@ -11,10 +11,7 @@
 		  	<?= $this->Form->end();?>
 	  	</div>
 	  	<div class="col-xs-1 col-xs-offset-5">
-		  	<?= $this->Form->create();?>
-			<?= $this->Form->hidden('action',["value"=>"hurler"]);?>
-			<?= $this->Form->button(__('Hurler'),array('class' => 'btn btn-warning'));?>
-		  	<?= $this->Form->end();?>
+		  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Crier">Crier</button>
 		</div>
   	</div>
   	<div class="row">
@@ -178,6 +175,28 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Crier modal -->
+	<div class="modal fade" id="Crier" tabindex="-1" role="dialog" aria-labelledby="Crier">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="Crier">Crier</h4>
+				</div>
+				<div class="modal-body">
+					<?= $this->Form->create() ?>
+					<?= $this->Form->hidden('action',['value' => 'crier']) ?>
+					<?= $this->Form->hidden('id',['value' =>  $fighter->id]) ?>
+					<?= $this->Form->input('message',['class' => 'form-control']) ?>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+					<?= $this->Form->button(__('Crier'),['class'=>'btn btn-primary']); ?>
+					<?= $this->Form->end() ?>
 				</div>
 			</div>
 		</div>
