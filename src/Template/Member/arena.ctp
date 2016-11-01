@@ -93,8 +93,8 @@
 						}
 						if($enemy["player_id"] == $fighter["player_id"]) {
 							?><div class="cell">
-								<?php if($fighter->avatar){
-									echo $this->Html->image('Avatars/'.$fighter['id'].'.jpg', $array);
+								<?php if($enemy['avatar']){
+									echo $this->Html->image('Avatars/'.$enemy['id'].'.jpg', $array);
 								}else{
 									echo $this->Html->image('Avatars/warrior.png', $array);
 								}?>

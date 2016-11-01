@@ -161,8 +161,8 @@ class FightersTable extends Table
       if(!empty($row->guild_id)){
         $guild = $guildsTable->findById($row->guild_id);
         $row["guild_name"] = $guild->name;
-        $row["avatar"] = $this->avatar($row->id);
       }
+      $row["avatar"] = $this->avatar($row->id);
     }
     return $rows;
 
