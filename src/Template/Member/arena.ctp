@@ -34,9 +34,7 @@
 		  	<?= $this->Form->end();?>
 			</div>
 			<div class="col-xs-1 col-xs-offset-4">
-				<?= $this->Form->create($fighter, ['url' => ['action' => 'chat',$fighter->id]]) ?>
-				<?= $this->Form->button(__('Communiquer'),array('class'=>'btn btn-success')); ?>
-				<?= $this->Form->end() ?>
+				<?= $this->Html->link('Communiquer', array('action' => 'chat',$fighter->id), array('class' => 'btn btn-success'));?>
 			</div>
   	</div>
   	<div class="row">

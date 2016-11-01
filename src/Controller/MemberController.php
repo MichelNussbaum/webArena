@@ -103,7 +103,6 @@ class MemberController extends AppController
     			$this->Flash->success(__($message));
     		}
     	}
-        
     }
 		public function arena($id){
 			if (!$this->Fighters->iamdead($id)) {

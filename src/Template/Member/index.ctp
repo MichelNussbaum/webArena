@@ -32,10 +32,7 @@
 							<li>❇ Y: <?= $fighter->coordinate_y ?></li>
 							<li>guild : <?= $fighter->guild_name ?></li>
 						</ul>
-							<?= $this->Form->create($fighter, ['url' => ['action' => 'arena',$fighter->id]]) ?>
-							<?= $this->Form->button(__('Utiliser'),['class'=>'btn btn-success']); ?>
-							<?= $this->Form->end() ?>
-
+							<?= $this->Html->link('Utiliser', array('action' => 'arena',$fighter->id), array('class' => 'btn btn-success'));?>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifierFighter<?= $fighter->id ?>">Modifier</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteFighter<?= $fighter->id ?>">Supprimer</button>
 							<?=$this->Form->create(null,['url' => ['action' => 'guild']]);?>
