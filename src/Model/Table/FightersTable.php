@@ -274,7 +274,7 @@ class FightersTable extends Table
             break;
 
             case 'sante':
-                $fighter->skill_health+3;
+                $fighter->skill_health+=3;
             break;
         }
         $fighter->level++;
