@@ -17,7 +17,7 @@
     </div>
   </fieldset>
   <div class="col-sm-5 control-label">
-    <?= $this->Form->button(__("S'inscrire"),['class'=>'btn btn-default']); ?>
+    <?= $this->Form->button(__("S'inscrire"),['class'=>'btn btn-primary']); ?>
   </div>
   <?= $this->Form->end() ?>
 </div>

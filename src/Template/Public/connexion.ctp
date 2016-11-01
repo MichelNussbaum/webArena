@@ -33,7 +33,7 @@ if($_SERVER['HTTP_HOST'] == "localhost:8888"){
   $appSecret = "d35c67c6507a9587e2657b27c0ae720e";
 }
 $fb = new Facebook\Facebook([
-  'app_id' => $appId, 
+  'app_id' => $appId,
   'app_secret' => $appSecret,
   'default_graph_version' => 'v2.2',
   ]);
