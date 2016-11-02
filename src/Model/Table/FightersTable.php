@@ -10,7 +10,7 @@ class FightersTable extends Table
   function findById($id)
   {
     $fighter = $this->get($id);
-    $guildsTable = TableRegistry::get('Guilds'); 
+    $guildsTable = TableRegistry::get('Guilds');
     if(!empty($fighter->guild_id)){
       $guild = $guildsTable->findById($fighter["guild_id"]);
       $fighter["guild_name"] = $guild["name"];
@@ -305,5 +305,16 @@ class FightersTable extends Table
         return false;
       }
     }
+
+    public function checksafety($id,$user)
+  	{
+  		$fighter = $this->get($id);
+  		if ($fighter['player_id'] == $user['id']) {
+  			return true;
+  		}
+  		else {
+  			return false;
+  		}
+  	}
 }
 ?>
