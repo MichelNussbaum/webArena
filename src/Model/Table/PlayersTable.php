@@ -48,15 +48,15 @@ class PlayersTable extends Table {
 	}
 
 	function generatePass() {
-	    $nbChar = 8;
-	 
-	    $characters = '023456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ#!$';
-	    $specials = '#!?$%&*';
-	 
-	    $firstPart = substr(str_shuffle($characters), 0, $nbChar - 1);
-	    $lastPart = substr(str_shuffle($specials), 0, 1);
-	 
-	    return str_shuffle($firstPart . $lastPart);
+		$nbChar = 8;
+		
+		$characters = '023456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ#!$';
+		$specials = '#!?$%&*';
+		
+		$firstPart = substr(str_shuffle($characters), 0, $nbChar - 1);
+		$lastPart = substr(str_shuffle($specials), 0, 1);
+		
+		return str_shuffle($firstPart . $lastPart);
 	}
 }
 ?>

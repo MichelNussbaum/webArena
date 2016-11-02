@@ -45,25 +45,25 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'authenticate' => [
-                'Form' => [
-                    'userModel' => 'Players',
-                    'fields' => [
-                        'username' => 'email',
-                        'password' => 'password',
-                    ]
-                ]
+            'Form' => [
+            'userModel' => 'Players',
+            'fields' => [
+            'username' => 'email',
+            'password' => 'password',
+            ]
+            ]
             ],
             'loginAction' => [
-                'controller' => 'Public',
-                'action' => 'connexion'
-                 ],
+            'controller' => 'Public',
+            'action' => 'connexion'
+            ],
             'loginRedirect' => [
-                'controller' => 'Member',
-                'action' => 'index'
+            'controller' => 'Member',
+            'action' => 'index'
             ],
             'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display'
+            'controller' => 'Pages',
+            'action' => 'display'
             ]
             ]);
 
@@ -79,8 +79,8 @@ class AppController extends Controller
     {
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
+            ) {
             $this->set('_serialize', true);
-        }
     }
+}
 }

@@ -18,8 +18,8 @@ class MemberController extends AppController
 		$this->set('authUser', $user);
 		$this->loadModel('Fighters');
 		$this->loadModel('Events');
-    $this->loadModel('Guilds');
-    $this->loadModel('Messages');
+		$this->loadModel('Guilds');
+		$this->loadModel('Messages');
 	}
 
 	public function index(){
@@ -83,105 +83,105 @@ class MemberController extends AppController
 		}
 	}
 
-    public function deconnexion(){
-        return $this->redirect($this->Auth->logout());
-    }
+	public function deconnexion(){
+		return $this->redirect($this->Auth->logout());
+	}
 
-    public function guild(){
-    	if($this->request->is('post')){
-    		if($this->request->data['action'] == 'guilde'){
-    			$this->set("guilds",$this->Guilds->findAllGuild());
-        		$this->set("fighter",$this->Fighters->findById($this->request->data['id']));
-    		}elseif ($this->request->data['action'] == 'rejoindre') {
-    			$this->Fighters->joinAGuild($this->request->data);
-    			$this->set("guilds",$this->Guilds->findAllGuild());
-        		$this->set("fighter",$this->Fighters->findById($this->request->data['idFighter']));
-    		}elseif ($this->request->data['action'] == 'creer') {
-    			$message = $this->Guilds->insert($this->request->data);
-    			$this->set("guilds",$this->Guilds->findAllGuild());
-        		$this->set("fighter",$this->Fighters->findById($this->request->data['idFighter']));
-    			$this->Flash->success(__($message));
-    		}
-    	}
+	public function guild(){
+		if($this->request->is('post')){
+			if($this->request->data['action'] == 'guilde'){
+				$this->set("guilds",$this->Guilds->findAllGuild());
+				$this->set("fighter",$this->Fighters->findById($this->request->data['id']));
+			}elseif ($this->request->data['action'] == 'rejoindre') {
+				$this->Fighters->joinAGuild($this->request->data);
+				$this->set("guilds",$this->Guilds->findAllGuild());
+				$this->set("fighter",$this->Fighters->findById($this->request->data['idFighter']));
+			}elseif ($this->request->data['action'] == 'creer') {
+				$message = $this->Guilds->insert($this->request->data);
+				$this->set("guilds",$this->Guilds->findAllGuild());
+				$this->set("fighter",$this->Fighters->findById($this->request->data['idFighter']));
+				$this->Flash->success(__($message));
+			}
+		}
 
-    }
-		public function arena($id){
-			$user = $this->Auth->user();
-			$safety = $this->Fighters->checksafety($id,$user);
-			if ($safety)
-			{
-				if (!$this->Fighters->iamdead($id)) {
-							$fighter = $this->Fighters->findById($id);
-							$fighter["nbPoints"] = $this->Fighters->findNbPoints($fighter);
-							$this->set('fighterNbPoints', $fighter["nbPoints"]);
-					if($this->request->is('post')){
-						$action = $this->request->data["action"];
-						switch ($action) {
-							case 'monter':
-							$message = $this->Fighters->moove($id,"monter");
-							if(!empty($message)){
-								$this->Flash->error(__($message));
-							}
-							break;
-
-							case 'descendre':
-							$message = $this->Fighters->moove($id,"descendre");
-							if(!empty($message)){
-								$this->Flash->error(__($message));
-							}
-							break;
-
-							case 'gauche':
-							$message = $this->Fighters->moove($id,"gauche");
-							if(!empty($message)){
-								$this->Flash->error(__($message));
-							}
-							break;
-
-							case 'droite':
-							$message = $this->Fighters->moove($id,"droite");
-							if(!empty($message)){
-								$this->Flash->error(__($message));
-							}
-							break;
-
-							case 'attaquer':
-							$idP = $this->request->data["idP"];
-							$idE = $this->request->data["idE"];
-							$message = $this->Fighters->attaquer($idP,$idE);
-							$this->Flash->default(__($message));
-							break;
-
-							case 'crier':
-							$fighter = $this->Fighters->findById($this->request->data["id"]);
-							$message = $this->request->data["message"];
-							$res = $this->Events->insert($message,$fighter->coordinate_x,$fighter->coordinate_y);
-							if($res){
-								$this->Flash->success(__("Vous criez : ".$message));
-							}
-							break;
-
-							case 'monterdeniveau':
-								$this->Fighters->augmenterCompetences($this->request->data);
-								return $this->redirect(['action' => 'arena',$this->request->data['id']]);
-							break;
+	}
+	public function arena($id){
+		$user = $this->Auth->user();
+		$safety = $this->Fighters->checksafety($id,$user);
+		if ($safety)
+		{
+			if (!$this->Fighters->iamdead($id)) {
+				$fighter = $this->Fighters->findById($id);
+				$fighter["nbPoints"] = $this->Fighters->findNbPoints($fighter);
+				$this->set('fighterNbPoints', $fighter["nbPoints"]);
+				if($this->request->is('post')){
+					$action = $this->request->data["action"];
+					switch ($action) {
+						case 'monter':
+						$message = $this->Fighters->moove($id,"monter");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
 						}
+						break;
+
+						case 'descendre':
+						$message = $this->Fighters->moove($id,"descendre");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
+
+						case 'gauche':
+						$message = $this->Fighters->moove($id,"gauche");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
+
+						case 'droite':
+						$message = $this->Fighters->moove($id,"droite");
+						if(!empty($message)){
+							$this->Flash->error(__($message));
+						}
+						break;
+
+						case 'attaquer':
+						$idP = $this->request->data["idP"];
+						$idE = $this->request->data["idE"];
+						$message = $this->Fighters->attaquer($idP,$idE);
+						$this->Flash->default(__($message));
+						break;
+
+						case 'crier':
+						$fighter = $this->Fighters->findById($this->request->data["id"]);
+						$message = $this->request->data["message"];
+						$res = $this->Events->insert($message,$fighter->coordinate_x,$fighter->coordinate_y);
+						if($res){
+							$this->Flash->success(__("Vous criez : ".$message));
+						}
+						break;
+
+						case 'monterdeniveau':
+						$this->Fighters->augmenterCompetences($this->request->data);
+						return $this->redirect(['action' => 'arena',$this->request->data['id']]);
+						break;
 					}
-					$fighter = $this->Fighters->findById($id);
-					$fighter["avatar"] = $this->Fighters->avatar($id);
-					$this->set("fighter",$fighter);
-					$fighterGuilde = $this->Guilds->findById($fighter->guild_id);
-					$this->set("fighterGuilde",$fighterGuilde);
-					$this->set("enemies",$this->Fighters->findEnemies($id));
 				}
-				else {
-					return $this->redirect(['action' => 'index']);
-				}
+				$fighter = $this->Fighters->findById($id);
+				$fighter["avatar"] = $this->Fighters->avatar($id);
+				$this->set("fighter",$fighter);
+				$fighterGuilde = $this->Guilds->findById($fighter->guild_id);
+				$this->set("fighterGuilde",$fighterGuilde);
+				$this->set("enemies",$this->Fighters->findEnemies($id));
 			}
 			else {
 				return $this->redirect(['action' => 'index']);
 			}
 		}
+		else {
+			return $this->redirect(['action' => 'index']);
+		}
+	}
 
 	public function chat($idFighter){
 		$user = $this->Auth->user();

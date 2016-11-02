@@ -37,23 +37,23 @@ return [
      *   paths for plugins, view templates and locale files respectively.
      */
     'App' => [
-        'namespace' => 'App',
-        'encoding' => env('APP_ENCODING', 'UTF-8'),
-        'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
-        'base' => false,
-        'dir' => 'src',
-        'webroot' => 'webroot',
-        'wwwRoot' => WWW_ROOT,
+    'namespace' => 'App',
+    'encoding' => env('APP_ENCODING', 'UTF-8'),
+    'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
+    'base' => false,
+    'dir' => 'src',
+    'webroot' => 'webroot',
+    'wwwRoot' => WWW_ROOT,
         // 'baseUrl' => env('SCRIPT_NAME'),
-        'fullBaseUrl' => false,
-        'imageBaseUrl' => 'img/',
-        'cssBaseUrl' => 'css/',
-        'jsBaseUrl' => 'js/',
-        'paths' => [
-            'plugins' => [ROOT . DS . 'plugins' . DS],
-            'templates' => [APP . 'Template' . DS],
-            'locales' => [APP . 'Locale' . DS],
-        ],
+    'fullBaseUrl' => false,
+    'imageBaseUrl' => 'img/',
+    'cssBaseUrl' => 'css/',
+    'jsBaseUrl' => 'js/',
+    'paths' => [
+    'plugins' => [ROOT . DS . 'plugins' . DS],
+    'templates' => [APP . 'Template' . DS],
+    'locales' => [APP . 'Locale' . DS],
+    ],
     ],
 
     /**
@@ -64,7 +64,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '1a0ab146f9e8502902adba25d641ea52f9deda645fd52fa67c72548146ae8cd6'),
+    'salt' => env('SECURITY_SALT', '1a0ab146f9e8502902adba25d641ea52f9deda645fd52fa67c72548146ae8cd6'),
     ],
 
     /**
@@ -83,11 +83,11 @@ return [
      * Configure the cache adapters.
      */
     'Cache' => [
-        'default' => [
-            'className' => 'File',
-            'path' => CACHE,
-            'url' => env('CACHE_DEFAULT_URL', null),
-        ],
+    'default' => [
+    'className' => 'File',
+    'path' => CACHE,
+    'url' => env('CACHE_DEFAULT_URL', null),
+    ],
 
         /**
          * Configure the cache used for general framework caching.
@@ -96,12 +96,12 @@ return [
          * If you set 'className' => 'Null' core cache will be disabled.
          */
         '_cake_core_' => [
-            'className' => 'File',
-            'prefix' => 'myapp_cake_core_',
-            'path' => CACHE . 'persistent/',
-            'serialize' => true,
-            'duration' => '+2 minutes',
-            'url' => env('CACHE_CAKECORE_URL', null),
+        'className' => 'File',
+        'prefix' => 'myapp_cake_core_',
+        'path' => CACHE . 'persistent/',
+        'serialize' => true,
+        'duration' => '+2 minutes',
+        'url' => env('CACHE_CAKECORE_URL', null),
         ],
 
         /**
@@ -111,14 +111,14 @@ return [
          * Duration will be set to '+1 year' in bootstrap.php when debug = false
          */
         '_cake_model_' => [
-            'className' => 'File',
-            'prefix' => 'myapp_cake_model_',
-            'path' => CACHE . 'models/',
-            'serialize' => true,
-            'duration' => '+2 minutes',
-            'url' => env('CACHE_CAKEMODEL_URL', null),
+        'className' => 'File',
+        'prefix' => 'myapp_cake_model_',
+        'path' => CACHE . 'models/',
+        'serialize' => true,
+        'duration' => '+2 minutes',
+        'url' => env('CACHE_CAKEMODEL_URL', null),
         ],
-    ],
+        ],
 
     /**
      * Configure the Error and Exception handlers used by your application.
@@ -150,11 +150,11 @@ return [
      *   breathing room to complete logging or error handling.
      */
     'Error' => [
-        'errorLevel' => E_ALL,
-        'exceptionRenderer' => 'Cake\Error\ExceptionRenderer',
-        'skipLog' => [],
-        'log' => true,
-        'trace' => true,
+    'errorLevel' => E_ALL,
+    'exceptionRenderer' => 'Cake\Error\ExceptionRenderer',
+    'skipLog' => [],
+    'log' => true,
+    'trace' => true,
     ],
 
     /**
@@ -177,18 +177,18 @@ return [
      * 'YourTransport.php', where 'Your' is the name of the transport.
      */
     'EmailTransport' => [
-        'default' => [
-            'className' => 'Smtp',
+    'default' => [
+    'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => 'ssl://smtp.gmail.com',
-            'port' => 465,
-            'timeout' => 30,
-            'username' => 'webarenaecemfv@gmail.com',
-            'password' => 'webarenaece!',
-            'client' => null,
-            'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
-        ],
+    'host' => 'ssl://smtp.gmail.com',
+    'port' => 465,
+    'timeout' => 30,
+    'username' => 'webarenaecemfv@gmail.com',
+    'password' => 'webarenaece!',
+    'client' => null,
+    'tls' => null,
+    'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+    ],
     ],
 
     /**
@@ -201,12 +201,12 @@ return [
      * for more information.
      */
     'Email' => [
-        'default' => [
-            'transport' => 'default',
-            'from' => 'you@localhost',
+    'default' => [
+    'transport' => 'default',
+    'from' => 'you@localhost',
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
-        ],
+    ],
     ],
 
     /**
@@ -218,11 +218,11 @@ return [
      * See vendor\cakephp\cakephp\src\Database\Driver for complete list
      */
     'Datasources' => [
-        'default' => [
-            'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
-            'host' => 'localhost',
+    'default' => [
+    'className' => 'Cake\Database\Connection',
+    'driver' => 'Cake\Database\Driver\Mysql',
+    'persistent' => false,
+    'host' => 'localhost',
             /**
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
@@ -258,48 +258,48 @@ return [
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
 
             'url' => env('DATABASE_URL', null),
-        ],
+            ],
 
         /**
          * The test connection is used during the test suite.
          */
         'test' => [
-            'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
-            'host' => 'localhost',
+        'className' => 'Cake\Database\Connection',
+        'driver' => 'Cake\Database\Driver\Mysql',
+        'persistent' => false,
+        'host' => 'localhost',
             //'port' => 'non_standard_port_number',
-            'username' => 'root',
-            'password' => 'root',
-            'database' => 'test_webArena',
-            'encoding' => 'utf8',
-            'timezone' => 'UTC',
-            'cacheMetadata' => true,
-            'quoteIdentifiers' => false,
-            'log' => false,
+        'username' => 'root',
+        'password' => 'root',
+        'database' => 'test_webArena',
+        'encoding' => 'utf8',
+        'timezone' => 'UTC',
+        'cacheMetadata' => true,
+        'quoteIdentifiers' => false,
+        'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-            'url' => env('DATABASE_TEST_URL', null),
+        'url' => env('DATABASE_TEST_URL', null),
         ],
-    ],
+        ],
 
     /**
      * Configures logging options
      */
     'Log' => [
-        'debug' => [
-            'className' => 'Cake\Log\Engine\FileLog',
-            'path' => LOGS,
-            'file' => 'debug',
-            'levels' => ['notice', 'info', 'debug'],
-            'url' => env('LOG_DEBUG_URL', null),
-        ],
-        'error' => [
-            'className' => 'Cake\Log\Engine\FileLog',
-            'path' => LOGS,
-            'file' => 'error',
-            'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
-            'url' => env('LOG_ERROR_URL', null),
-        ],
+    'debug' => [
+    'className' => 'Cake\Log\Engine\FileLog',
+    'path' => LOGS,
+    'file' => 'debug',
+    'levels' => ['notice', 'info', 'debug'],
+    'url' => env('LOG_DEBUG_URL', null),
+    ],
+    'error' => [
+    'className' => 'Cake\Log\Engine\FileLog',
+    'path' => LOGS,
+    'file' => 'error',
+    'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
+    'url' => env('LOG_ERROR_URL', null),
+    ],
     ],
 
     /**
@@ -341,6 +341,6 @@ return [
      * To use database sessions, load the SQL file located at config/Schema/sessions.sql
      */
     'Session' => [
-        'defaults' => 'php',
+    'defaults' => 'php',
     ],
-];
+    ];

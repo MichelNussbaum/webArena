@@ -56,8 +56,8 @@ class PublicController extends AppController
 			}elseif ($this->request->data['type'] == 'MDPOublié') {
 				$playerFind = $this->Players->findByEmail($this->request->data["email"]);
 				if(!empty($playerFind)){
-				$this->Players->resetPassword($playerFind);
-				$this->Flash->success(__('Un mail vous a été envoyé à '.$playerFind->email));
+					$this->Players->resetPassword($playerFind);
+					$this->Flash->success(__('Un mail vous a été envoyé à '.$playerFind->email));
 				}else{
 					$this->Flash->error(__('Aucun joueur trouvé avec cette adresse email'));
 				}
@@ -74,45 +74,45 @@ class PublicController extends AppController
 	public function facebook(){
 		if($_SERVER['HTTP_HOST'] == "localhost:8888"){
 		  //on met les id de l'application de test
-		  $appId = "1242440412484253";
-		  $appSecret = "77412844f205bd09ed47a7954611259e";
+			$appId = "1242440412484253";
+			$appSecret = "77412844f205bd09ed47a7954611259e";
 		}elseif ($_SERVER['HTTP_HOST'] == "michelnussbaum.fr" || $_SERVER['HTTP_HOST'] == "www.michelnussbaum.fr") {
 		  //on met les id de l'application de prod
-		  $appId = "1242436859151275";
-		  $appSecret = "d35c67c6507a9587e2657b27c0ae720e";
+			$appId = "1242436859151275";
+			$appSecret = "d35c67c6507a9587e2657b27c0ae720e";
 		}
 		$fb = new Facebook([
-		  'app_id' => $appId, 
-		  'app_secret' => $appSecret,
-		  'default_graph_version' => 'v2.2',
-		 ]);
-			$helper = $fb->getRedirectLoginHelper();
+			'app_id' => $appId, 
+			'app_secret' => $appSecret,
+			'default_graph_version' => 'v2.2',
+			]);
+		$helper = $fb->getRedirectLoginHelper();
 
-			try {
-				$accessToken = $helper->getAccessToken();
-			} catch(Facebook\Exceptions\FacebookResponseException $e) {
+		try {
+			$accessToken = $helper->getAccessToken();
+		} catch(Facebook\Exceptions\FacebookResponseException $e) {
 				// When Graph returns an error
-				echo 'Graph returned an error: ' . $e->getMessage();
-				exit;
-			} catch(Facebook\Exceptions\FacebookSDKException $e) {
+			echo 'Graph returned an error: ' . $e->getMessage();
+			exit;
+		} catch(Facebook\Exceptions\FacebookSDKException $e) {
 				// When validation fails or other local issues
-				echo 'Facebook SDK returned an error: ' . $e->getMessage();
-				exit;
-			}
+			echo 'Facebook SDK returned an error: ' . $e->getMessage();
+			exit;
+		}
 
-			if (! isset($accessToken)) {
-				if ($helper->getError()) {
-					header('HTTP/1.0 401 Unauthorized');
-					echo "Error: " . $helper->getError() . "\n";
-					echo "Error Code: " . $helper->getErrorCode() . "\n";
-					echo "Error Reason: " . $helper->getErrorReason() . "\n";
-					echo "Error Description: " . $helper->getErrorDescription() . "\n";
-				} else {
-					header('HTTP/1.0 400 Bad Request');
-					echo 'Bad request';
-				}
-				exit;
+		if (! isset($accessToken)) {
+			if ($helper->getError()) {
+				header('HTTP/1.0 401 Unauthorized');
+				echo "Error: " . $helper->getError() . "\n";
+				echo "Error Code: " . $helper->getErrorCode() . "\n";
+				echo "Error Reason: " . $helper->getErrorReason() . "\n";
+				echo "Error Description: " . $helper->getErrorDescription() . "\n";
+			} else {
+				header('HTTP/1.0 400 Bad Request');
+				echo 'Bad request';
 			}
+			exit;
+		}
 
 			// Logged in
 			/*echo '<h3>Access Token</h3>';

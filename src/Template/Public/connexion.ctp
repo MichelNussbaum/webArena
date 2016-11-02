@@ -1,26 +1,26 @@
 <?php $this->assign('title', 'Connexion');?>
 <div class="players form">
-<?= $this->Flash->render('auth') ?>
-<?= $this->Form->create("test",["class"=>"form-horizontal"]) ?>
-    <fieldset>
-        <legend><?= __("Merci de rentrer vos nom d'utilisateur et mot de passe") ?></legend>
-         <div class="form-group">
-         <label class="col-sm-2 control-label">Email</label>
-	        <div class="col-sm-6">
-				<?= $this->Form->email('email',['class' => 'form-control']) ?>
-			</div>
-	    </div>
-	    <div class="form-group">
-         	<label class="col-sm-2 control-label">Password</label>
-         	<div class="col-sm-6">
-            <?= $this->Form->hidden('type',['value' => 'connexion']) ?>
-        		<?= $this->Form->password('password',['class' => 'form-control']) ?>
-        	</div>
-        </div>
-    </fieldset>
-    <div class="col-sm-5 control-label">
-		<?= $this->Form->button(__('Se Connecter'),['class'=>'btn btn-default']); ?>
-	</div>
+  <?= $this->Flash->render('auth') ?>
+  <?= $this->Form->create("test",["class"=>"form-horizontal"]) ?>
+  <fieldset>
+    <legend><?= __("Merci de rentrer vos nom d'utilisateur et mot de passe") ?></legend>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">Email</label>
+     <div class="col-sm-6">
+      <?= $this->Form->email('email',['class' => 'form-control']) ?>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-6">
+      <?= $this->Form->hidden('type',['value' => 'connexion']) ?>
+      <?= $this->Form->password('password',['class' => 'form-control']) ?>
+    </div>
+  </div>
+</fieldset>
+<div class="col-sm-5 control-label">
+  <?= $this->Form->button(__('Se Connecter'),['class'=>'btn btn-default']); ?>
+</div>
 <?= $this->Form->end() ?>
 <?php
 if($_SERVER['HTTP_HOST'] == "localhost:8888"){
@@ -58,17 +58,17 @@ echo '<a type="button" class="btn btn-primary" href="' . htmlspecialchars($login
       </div>
       <div class="modal-body">
         <div class="players form">
-        <?= $this->Form->create($player,["class"=>"form-horizontal"]) ?>
-            <fieldset>
-                <legend><?= __("Merci de rentrer votre email") ?></legend>
-                <div class="form-group">
-                <label class="col-sm-2 control-label">Email</label>
-        	        <div class="col-sm-6">
-                    <?= $this->Form->hidden('type',['value' => 'MDPOublié']) ?>
-                		<?= $this->Form->email('email',['class' => 'form-control']) ?>
-                	</div>
-                </div>
-            </fieldset>
+          <?= $this->Form->create($player,["class"=>"form-horizontal"]) ?>
+          <fieldset>
+            <legend><?= __("Merci de rentrer votre email") ?></legend>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-6">
+                <?= $this->Form->hidden('type',['value' => 'MDPOublié']) ?>
+                <?= $this->Form->email('email',['class' => 'form-control']) ?>
+              </div>
+            </div>
+          </fieldset>
         </div>
       </div>
       <div class="modal-footer">

@@ -74,7 +74,7 @@ class ConsoleShell extends Shell
             'and explore the features of CakePHP and your application.' .
             "\n\n" .
             'You will need to have psysh installed for this Shell to work.'
-        );
+            );
 
         return $parser;
     }

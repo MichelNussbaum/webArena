@@ -39,17 +39,17 @@ $cakeDescription = 'Web Arena';
 </head>
 <body class="home">
     <div class="container">
-    <div class="jumbotron">
-      <h1>Bienvenue sur Web Arena</h1>
-      <p>Web Arena est un jeu de rôle créé dans le cadre de notre formation sur CakePHP à l'ECE Paris par Julien Falconnet</p>
-      <p>
-          <!-- Lien Inscription -->
-          <?php echo $this->Html->link('Inscription', array('controller' => 'Public','action' => 'inscription'), array('class' => 'btn btn-primary btn-lg'));?>
-          <!-- Lien Connexion -->
-          <?php echo $this->Html->link('Connexion', array('controller' => 'Public', 'action' => 'connexion'), array('class' => 'btn btn-success btn-lg'));?>
-      </p>
-    </div>
-    <div class="page-header">
+        <div class="jumbotron">
+          <h1>Bienvenue sur Web Arena</h1>
+          <p>Web Arena est un jeu de rôle créé dans le cadre de notre formation sur CakePHP à l'ECE Paris par Julien Falconnet</p>
+          <p>
+              <!-- Lien Inscription -->
+              <?php echo $this->Html->link('Inscription', array('controller' => 'Public','action' => 'inscription'), array('class' => 'btn btn-primary btn-lg'));?>
+              <!-- Lien Connexion -->
+              <?php echo $this->Html->link('Connexion', array('controller' => 'Public', 'action' => 'connexion'), array('class' => 'btn btn-success btn-lg'));?>
+          </p>
+      </div>
+      <div class="page-header">
         <h1>Règles du jeu</h1>
     </div>
     <ul>
@@ -110,15 +110,15 @@ $cakeDescription = 'Web Arena';
             <h3>Utilisation d'un suivi de version GIT<small> - 1 point</small></h3>
             <p>
                 Utiliser un système de suivi de version, type subversion(svn) pour toute la durée du projet. L'école en propose un (webapps.ece.fr/svn-manager), mais un autre est possible (git par exemple).
-            <p>Pour obtenir le bonus, il faudra livrer avec le projet le fichier de log du gestionnaire avec mention des fichiers modifiés (pour svn, il s'agit du résultat de svn log -v, pour git, il s'agit du résultat de git log). Le fichier devra s'appeler versions.log et un lien dans le footer de toutes les pages devra y mener.</p>
+                <p>Pour obtenir le bonus, il faudra livrer avec le projet le fichier de log du gestionnaire avec mention des fichiers modifiés (pour svn, il s'agit du résultat de svn log -v, pour git, il s'agit du résultat de git log). Le fichier devra s'appeler versions.log et un lien dans le footer de toutes les pages devra y mener.</p>
             </p>
         </li>
         <li>
             <h3>Mise en ligne sur Internet<small> - 2 points</small></h3>
             <p>Le site devra être disponible et fonctionnel sur un hébergement accessible sur Internet. Il existe des hébergements gratuits. L'école propose également des hébergements, mais la compatibilité avec notre Framework est inconnue. L'adresse d'hébergement devra être indiquée dans le footer de toutes les pages.</p>
-            </p>
-        </li>
-    </ul>
+        </p>
+    </li>
+</ul>
 </div>
 </body>
 <footer>
